@@ -206,7 +206,7 @@ export default function HomePage() {
             className="secondary-heading-semi-bold bottom-spacing"
             data-theme={theme}
           >
-            Full Stack Software Developer
+            Full Stack Software Engineer
           </h4>
           <p className="copy-font" data-theme={theme}>
             Creative software developer that loves to build beautifully designed
@@ -468,7 +468,7 @@ export default function HomePage() {
                   className="secondary-heading-semi-bold bottom-spacing"
                   data-theme={theme}
                 >
-                  Full Stack Software Developer
+                  Full Stack Software Engineer
                 </h4>
                 <p className="copy-font" data-theme={theme}>
                   Creative software developer that loves to build beautifully

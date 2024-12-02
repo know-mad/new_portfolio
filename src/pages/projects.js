@@ -239,3 +239,5 @@ export default function AllProjects() {
     </div>
   );
 }
+
+export const Head = () => <title>NYC Mobile Apps Developer</title>;

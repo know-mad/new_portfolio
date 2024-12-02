@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `portfolio_v2`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.davidvelez.io`,
   },
   plugins: [
     {
@@ -24,5 +24,11 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: "src/images/favicon.png",
+      }
+    }
   ],
 }
