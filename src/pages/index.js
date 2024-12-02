@@ -749,7 +749,7 @@ export default function HomePage() {
                 locations world wide, I was responsible for maintaining and
                 updating the company website. I was entrusted to work with with
                 graphic designers and other web developers to ensure that the
-                company website was alwasy up to date and represented clearly
+                company website was always up to date and represented clearly
                 the company mission.
                 <br />
                 <br />
