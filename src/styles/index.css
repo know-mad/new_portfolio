@@ -605,6 +605,14 @@ p {
   margin-right: 20px;
 }
 
+.mobile-hidden {
+  display: none;
+}
+
+.link-arrow[data-screensize="laptop-and-up"] {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .content-section {
     padding: 100px 100px 0 45px;
@@ -626,6 +634,10 @@ p {
 
   .heading-extra-bold {
     font-size: 50px;
+  }
+
+  .link-arrow[data-screensize="mobile-and-up"] {
+    display: none;
   }
 }
 
@@ -671,6 +683,10 @@ p {
     display: none;
   }
 
+  .mobile-hidden {
+    display: contents;
+  }
+
   .mobile-link-container {
     cursor: pointer;
   }
@@ -701,6 +717,10 @@ p {
 
   .light-project-image-container {
     height: 250px;
+  }
+
+  .link-arrow[data-screensize="laptop-and-up"] {
+    display: flex;
   }
 }
 

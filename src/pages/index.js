@@ -1033,9 +1033,9 @@ export default function HomePage() {
               </div>
               <div className="contact-form">
                 <form
-                  name="contact-me"
+                  name="contact"
                   method="post"
-                  data-netlify="true"
+                  netlify
                 >
                   <input
                     name="FullName"

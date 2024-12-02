@@ -158,12 +158,34 @@ export default function AllProjects() {
                         data-theme={theme}
                       >
                         <div className="project-inner-column">
+                          <a className="desktop-hidden no-decoration"
+                             style={{marginRight: '10px'}}
+                             href={project.link ? `http://${project.link}` : null}
+                             target="_blank"
+                             rel="noopener"
+                             data-theme={theme}>
                           <p
                             className="primary-heading-bold"
                             data-theme={theme}
                           >
                             {project.name}
                           </p>
+                          </a>
+                          <p
+                            className="primary-heading-bold mobile-hidden"
+                            data-theme={theme}
+                          >
+                            {project.name}
+                          </p>
+                          {project.link && (
+                            <img
+                              style={{margin: '0px'}}
+                              className="link-arrow"
+                              src={theme === "dark" ? link : lightLink}
+                              alt="some alt text"
+                              data-screensize="mobile-and-up"
+                            />
+                          )}
                         </div>
                         <div
                           className="project-inner-column"
@@ -200,6 +222,7 @@ export default function AllProjects() {
                             <img
                               className="link-arrow"
                               src={theme === "dark" ? link : lightLink}
+                              data-screensize="laptop-and-up"
                               alt="some alt text"
                             />
                           )}

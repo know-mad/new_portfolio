@@ -252,6 +252,10 @@
     display: flex;
   }
 
+  .project-inner-column[data-screensize="tablet-and-up"]:last-child {
+    flex: 1;
+  }
+
   .project-inner-column{
     width: 140px;
   }
