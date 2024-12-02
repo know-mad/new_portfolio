@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "year": 2024,
+    "projects": [
+      {
+        "name": "Portfolio Website V2",
+        "made_at": " ",
+        "built_with": ["react", "contentful", "gatsby", "netlify"],
+        "link": ""
+      },
+      {
+        "name": "Salvation Army",
+        "made_at": "Blueswitch",
+        "built_with": ["js", "shopify", "graphQL", "liquid"],
+        "link": "www.salvationarmy.com"
+      },
+      {
+        "name": "Avenue B",
+        "made_at": "Blueswitch",
+        "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
+        "link": "www.shopavenueb.com"
+      },
+      {
+        "name": "Technics",
+        "made_at": "Blueswitch",
+        "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
+        "link": "us.technics.com"
+      },
+      {
+        "name": "Ted Baker",
+        "made_at": "Blueswitch",
+        "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
+        "link": "www.tedbaker.com"
+      },
+      {
+        "name": "Smart and Sexy",
+        "made_at": "Blueswitch",
+        "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
+        "link": "www.smartandsexy.com"
+      },
+      {
+        "name": "Curvy Couture",
+        "made_at": "Blueswitch",
+        "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
+        "link": "www.curvycouture.com"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "year": 2023,
+    "projects": [
+      {
+        "name": "Tata Harper",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "js", "shopify", "ajax"],
+        "link": "www.tataharperskincare.com"
+      },
+      {
+        "name": "Bags in Bulk",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "js", "shopify", "graphQL"],
+        "link": "www.bagsinbulk.com"
+      },
+      {
+        "name": "Elements in Time",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "js", "shopify", "ajax"],
+        "link": "www.elementintime.com"
+      },
+      {
+        "name": "ZENB",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.zenb.com"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "year": 2022,
+    "projects": [
+      {
+        "name": "To Boot",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.toboot.com"
+      },
+      {
+        "name": "Portfolio Website V1",
+        "made_at": " ",
+        "built_with": ["html", "css", "js", "contentful", "gatsby"],
+        "link": ""
+      },
+      {
+        "name": "J Queen",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.jqueen-ny.com"
+      },
+      {
+        "name": "Architessa",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.architessa.com"
+      }
+    ]
+  }
+]
