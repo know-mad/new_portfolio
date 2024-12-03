@@ -42,6 +42,7 @@ import linkedInDark from "../images/linkedin-dark.svg";
 
 import { NavigationContext } from "../utils/context";
 import { useTheme } from "../utils/ThemeContext";
+import RotateWarning from "../components/RotateWarning";
 
 export default function HomePage() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -197,6 +198,7 @@ export default function HomePage() {
 
   return (
     <NavigationContext.Provider value={activeLink}>
+      <RotateWarning />
       <div className="home-container">
         <div className="home-container-left">
           <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>
@@ -209,8 +211,8 @@ export default function HomePage() {
             Full Stack Software Engineer
           </h4>
           <p className="copy-font" data-theme={theme}>
-            Creative software developer that loves to build beautifully designed
-            websites and apps so you or your business can win online.
+            Creative software engineer that loves to build beautifully designed
+            technology solutions so you or your business can win online.
           </p>
           <div className="navigation-items">
             <div
@@ -471,8 +473,8 @@ export default function HomePage() {
                   Full Stack Software Engineer
                 </h4>
                 <p className="copy-font" data-theme={theme}>
-                  Creative software developer that loves to build beautifully
-                  designed websites and apps so you or your business can win
+                  Creative software engineer that loves to build beautifully
+                  designed technology solutions so you or your business can win
                   online.
                 </p>
               </div>
@@ -499,12 +501,12 @@ export default function HomePage() {
               </div>
               <p className="copy-font bottom-spacing" data-theme={theme}>
                 Based in New York City, and having a background in software
-                engineering, I specialize in building blazing-fast websites,
-                mobile and web applications, as well as e-commerce solutions by
-                using the latest technologies to prioritize site/app performance
-                ultimately resulting in breakneck page load speeds and better
-                SEO all delivered with beautifully and functionally designed
-                user interfaces.
+                engineering, I specialize in building mobile and web
+                applications, as well as blazing fast websites by using the
+                latest technologies to prioritize site/app performance
+                ultimately resulting in faster page load speeds and better SEO
+                all delivered with beautifully and functionally designed user
+                interfaces.
               </p>
               <p className="copy-font bottom-spacing" data-theme={theme}>
                 Proficient in the MERN stack, my favorite technologies to use
@@ -572,10 +574,10 @@ export default function HomePage() {
                 Technology is always changing and I’m always learning in order
                 to adapt to the changing market. As such, other notable
                 technologies that I have had experience with in the past
-                include, PostgreSQL for building relational databes, Netlify for
-                front end deployments. Heroku for back end deployments, and
-                Shopify’s "LIQUID" templating language for building immersive
-                Shopify storefronts.
+                include, PostgreSQL for building relational databases, Netlify
+                for front-end deployments. Heroku for back-end deployments, and
+                Shopify’s Liquid templating language for building immersive
+                Shopify storefronts and applications.
               </p>
               <div className="logo-container bottom-spacing">
                 <img
@@ -677,8 +679,8 @@ export default function HomePage() {
                 interfaces using modern javascript frameworks such as Next.js,
                 or the Shopify templating engine Liquid that looked and
                 performed great on all devices from desktop to mobile. Lastly, I
-                performed accessibility work ensuring client web pages adhere to
-                W3 accessibility compliance.
+                performed accessibility work ensuring client web pages adhered
+                to W3 accessibility compliance.
               </p>
               <div className="heading-container bottom-spacing">
                 <div className="heading-title">
@@ -709,14 +711,14 @@ export default function HomePage() {
                 Created full scale branded websites for clients. Starting with
                 design using Figma and Adobe XD and including responsive
                 front-end development using javascript frameworks such as
-                React.js, Gatsby.js, or Next.js that boast fast page load speeds
-                served via CDN and microservices for small and medium sized
-                businesses in my local area.
+                React.js, Gatsby.js, or Next.js that boasted fast page load
+                speeds served via CDN and microservices for small and medium
+                sized businesses in my local area.
                 <br />
                 <br />
                 Performed implementation of on page search engine optimization
                 (SEO) including properly structured page titles, metadata and
-                image alt tags ensuring clients are getting the best results on
+                image alt tags ensuring clients were getting the best results on
                 the web.
               </p>
               <div className="heading-container bottom-spacing">
@@ -747,14 +749,15 @@ export default function HomePage() {
               <p className="copy-font" data-theme={theme}>
                 At a world renowned and global architecture firm with multiple
                 locations world wide, I was responsible for maintaining and
-                updating the company website. I was entrusted to work with with
+                updating the company website. I was entrusted to work with
                 graphic designers and other web developers to ensure that the
                 company website was always up to date and represented clearly
                 the company mission.
                 <br />
                 <br />
-                This consisted of working with HTML, CSS, and Javascript to
-                build an aesthetically and functional user experience. I also
+                My job at CallisonRTKL consisted of working with HTML, CSS, and
+                Javascript daily, to build an aesthetically pleasing and
+                functional user experience for our customers and users. I also
                 performed Search Engine Optimization (SEO) and web accessibility
                 for users with disabilities who wanted to use our digital
                 assets.
@@ -879,12 +882,11 @@ export default function HomePage() {
                 When European Wax Center needed their e-commerce solution
                 updated and upgraded I was entrusted to build out their new and
                 improved Shopify storefront using modern HTML, CSS and
-                Javascript practices to not only deliver an aesthetically
-                beautiful user interface but all of the the features they needed
-                to be able to cater to their clients via the web. From
-                appointment setting to a custom shopping cart, this website
-                offers a splendid user experience with tons of tech under the
-                hood.
+                Javascript practices to not only deliver a beautiful user
+                interface but also all of the the features they needed to be
+                able to cater to their clients via the web. From appointment
+                setting to a custom shopping cart, this website offers a
+                splendid user experience with tons of tech under the hood.
               </p>
               <div
                 className={`${
@@ -950,8 +952,9 @@ export default function HomePage() {
               <br />
               <br />
               As a single page react app this website boasts a decoupled
-              architecture using a wordpress back end. The front end is fully
-              custom and beautifully designed served to the user via the React
+              architecture using a wordpress back end for their content. The
+              front end is fully custom and beautifully designed and fetches
+              data via their custom API, all served to the user via the React
               framework.
             </p>
             <div
@@ -1032,11 +1035,7 @@ export default function HomePage() {
                 ></span>
               </div>
               <div className="contact-form">
-                <form
-                  name="contact"
-                  method="post"
-                  netlify
-                >
+                <form name="contact" method="post" netlify>
                   <input
                     name="FullName"
                     placeholder="Full Name"

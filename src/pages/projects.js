@@ -9,6 +9,7 @@ import arrowLight from "../images/arrow-icon-light.svg";
 import link from "../images/link-arrow.svg";
 import lightLink from "../images/light-link-arrow.svg";
 import data from "../data/data.json";
+import RotateWarning from "../components/RotateWarning";
 
 export default function AllProjects() {
   const { theme, toggleTheme } = useTheme();
@@ -51,6 +52,8 @@ export default function AllProjects() {
   };
 
   return (
+    <>
+    <RotateWarning />
     <div className="project-page-container">
       <div className="page-navigation-container">
         <Link to="/" className="back-navigation" data-theme={theme}>
@@ -237,6 +240,7 @@ export default function AllProjects() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
