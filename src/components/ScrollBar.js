@@ -19,7 +19,7 @@ export default function ScrollBar({
       <span className="timeline" data-theme={theme}></span>
       <div
         onClick={handleClick1}
-        style={{ padding: activeLink === 1 ? `2px` : `0` }}
+        style={{ padding: activeLink === 1 ? `5px` : `0` }}
         className="alt-color__full-stop-outer"
         data-theme={theme}
       >
@@ -28,7 +28,7 @@ export default function ScrollBar({
       <span className="timeline__reversed-colors" data-theme={theme}></span>
       <div
         onClick={handleClick2}
-        style={{ padding: activeLink === 2 ? `2px` : `0` }}
+        style={{ padding: activeLink === 2 ? `5px` : `0` }}
         className="full-stop-outer"
         data-theme={theme}
       >
@@ -37,7 +37,7 @@ export default function ScrollBar({
       <span className="timeline" data-theme={theme}></span>
       <div
         onClick={handleClick3}
-        style={{ padding: activeLink === 3 ? `2px` : `0` }}
+        style={{ padding: activeLink === 3 ? `5px` : `0` }}
         className="alt-color__full-stop-outer"
         data-theme={theme}
       >
@@ -46,7 +46,7 @@ export default function ScrollBar({
       <span className="timeline__reversed-colors" data-theme={theme}></span>
       <div
         onClick={handleClick4}
-        style={{ padding: activeLink === 4 ? `2px` : `0` }}
+        style={{ padding: activeLink === 4 ? `5px` : `0` }}
         className="full-stop-outer"
         data-theme={theme}
       >

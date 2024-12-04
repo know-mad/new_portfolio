@@ -99,7 +99,7 @@ export default function AllProjects() {
               Project
             </p>
           </div>
-          <div className="project-column" data-screensize="tablet-and-up">
+          <div className="project-column made-at-column" data-screensize="tablet-and-up">
             <p className="copy-font" data-theme={theme}>
               Made at
             </p>
@@ -132,7 +132,7 @@ export default function AllProjects() {
                       transform: isRowExpanded
                         ? "rotate(180deg)"
                         : "rotate(0deg)",
-                      transition: "transform 0.3s ease",
+                      transition: "transform 0.5s ease",
                     }}
                   />
                 </div>
@@ -151,7 +151,7 @@ export default function AllProjects() {
                     style={{
                       height: "0",
                       overflow: "hidden",
-                      transition: "height 0.3s ease",
+                      transition: "height 0.5s ease",
                     }}
                   >
                     {row.projects.map((project, projectIndex) => (
@@ -191,7 +191,7 @@ export default function AllProjects() {
                           )}
                         </div>
                         <div
-                          className="project-inner-column"
+                          className="project-inner-column made-at-column"
                           data-screensize="tablet-and-up"
                         >
                           <p className="copy-font" data-theme={theme}>

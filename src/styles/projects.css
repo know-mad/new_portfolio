@@ -233,6 +233,10 @@
   display: none;
 }
 
+.made-at-column {
+  width: 130px !important;
+}
+
 @media screen and (min-width: 768px) {
   .project-page-container {
     display: flex;
@@ -303,5 +307,11 @@
 
   .project-inner-column{
     width: 250px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .made-at-column {
+    width: 250px !important;
   }
 }
