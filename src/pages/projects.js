@@ -72,6 +72,7 @@ export default function AllProjects() {
         </Link>
         <div className="page-title">
           <span
+            style={{ flex: pageTitle ? '1' : 'none', transition: 'flex 0.5s ease-in-out' }}
             className={
               theme === "dark" ? "heading-line-reversed" : "light-heading-line"
             }
