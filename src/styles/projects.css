@@ -311,7 +311,18 @@
 }
 
 @media screen and (min-width: 1920px) {
+  .project-page-container {
+    padding: 0 150px 0 150px;
+  }
+
   .made-at-column {
     width: 250px !important;
   }
+}
+
+@media screen and (min-width: 2560px) {
+  .project-page-container {
+    padding: 0 250px 0 250px;
+  }
+
 }
