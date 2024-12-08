@@ -3,6 +3,10 @@ import "../styles/Drawer.css";
 import { NavigationContext } from "../utils/context";
 import { useTheme } from '../utils/ThemeContext';
 import {Link} from 'gatsby'
+import git from "../images/github.svg";
+import gitDark from "../images/github-dark.svg";
+import linkedIn from "../images/linkedin.svg";
+import linkedInDark from "../images/linkedin-dark.svg";
 
 export default function Drawer({
   isOpen,
@@ -81,6 +85,30 @@ export default function Drawer({
         <span style={{ width: `0px`}} className="mobile-link-line"></span>
           <p className="drawer-link">BLOG</p>
         </div> */}
+        <div className="socials-container">
+            <a
+              href="https://github.com/know-mad"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                className="social-link"
+                src={theme === "dark" ? git : gitDark}
+                alt="some alt text"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/david-velez-5b29a833b"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                className="social-link"
+                src={theme === "dark" ? linkedIn : linkedInDark}
+                alt="some alt text"
+              />
+            </a>
+          </div>
       </div>
     </div>
   );
