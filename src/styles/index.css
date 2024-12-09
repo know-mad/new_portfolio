@@ -611,11 +611,11 @@ p {
 
 @media screen and (min-width: 768px) {
   .content-section {
-    padding: 100px 100px 0 45px;
+    padding: 100px 100px 0 80px;
   }
 
   .navbar {
-    padding: 35px 0 25px 45px;
+    padding: 35px 0 25px 80px;
   }
 
   .project-image-container {

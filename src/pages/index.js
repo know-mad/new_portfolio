@@ -63,11 +63,21 @@ export default function HomePage() {
   ];
 
   // useEffect(() => {
+  //   const getThreshold = () => {
+  //     const width = window.innerWidth;
+
+  //     // Map screen sizes to thresholds
+  //     if (width <= 375) return 0.25; // Smallest screens
+  //     if (width <= 768) return 0.3; // Tablet
+  //     if (width <= 1024) return 0.35; // Small desktop
+  //     if (width <= 1440) return 0.4; // Large desktop
+  //     return 0.76; // Ultra-wide screens
+  //   };
+
   //   const observerOptions = {
   //     root: null,
   //     rootMargin: "0px",
-  //     // threshold: 0.5, // Adjust this for sensitivity
-  //     threshold: window.innerWidth < 769 ? 0.3 : 0.45, // Adjust threshold for mobile
+  //     threshold: getThreshold(), // Dynamically set threshold based on screen size
   //   };
 
   //   const observerCallback = (entries) => {
@@ -96,35 +106,58 @@ export default function HomePage() {
   //     }
   //   });
 
+  //   // Reinitialize observer on resize
+  //   const handleResize = () => {
+  //     observer.disconnect(); // Clear existing observers
+  //     observerOptions.threshold = getThreshold(); // Update threshold
+  //     sectionRefs.forEach((section) => {
+  //       if (section.ref.current) {
+  //         observer.observe(section.ref.current);
+  //       }
+  //     });
+  //   };
+
+  //   window.addEventListener("resize", handleResize);
+
   //   return () => {
+  //     window.removeEventListener("resize", handleResize);
   //     sectionRefs.forEach((section) => {
   //       if (section.ref.current) {
   //         observer.unobserve(section.ref.current);
   //       }
   //     });
   //   };
-  // }, [sectionRefs]);
+  // }, [sectionRefs, scrollingProgrammatically]);
 
   useEffect(() => {
-    const getThreshold = () => {
+    const getThreshold = (ref) => {
       const width = window.innerWidth;
 
-      // Map screen sizes to thresholds
-      if (width <= 375) return 0.25; // Smallest screens
-      if (width <= 768) return 0.3; // Tablet
-      if (width <= 1024) return 0.35; // Small desktop
-      if (width <= 1440) return 0.4; // Large desktop
-      return 0.76; // Ultra-wide screens
+      // Specific adjustment for projectsContainerRef
+      if (ref === projectsContainerRef) {
+        if (width <= 375) return 0.3; // Smallest screens
+        if (width <= 768) return 0.35; // Tablet
+        if (width <= 1024) return 0.4; // Small desktop
+        if (width <= 1440) return 0.425; // Large desktop
+        return 0.6; // Ultra-wide screens
+      }
+
+      // Default thresholds for other sections
+      if (width <= 375) return 0.25;
+      if (width <= 768) return 0.3;
+      if (width <= 1024) return 0.35;
+      if (width <= 1440) return 0.4;
+      return 0.76;
     };
 
-    const observerOptions = {
+    const observerOptions = (ref) => ({
       root: null,
       rootMargin: "0px",
-      threshold: getThreshold(), // Dynamically set threshold based on screen size
-    };
+      threshold: getThreshold(ref),
+    });
 
     const observerCallback = (entries) => {
-      if (scrollingProgrammatically) return; // Ignore observer updates if scrolling programmatically
+      if (scrollingProgrammatically) return;
 
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -138,24 +171,27 @@ export default function HomePage() {
       });
     };
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    sectionRefs.forEach((section) => {
-      if (section.ref.current) {
-        observer.observe(section.ref.current);
+    const observers = sectionRefs.map(({ ref }) => {
+      if (ref.current) {
+        const observer = new IntersectionObserver(
+          observerCallback,
+          observerOptions(ref)
+        );
+        observer.observe(ref.current);
+        return { ref, observer };
       }
+      return null;
     });
 
-    // Reinitialize observer on resize
     const handleResize = () => {
-      observer.disconnect(); // Clear existing observers
-      observerOptions.threshold = getThreshold(); // Update threshold
-      sectionRefs.forEach((section) => {
-        if (section.ref.current) {
-          observer.observe(section.ref.current);
+      observers.forEach(({ ref, observer }) => {
+        if (observer && ref.current) {
+          observer.disconnect();
+          const newObserver = new IntersectionObserver(
+            observerCallback,
+            observerOptions(ref)
+          );
+          newObserver.observe(ref.current);
         }
       });
     };
@@ -164,9 +200,9 @@ export default function HomePage() {
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      sectionRefs.forEach((section) => {
-        if (section.ref.current) {
-          observer.unobserve(section.ref.current);
+      observers.forEach(({ ref, observer }) => {
+        if (observer && ref.current) {
+          observer.unobserve(ref.current);
         }
       });
     };

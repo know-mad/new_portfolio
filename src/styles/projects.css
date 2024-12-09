@@ -241,7 +241,7 @@
   .project-page-container {
     display: flex;
     flex-direction: column;
-    padding: 0 45px 0 45px;
+    padding: 0 80px 0 80px;
   }
 
   .table-columns > *:not(:first-child) {
@@ -270,10 +270,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .project-page-container {
-    padding: 0 80px 0 80px;
-  }
-
+  
   .table-columns > *:not(:first-child) {
     width: 180px;
   }
