@@ -1,49 +1,80 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+<p align='center'>
+<img src='src/images/logo.svg' width='100'/>
 </p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
 
-## 🚀 Quick start
+<h2 align='center'>
+davidvelez.io website
+</h2>
 
-1.  **Create a Gatsby site.**
+## Objective
+Objective was to build my professional business website using the React based platform Gatsby.js. The website highlights my experience, projects worked on, and
+contact information for clients to request web development services. The website is search engine optimized with on-page SEO and each page targets specific keywords used for ranking on google search.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Technologies Used
+1. HTML5
+2. CSS3
+3. Javascript
+4. React.js
+5. Gatsby.js
+6. Git
+6. Netlify
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Forking this repo
+Many people have contacted me asking me if they can use this code for their own website, and the answer to that question is usually yes, with attribution.
 
-2.  **Start developing.**
+I value keeping my site open source, but as you all know, plagiarism is bad. It's always disheartening whenever I find that someone has copied my site without giving me credit. I spent a non-trivial amount of effort building and designing this iteration of my website, and I am proud of it! All I ask of you all is to not claim this effort as your own.
 
-    Navigate into your new site’s directory and start it up.
+Please also note that I did not build this site with the intention of it being a starter theme, so if you have questions about implementation, please refer to the [Gatsby docs].
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### TL;DR
+Yes, you can fork this repo. Please give me proper credit by linking back to [davidvelez.io]. Thanks!
 
-3.  **Open the code and start customizing!**
+## Installation and Setup
+1. Install the Gatsby CLI
 
-    Your site is now running at http://localhost:8000!
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+```npm i gatsby-cli```
 
-4.  **Learn more**
+2. Install and use the correct version of Node using NVM
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```nvm install```
 
-## 🚀 Quick start (Netlify)
+3. Install dependencies
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+```npm install```
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+4. Start the development server
+
+```gatsby develop```
+
+## Building and running for production
+
+1. Generate a full static build
+
+```gatsby build```
+
+2. Preview the site as it will appear once deployed
+
+```gatsby serve```
+
+## Color palette
+
+Color | Hex
+------------ | -------------
+dark purple | ```#1F0A34```
+light purple | ```#4026B6```
+purple | ```#b007a8```
+blue | ```#0984e3```
+
+
+
+## Author
+David Velez
+
+## Deployed
+
+Deployed site is [here]
+
+[here]: http://www.davidvelez.io
+[davidvelez.io]: http://www.davidvelez.io
+[Gatsby docs]: https://www.gatsbyjs.com/docs/
