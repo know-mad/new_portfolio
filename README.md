@@ -7,8 +7,8 @@ davidvelez.io website
 </h2>
 
 ## Objective
-Objective was to build my professional business website using the React based platform Gatsby.js. The website highlights my experience, projects worked on, and
-contact information for clients to request web development services. The website is search engine optimized with on-page SEO and each page targets specific keywords used for ranking on google search.
+Objective was to build my professional portfolio website using the React based platform Gatsby.js. The website highlights my experience, projects worked on, and
+contact information. The website is search engine optimized with on-page SEO and each page targets specific keywords used for ranking on google search.
 
 ## Technologies Used
 1. HTML5
@@ -61,10 +61,12 @@ Yes, you can fork this repo. Please give me proper credit by linking back to [da
 
 Color | Hex
 ------------ | -------------
-dark purple | ```#1F0A34```
-light purple | ```#4026B6```
-purple | ```#b007a8```
-blue | ```#0984e3```
+dark blue | ```#0E1231```
+light blue| ```#00A3FF```
+volt green | ```#CEFF00```
+orange | ```#EA8D00```
+purple | ```#9F00EA```
+off white | ```#F1F1F1```
 
 
 
