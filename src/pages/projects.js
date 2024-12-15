@@ -54,7 +54,7 @@ export default function AllProjects() {
   return (
     <>
     <RotateWarning />
-    <div className="project-page-container">
+    <div className="static-page-container">
       <div className="page-navigation-container">
         <Link to="/" className="back-navigation" data-theme={theme}>
           <img

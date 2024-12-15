@@ -81,10 +81,10 @@ export default function Drawer({
           )}
         </div>
         {/* Add Blog later */}
-        {/* <div className="mobile-link-container">
+        <div className="mobile-link-container bottom-spacing">
         <span style={{ width: `0px`}} className="mobile-link-line"></span>
-          <p className="drawer-link">BLOG</p>
-        </div> */}
+          <p className="static-link" data-theme={theme}>BLOG</p>
+        </div>
         <div className="socials-container">
             <a
               href="https://github.com/know-mad"

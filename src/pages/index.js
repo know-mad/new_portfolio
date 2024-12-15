@@ -406,13 +406,13 @@ export default function HomePage() {
               )}
             </div>
             {/* Add the blog later */}
-            {/* <div className="mobile-link-container">
+            <div className="mobile-link-container bottom-spacing">
               <span
                 style={{ width: `0px` }}
                 className="mobile-link-line"
               ></span>
-              <p className="drawer-link">BLOG</p>
-            </div> */}
+              <Link to='/blogs/all-blogs' className="static-link" data-theme={theme}>BLOG</Link>
+            </div>
           </div>
           <div className="socials-container">
             <a
