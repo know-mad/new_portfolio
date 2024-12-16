@@ -1,5 +1,105 @@
 .blogs-container {
   display: flex;
   flex-direction: column;
-  background: cyan
+  align-items: center;
+  width: 100%;
+  padding-top: 50px
+  /* background: cyan */
+}
+
+.blog-item-container[data-theme="dark"] {
+  --bg-color: rgba(217,217,217,0.04);
+}
+
+.blog-item-container[data-theme="light"] {
+  --bg-color: rgba(146,146,146,0.2);
+}
+
+.blog-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: linear-gradient(to left, var(--primary-accent-color), var(--secondary-accent-color)); */
+  /* margin-bottom: 20px; */
+  /* padding: 1px; */
+  background: var(--bg-color);
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  /* overflow: hidden */
+}
+
+.blog-item-container-inner {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */
+  /* background: var(--dark-background); */
+  /* width: 100%;
+  padding: 20px; */
+  /* border-radius: 5px; */
+}
+
+.preview-image-container {
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  height:fit-content;
+  /* margin-right: 25px; */
+  /* background: magenta; */
+  border: 1px solid var(--primary-accent-color);
+  padding: 4px;
+  border-radius: 3px;
+  margin-right: 20px;
+  /* margin-bottom: 20px */
+}
+
+.light-preview-image-container {
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  height:fit-content;
+  /* margin-right: 25px; */
+  /* background: magenta; */
+  /* border: 1px solid var(--primary-accent-color); */
+  padding: 4px;
+  border-radius: 3px;
+  margin-right: 20px;
+  /* margin-bottom: 20px */
+}
+
+.preview-image {
+  width: 115px;
+  aspect-ratio: 16/9;
+  border-radius: 3px;
+}
+
+.blog-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* text-align: center; */
+  /* background: skyblue; */
+  width: 100%;
+}
+
+.mobile-info-container {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-end; */
+  align-items: center;
+  /* background: crimson; */
+  width: 100%;
+  /* margin-bottom: 20px */
+}
+
+.blog-tags-container {
+  display: flex;
+  /* background: crimson; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-transform: uppercase;
+  width: 100%
 }
