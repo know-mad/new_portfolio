@@ -1,11 +1,14 @@
 .static-page-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 0 20px 0 20px;
+  z-index: 0;
 }
 
 .page-navigation-container {
-  padding-top: 35px;
+  /* position: relative; */
+  padding: 35px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

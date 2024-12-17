@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, graphql } from "gatsby";
 import "../../styles/blogs.css";
 import { GatsbyImage } from "gatsby-plugin-image"; // Import GatsbyImage
@@ -11,15 +11,38 @@ import link from "../../images/link-arrow.svg";
 import lightLink from "../../images/light-link-arrow.svg";
 
 const AllBlogs = ({ data }) => {
+  const [isTop, setIsTop] = useState(false)
   const { theme, toggleTheme } = useTheme();
-  const [pageTitle, setPageTitle] = useState(true);
+  const blogsContainerRef = useRef(null);
+
   const blogs = data.allContentfulArticle.edges;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!blogsContainerRef.current) return;
+
+      const rect = blogsContainerRef.current.getBoundingClientRect();
+      
+      // Check if blogs-container is at the top of the viewport
+      if (rect.top <= 0) {
+        setIsTop(true)
+        console.log("blogs-container is at the top of the viewport");
+      } else {
+        setIsTop(false)
+      }
+    };
+
+    // Attach event listener
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       <RotateWarning />
       <div className="static-page-container">
-        <div className="page-navigation-container">
+      <div className="static-nav" style={{ top: isTop ? '0' : '-200px'}}>
           <Link to="/" className="back-navigation" data-theme={theme}>
             <img
               className="back-arrow"
@@ -27,34 +50,25 @@ const AllBlogs = ({ data }) => {
               alt="some alt text here"
             />
           </Link>
-          <Link
-            onMouseEnter={() => setPageTitle(false)}
-            onMouseLeave={() => setPageTitle(true)}
-            to="/"
-            className="desktop-back-navigation"
-            data-theme={theme}
-          >
-            <img
-              className="back-arrow"
-              src={theme === "dark" ? arrow : arrowLight}
-              alt="some alt text here"
-            />
-          </Link>
+          <div className="back-container">
+            <svg
+              className="back-icon"
+              width="15"
+              height="15"
+              viewBox="0 0 20 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 17.8757L0.239031 0.969238L19.761 0.969238L10 17.8757Z"
+                fill="#ceff00"
+              />
+            </svg>
+            <h3 className="tertiary-heading-semi-bold" data-theme={theme}>
+              Back
+            </h3>
+          </div>
           <div className="page-title">
-            <span
-              style={{
-                flex: pageTitle ? "1" : "none",
-                transition: "flex 0.5s ease-in-out",
-              }}
-              className={
-                theme === "dark"
-                  ? "heading-line-reversed"
-                  : "light-heading-line"
-              }
-            ></span>
-            <p className="tertiary-heading-semi-bold" data-theme={theme}>
-              {pageTitle ? "All Blogs" : "Back to Home"}
-            </p>
             <span
               className={
                 theme === "dark"
@@ -65,11 +79,45 @@ const AllBlogs = ({ data }) => {
           </div>
           <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
         </div>
-        <div className="blogs-container">
+        <div className="page-navigation-container">
+          <Link to="/" className="back-navigation" data-theme={theme}>
+            <img
+              className="back-arrow"
+              src={theme === "dark" ? arrow : arrowLight}
+              alt="some alt text here"
+            />
+          </Link>
+          <div className="back-container">
+            <svg
+              className="back-icon"
+              width="15"
+              height="15"
+              viewBox="0 0 20 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 17.8757L0.239031 0.969238L19.761 0.969238L10 17.8757Z"
+                fill="#ceff00"
+              />
+            </svg>
+            <h3 className="tertiary-heading-semi-bold" data-theme={theme}>
+              Back
+            </h3>
+          </div>
+          <div className="page-title">
+            <span
+              className={
+                theme === "dark"
+                  ? "heading-line"
+                  : "light-heading-line-reversed"
+              }
+            ></span>
+          </div>
+          <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
+        </div>
+        <div ref={blogsContainerRef} className="blogs-container">
           {blogs.map(({ node }) => (
-            // <li key={node.slug}>
-            //   <Link to={`/blogs/${node.slug}`}>{node.title}</Link>
-            // </li>
             <div
               key={node.slug}
               className="blog-item-container bottom-spacing"
@@ -77,52 +125,39 @@ const AllBlogs = ({ data }) => {
             >
               <div className="mobile-info-container bottom-spacing">
                 <span
-                  style={{
-                    flex: pageTitle ? "1" : "none",
-                    transition: "flex 0.5s ease-in-out",
-                  }}
                   className={
                     theme === "dark"
-                      ? "heading-line-reversed"
-                      : "light-heading-line"
+                      ? "heading-line"
+                      : "light-heading-line-reversed"
                   }
+                  style={{marginLeft: 0, marginRight: 10}}
                 ></span>
                 <Link
                   to={`/blogs/${node.slug}`}
-                  className="secondary-heading-semi-bold no-decoration"
+                  className="reverse-secondary-heading-semi-bold no-decoration"
                   data-theme={theme}
                 >
                   Read Article
                 </Link>
-                {/* <img
-                  className="link-arrow"
-                  src={theme === "dark" ? link : lightLink}
-                  alt="some alt text"
-                /> */}
-              </div>
-              {/* <div className="preview-image-container bottom-spacing">
-                <GatsbyImage
-                  image={node.headerImage.gatsbyImageData}
-                  alt={node.title || "Blog Image"} // Add alt text
-                  className="preview-image"
-                />
-              </div> */}
-              {/* <div className="mobile-info-container bottom-spacing">
-                <p className="copy-font" data-theme={theme}>
-                  {node.date}
-                </p>
-                <p className="copy-font" data-theme={theme}>
-                  by: {node.author}
-                </p>
-              </div> */}
-              <div className="blog-title-container bottom-spacing">
-                {/* <div className="preview-image-container">
-                  <GatsbyImage
-                    image={node.headerImage.gatsbyImageData}
-                    alt={node.title || "Blog Image"} // Add alt text
-                    className="preview-image"
+                <img style={{marginLeft: 10}} src={ theme === 'dark' ? link : lightLink} alt="link icon" />
+                {/* <svg
+                  style={{ marginLeft: "10px" }}
+                  width="27"
+                  height="28"
+                  viewBox="0 0 27 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22.5 4.99878L13.5 13.9988M22.5 4.99878V10.0613M22.5 4.99878H17.4375M21.375 14.5613V19.3988C21.375 20.6589 21.375 21.289 21.1297 21.7703C20.9141 22.1936 20.5698 22.5379 20.1465 22.7535C19.6652 22.9988 19.0351 22.9988 17.775 22.9988H8.1C6.83989 22.9988 6.20982 22.9988 5.72852 22.7535C5.30515 22.5379 4.96095 22.1936 4.74524 21.7703C4.5 21.289 4.5 20.6589 4.5 19.3988V9.72378C4.5 8.46367 4.5 7.8336 4.74524 7.3523C4.96095 6.92893 5.30515 6.58473 5.72852 6.36902C6.20982 6.12378 6.83988 6.12378 8.1 6.12378H12.9375"
+                    stroke="#EA8D00"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </div> */}
+                </svg> */}
+              </div>
+              <div className="blog-title-container bottom-spacing">
                 <div
                   className={
                     theme === "dark"
@@ -130,67 +165,64 @@ const AllBlogs = ({ data }) => {
                       : "light-preview-image-container"
                   }
                 >
-                  {/* <img
-                    style={{
-                      boxShadow:
-                        theme === "dark" ? "none" : "8px 5px 15px #555151",
-                    }}
-                    className="project-image"
-                    src={panasonic}
-                    alt="some alt text"
-                  /> */}
                   <GatsbyImage
                     image={node.headerImage.gatsbyImageData}
                     alt={node.title || "Blog Image"} // Add alt text
                     className="preview-image"
                     style={{
                       boxShadow:
-                        theme === "dark" ? "none" : "4px 7px 7px rgba(85, 81, 81, 0.6)",
+                        theme === "dark"
+                          ? "none"
+                          : "4px 7px 7px rgba(85, 81, 81, 0.6)",
                     }}
                   />
                 </div>
-                <p className="primary-heading-bold" data-theme={theme}>
-                  {node.title}
-                </p>
-                {/* <Link to={`/blogs/${node.slug}`}>{node.title}</Link> */}
+                <div className="desktop-inner">
+                  <p
+                    className="primary-heading-bold bottom-spacing"
+                    data-theme={theme}
+                  >
+                    {node.title}
+                  </p>
+                  <p className="copy-font bottom-spacing" data-theme={theme}>
+                    published: {node.date}
+                  </p>
+                  <div className="desktop-blog-tags-container">
+                    {node.tags && node.tags.length > 0 ? (
+                      node.tags.map((item, index) => (
+                        <div key={index} className="tag" data-theme={theme}>
+                          {item.tag}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="blog-tags-container">
+                        <p className="copy-font" data-theme={theme}>
+                          No tags available
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="mobile-info-container bottom-spacing">
-                <p className="copy-font" data-theme={theme}>
+              <div className="mobile-inner">
+                <p className="copy-font bottom-spacing" data-theme={theme}>
                   published: {node.date}
                 </p>
-              </div>
-              <div className="blog-tags-container">
-                {node.tags && node.tags.length > 0 ? (
-                  node.tags.map((item, index) => (
-                    <div key={index} className="tag" data-theme={theme}>
-                      {item.tag}
+                <div className="mobile-blog-tags-container">
+                  {node.tags && node.tags.length > 0 ? (
+                    node.tags.map((item, index) => (
+                      <div key={index} className="tag" data-theme={theme}>
+                        {item.tag}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="blog-tags-container">
+                      <p className="copy-font" data-theme={theme}>
+                        No tags available
+                      </p>
                     </div>
-                  ))
-                ) : (
-                  <div className="blog-tags-container">
-                    <p className="copy-font" data-theme={theme}>
-                      No tags available
-                    </p>
-                  </div>
-                )}
-                {/* <div className="tag" data-theme={theme}>
-                  ELECTRONICS
+                  )}
                 </div>
-                <div className="tag" data-theme={theme}>
-                  E-COMMERCE
-                </div>
-                <div className="tag" data-theme={theme}>
-                  CUSTOM
-                </div>
-                <div className="tag" data-theme={theme}>
-                  SHOPIFY
-                </div>
-                <div className="tag" data-theme={theme}>
-                  UX/UI
-                </div>
-                <div className="tag" data-theme={theme}>
-                  ACCESSIBILITY
-                </div> */}
               </div>
             </div>
           ))}
