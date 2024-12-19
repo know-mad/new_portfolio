@@ -74,6 +74,24 @@
         "made_at": "Blueswitch",
         "built_with": ["html", "css", "jquery", "shopify", "ajax"],
         "link": "www.zenb.com"
+      },
+      {
+        "name": "TRC Electronics",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.trcelectronics.com"
+      },
+      {
+        "name": "L'Objet",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "www.l-objet.com"
+      },
+      {
+        "name": "Rapiscan",
+        "made_at": "Blueswitch",
+        "built_with": ["html", "css", "jquery", "shopify", "ajax"],
+        "link": "store.rapiscan.us"
       }
     ]
   },

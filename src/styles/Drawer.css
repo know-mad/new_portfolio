@@ -156,13 +156,19 @@
   font-weight: 100;
 }
 
+.links-container {
+  display: flex;
+  flex-direction: column;
+  /* background: crimson; */
+}
+
 @media screen and (min-width: 1024px) {
-  .drawer-container {
+  /* .drawer-container {
     display: none;
   }
 
   .light-drawer-container {
     display: none;
-  }
+  } */
   
 }

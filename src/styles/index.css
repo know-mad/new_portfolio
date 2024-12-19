@@ -63,6 +63,14 @@ p {
   --font-color: linear-gradient(to right, var(--light-primary-accent-color), var(--light-secondary-accent-color) 50%);
 }
 
+.page-heading-extra-bold[data-theme="dark"] {
+  --font-color: linear-gradient(to right, var(--primary-accent-color),var(--secondary-accent-color) 50%);
+}
+
+.page-heading-extra-bold[data-theme="light"] {
+  --font-color: linear-gradient(to right, var(--light-primary-accent-color), var(--light-secondary-accent-color) 50%);
+}
+
 .secondary-heading-semi-bold[data-theme="dark"] {
   --color: var(--primary-accent-color)
 }
@@ -151,6 +159,18 @@ p {
   -webkit-text-fill-color: transparent;
 }
 
+.page-heading-extra-bold {
+  font-size: 20px;
+  font-family: var(--header-font-family);
+  font-weight: 900;
+  /* color: red; */
+  background: var(--font-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self:center;
+}
+
 .primary-heading-bold {
   font-size: 20px;
   font-family: var(--header-font-family);
@@ -214,6 +234,7 @@ p {
   display: flex;
   flex-direction: column;
   background: var(--primary-bg-color);
+  padding: 100px 75px 80px 20px;
 }
 
 .navbar {
@@ -225,15 +246,56 @@ p {
   width: 100%;
   position: fixed;
   z-index: 2;
+  /* background: crimson; */
   background-color: var(--bg-color);
   transition: background-color 1s ease, color 1s ease;
 }
 
-.content-section {
+.alt-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 20px 0 20px;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  /* background: cyan; */
+  background-color: var(--bg-color);
+  transition: background-color 1s ease, color 1s ease;
+}
+
+.alt-navbar-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 15%;
+
+}
+
+.alt-navbar-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%
+}
+
+.alt-navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 15%;
+}
+
+/* .content-section {
   display: flex;
   flex-direction: column;
   padding: 100px 60px 0 20px;
-}
+} */
 
 .section-title {
   display: flex;
@@ -245,29 +307,11 @@ p {
   /* background: red; */
 }
 
-.about-container {
+.content-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.experience-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.projects-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  padding-bottom: 100px;
+  /* margin-bottom: 20px; */
+  /* background: cyan; */
 }
 
 .toggle-open {
@@ -351,6 +395,34 @@ p {
 
 .heading-title {
   width: auto;
+}
+
+.solid-heading-line-primary {
+  flex: 1;
+  height: 1px;
+  width: 70px;
+  background:  var(--primary-accent-color)
+}
+
+.solid-heading-line-secondary {
+  flex: 1;
+  height: 1px;
+  width: 70px;
+  background:  var(--secondary-accent-color)
+}
+
+.solid-heading-line-light-primary {
+  flex: 1;
+  height: 1px;
+  width: 70px;
+  background:  var(--light-primary-accent-color)
+}
+
+.solid-heading-line-light-secondary {
+  flex: 1;
+  height: 1px;
+  width: 70px;
+  background:  var(--light-secondary-accent-color)
 }
 
 .heading-line {
@@ -630,8 +702,15 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-  .content-section {
+  .page-heading-extra-bold {
+    font-size: 45px;
+  }
+
+  .home-container-right {
     padding: 100px 100px 0 80px;
+  }
+  .alt-navbar {
+    padding: 35px 80px 0 80px;
   }
 
   .navbar {
@@ -673,7 +752,7 @@ p {
     display: none;
   }
 
-  .content-section {
+  .home-container-right {
     padding: 0px 80px 0 50px;
   }
 
@@ -723,27 +802,39 @@ p {
 }
 
 @media screen and (min-width: 1440px) {
+  .page-heading-extra-bold {
+    font-size: 50px;
+  }
+
   .heading-extra-bold {
     font-size: 50px;
   }
 }
 
 @media screen and (min-width: 1920px) {
+  .alt-navbar {
+    padding: 35px 150px 0 150px;
+  }
+
   .home-container-left {
     padding: 0px 150px 0 150px;
   }
 
-  .content-section {
+  .home-container-right {
     padding: 0px 150px 0 150px;
   }
 }
 
 @media screen and (min-width: 2560px) {
+  .alt-navbar {
+    padding: 35px 250px 0 250px;
+  }
+
   .home-container-left {
     padding: 0px 250px 0 250px;
   }
 
-  .content-section {
+  .home-container-right  {
     padding: 0px 250px 0 250px;
   }
 }
