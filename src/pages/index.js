@@ -170,7 +170,7 @@ export default function HomePage() {
     >
       <RotateWarning/>
       <div className="home-container">
-        <div className="navbar">
+        {/* <div className="navbar">
           <div
             onClick={openDrawer}
             style={{
@@ -203,7 +203,7 @@ export default function HomePage() {
               }}
             ></span>
           </div>
-        </div>
+        </div> */}
         <div className="home-container-left">
           <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>
             HI! I'M DAVID

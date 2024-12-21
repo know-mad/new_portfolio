@@ -1,10 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef  } from "react";
 import "../styles/projects.css";
 import { useTheme } from "../utils/ThemeContext";
 import { useDrawer } from "../utils/DrawerContext";
-import ThemeToggler from "../components/ThemeToggler";
-import Layout from "../components/Layout"
-import { Link } from "gatsby";
+import Layout from "../components/Layout";
 
 import arrow from "../images/arrow-icon.svg";
 import altArrowLight from "../images/alt-arrow-icon-light.svg";
@@ -14,12 +12,12 @@ import data from "../data/data.json";
 import RotateWarning from "../components/RotateWarning";
 
 export default function AllProjects() {
-  const { theme, toggleTheme } = useTheme();
-  const { openDrawer, isDrawerOpen } = useDrawer();
+  const { theme } = useTheme();
   const [expandedRow, setExpandedRow] = useState(null); // Track the currently expanded row
 
   const rows = data;
   const refs = useRef(rows.map(() => React.createRef())); // Create refs for each row
+
 
   const toggleAccordion = (rowId) => {
     const newExpandedRow = expandedRow === rowId ? null : rowId; // Determine the new expanded row
@@ -56,85 +54,7 @@ export default function AllProjects() {
     <Layout>
       <RotateWarning />
       <div className="static-page-container">
-        <div className="alt-navbar">
-          <div className="alt-navbar-left">
-            <div
-              onClick={openDrawer}
-              style={{
-                marginLeft: isDrawerOpen ? `-350px` : `0`,
-                transitionDelay: isDrawerOpen ? `0.5s` : `1s`,
-              }}
-              className="toggle-open"
-            >
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-1" : "light-toggle-bar-1"
-                }
-                style={{
-                  top: isDrawerOpen ? `50%` : `0`,
-                  transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
-                }}
-              ></span>
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-2" : "light-toggle-bar-2"
-                }
-              ></span>
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-3" : "light-toggle-bar-3"
-                }
-                style={{
-                  bottom: isDrawerOpen ? `50%` : `0`,
-                  transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
-                }}
-              ></span>
-            </div>
-          </div>
-          <div className="alt-navbar-center">
-            <h1 className="page-heading-extra-bold" data-theme={theme}>
-              Project Archives
-            </h1>
-          </div>
-          <div className="alt-navbar-right">
-            <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
-          </div>
-        </div>
         <div className="page-content-container">
-          <div className="sticky-container">
-            <div className="sticky-container-inner">
-            <div className="table-columns gradient-border" data-theme={theme}>
-            <div className="project-column">
-              <p className="copy-font" data-theme={theme}>
-                Year
-              </p>
-            </div>
-            <div className="project-column">
-              <p className="copy-font" data-theme={theme}>
-                Project
-              </p>
-            </div>
-            <div
-              className="project-column made-at-column"
-              data-screensize="tablet-and-up"
-            >
-              <p className="copy-font" data-theme={theme}>
-                Made at
-              </p>
-            </div>
-            <div className="project-column" data-screensize="laptop-and-up">
-              <p className="copy-font" data-theme={theme}>
-                Built with
-              </p>
-            </div>
-            <div className="project-column" data-screensize="tablet-and-up">
-              <p className="copy-font" data-theme={theme}>
-                Link
-              </p>
-            </div>
-          </div>
-            </div>
-          </div>
           <div className="table-columns gradient-border" data-theme={theme}>
             <div className="project-column">
               <p className="copy-font" data-theme={theme}>

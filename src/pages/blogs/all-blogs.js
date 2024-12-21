@@ -9,6 +9,7 @@ import arrow from "../../images/arrow-icon.svg";
 import arrowLight from "../../images/arrow-icon-light.svg";
 import link from "../../images/link-arrow.svg";
 import lightLink from "../../images/light-link-arrow.svg";
+import Layout from "../../components/Layout"
 
 const AllBlogs = ({ data }) => {
   const [isTop, setIsTop] = useState(false)
@@ -39,84 +40,10 @@ const AllBlogs = ({ data }) => {
   }, []);
 
   return (
-    <>
+    <Layout>
       <RotateWarning />
       <div className="static-page-container">
-      <div className="static-nav" style={{ top: isTop ? '0' : '-200px'}}>
-          <Link to="/" className="back-navigation" data-theme={theme}>
-            <img
-              className="back-arrow"
-              src={theme === "dark" ? arrow : arrowLight}
-              alt="some alt text here"
-            />
-          </Link>
-          <div className="back-container">
-            <svg
-              className="back-icon"
-              width="15"
-              height="15"
-              viewBox="0 0 20 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 17.8757L0.239031 0.969238L19.761 0.969238L10 17.8757Z"
-                fill="#ceff00"
-              />
-            </svg>
-            <h3 className="tertiary-heading-semi-bold" data-theme={theme}>
-              Back
-            </h3>
-          </div>
-          <div className="page-title">
-            <span
-              className={
-                theme === "dark"
-                  ? "heading-line"
-                  : "light-heading-line-reversed"
-              }
-            ></span>
-          </div>
-          <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
-        </div>
-        <div className="page-navigation-container">
-          <Link to="/" className="back-navigation" data-theme={theme}>
-            <img
-              className="back-arrow"
-              src={theme === "dark" ? arrow : arrowLight}
-              alt="some alt text here"
-            />
-          </Link>
-          <div className="back-container">
-            <svg
-              className="back-icon"
-              width="15"
-              height="15"
-              viewBox="0 0 20 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 17.8757L0.239031 0.969238L19.761 0.969238L10 17.8757Z"
-                fill="#ceff00"
-              />
-            </svg>
-            <h3 className="tertiary-heading-semi-bold" data-theme={theme}>
-              Back
-            </h3>
-          </div>
-          <div className="page-title">
-            <span
-              className={
-                theme === "dark"
-                  ? "heading-line"
-                  : "light-heading-line-reversed"
-              }
-            ></span>
-          </div>
-          <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
-        </div>
-        <div ref={blogsContainerRef} className="blogs-container">
+        <div ref={blogsContainerRef} className="page-content-container">
           {blogs.map(({ node }) => (
             <div
               key={node.slug}
@@ -228,7 +155,7 @@ const AllBlogs = ({ data }) => {
           ))}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

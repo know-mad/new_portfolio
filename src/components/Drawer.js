@@ -19,9 +19,8 @@ export default function Drawer({
   scrollHandlers,
   activeLink,
 }) {
-
   const { theme } = useTheme();
-  const location = window.location; 
+  const location = window.location;
 
   const handleNavigateWithClose = (path) => {
     closeDrawer();
@@ -29,7 +28,7 @@ export default function Drawer({
     // Wait for the animation to complete
     const animationDuration = 1000;
     setTimeout(() => {
-      navigate(path); 
+      navigate(path);
     }, animationDuration);
   };
 
@@ -133,7 +132,7 @@ export default function Drawer({
                 style={{ width: `0px` }}
                 className="mobile-link-line-reversed"
               ></span>
-              <Link to="/projects" className="no-decoration">
+              <Link to="/projects/" className="no-decoration">
                 <p
                   className="drawer-link"
                   style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
@@ -177,9 +176,11 @@ export default function Drawer({
                 style={{ width: `0px` }}
                 className="mobile-link-line"
               ></span>
+              <Link to="/blogs/all-blogs/" className="no-decoration">
               <p className="static-link" data-theme={theme}>
                 BLOG
               </p>
+              </Link>
             </div>
           </div>
         );
@@ -205,57 +206,40 @@ export default function Drawer({
                 style={{ width: "0px" }}
                 className="mobile-link-line-reversed"
               ></span>
-              <div onClick={() => handleNavigateWithClose("/")}>
+              <Link to="/" className="no-decoration">
                 <p
                   className="drawer-link"
                   style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
                 >
                   HOME
                 </p>
-              </div>
+              </Link>
             </div>
           </div>
         );
-      case "/all-blogs/":
-        <div className="links-container">
-          <div className="mobile-link-container bottom-spacing">
-            <span
-              style={{ width: "0px" }}
-              className="mobile-link-line-reversed"
-            ></span>
-            <Link to="/projects" className="no-decoration">
-              <p
-                className="drawer-link"
-                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-              >
-                All PROJECTS
-              </p>
-            </Link>
-          </div>
-          <div className="mobile-link-container bottom-spacing">
-            <span
-              style={{ width: "0px" }}
-              className="mobile-link-line-reversed"
-            ></span>
-            <Link to="/" className="no-decoration">
-              <p
-                className="drawer-link"
-                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-              >
-                HOME
-              </p>
-            </Link>
-          </div>
-        </div>;
+      case "/blogs/all-blogs/":
         return (
-          <>
-            {/* Add specific links for the /blog route here */}
+          <div className="links-container">
             <div className="mobile-link-container bottom-spacing">
               <span
                 style={{ width: "0px" }}
                 className="mobile-link-line-reversed"
               ></span>
-              <Link to="/projects" className="no-decoration">
+              <Link to="/" className="no-decoration">
+                <p
+                  className="drawer-link"
+                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                >
+                  HOME
+                </p>
+              </Link>
+            </div>
+            <div className="mobile-link-container bottom-spacing">
+              <span
+                style={{ width: "0px" }}
+                className="mobile-link-line-reversed"
+              ></span>
+              <Link to="/projects/" className="no-decoration">
                 <p
                   className="drawer-link"
                   style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
@@ -264,7 +248,7 @@ export default function Drawer({
                 </p>
               </Link>
             </div>
-          </>
+          </div>
         );
       // Add more cases for other routes as needed
       default:
