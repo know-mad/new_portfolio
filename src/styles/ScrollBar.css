@@ -68,7 +68,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 35px 15px 0 15px;
+  /* background: crimson; */
+  padding: 20px 20px 0 0;
 }
 
 .theme-toggle {
@@ -152,8 +153,8 @@
     cursor: pointer;
   }
 
-  .theme-toggle {
+  /* .theme-toggle {
     height: 50px;
     cursor: pointer;
-  }
+  } */
 }

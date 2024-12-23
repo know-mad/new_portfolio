@@ -1,74 +1,14 @@
-.project-page-container {
+.static-page-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 20px 0 20px;
-}
-
-.page-navigation-container {
-  padding-top: 35px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.back-navigation[data-theme='dark'] {
-  --border-color: var(--secondary-accent-color);
-}
-
-.back-navigation[data-theme='light'] {
-  --border-color: var(--light-primary-accent-color);
-}
-
-.desktop-back-navigation[data-theme='dark'] {
-  --border-color: var(--secondary-accent-color);
-}
-
-.desktop-back-navigation[data-theme='light'] {
-  --border-color: var(--light-primary-accent-color);
-}
-
-.back-navigation {
-  /* here */
-  display: flex;
-  flex-direction: colum;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  aspect-ratio: 1;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-}
-
-.desktop-back-navigation {
-  /* here */
-  display: none;
-  flex-direction: colum;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  aspect-ratio: 1;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-}
-
-.back-arrow {
-  transform: rotate(90deg);
-  margin-right: 3px
-}
-
-.page-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
 }
 
 .page-content-container {
   display: flex;
   flex-direction: column;
-  margin-top: 35px;
+  margin-top: 100px;
+  padding: 0 20px;
 }
 
 .table-columns {
@@ -96,14 +36,13 @@
   display: flex;
 }
 
-
 .content-year-column {
   width: 50px;
 }
 
 .project-column {
   margin-left: 40px;
-  width: 50px
+  width: 50px;
 }
 
 .content-project-column {
@@ -122,12 +61,24 @@
 .content-project-column-bottom {
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
+}
+
+.project-container[data-theme="dark"] {
+  --bg: rgba(217, 217, 217, 0.04);
+}
+
+.project-container[data-theme="light"] {
+  --bg: rgba(146, 146, 146, 0.05);
 }
 
 .project-container {
   display: flex;
   flex-direction: row;
   padding: 15px 0;
+  background: var(--bg);
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 
 .project-container > *:not(:first-child) {
@@ -164,7 +115,7 @@
 }
 
 .gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -225,11 +176,11 @@
   display: none;
 }
 
-.project-inner-column[data-screensize="tablet-and-up"]{
+.project-inner-column[data-screensize="tablet-and-up"] {
   display: none;
 }
 
-.project-inner-column[data-screensize="laptop-and-up"]{
+.project-inner-column[data-screensize="laptop-and-up"] {
   display: none;
 }
 
@@ -237,11 +188,40 @@
   width: 130px !important;
 }
 
+/* .sticky-nav-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(217,217,217,0.04);
+  border-bottom-left-radius: 90px;
+  border-bottom-right-radius: 90px;
+  transition: top 0.5s ease;
+}
+
+.sticky-nav-container-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 35px 80px 0 80px;
+}
+
+.sticky-nav-container-inner-top {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+}
+
+.sticky-nav-container-inner-bottom {
+  margin-bottom: 20px;
+} */
+
 @media screen and (min-width: 768px) {
-  .project-page-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0 80px 0 80px;
+  .page-content-container {
+    padding: 0 80px;
   }
 
   .table-columns > *:not(:first-child) {
@@ -260,7 +240,7 @@
     flex: 1;
   }
 
-  .project-inner-column{
+  .project-inner-column {
     width: 140px;
   }
 
@@ -270,23 +250,17 @@
 }
 
 @media screen and (min-width: 1024px) {
-  
+  .page-content-container {
+    margin-top: 150px;
+  }
+
   .table-columns > *:not(:first-child) {
     width: 180px;
   }
 
-  .project-inner-column{
+  .project-inner-column {
     width: 180px;
   }
-
-  .back-navigation {
-    display: none;
-  }
-
-  .desktop-back-navigation {
-    display: flex;
-  }
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -302,14 +276,14 @@
     width: 250px;
   }
 
-  .project-inner-column{
+  .project-inner-column {
     width: 250px;
   }
 }
 
 @media screen and (min-width: 1920px) {
-  .project-page-container {
-    padding: 0 150px 0 150px;
+  .page-content-container {
+    padding: 0 150px;
   }
 
   .made-at-column {
@@ -318,8 +292,7 @@
 }
 
 @media screen and (min-width: 2560px) {
-  .project-page-container {
-    padding: 0 250px 0 250px;
+  .page-content-container {
+    padding: 0 250px;
   }
-
 }

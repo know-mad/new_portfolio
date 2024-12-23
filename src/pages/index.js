@@ -1,9 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "gatsby";
+import Layout from "../components/Layout";
 import "../styles/index.css";
-
+import { Link } from "gatsby";
+import { useTheme } from "../utils/ThemeContext";
 import ScrollBar from "../components/ScrollBar";
-import Drawer from "../components/Drawer";
+import RotateWarning from "../components/RotateWarning";
+
+import git from "../images/github.svg";
+import gitDark from "../images/github-dark.svg";
+import linkedIn from "../images/linkedin.svg";
+import linkedInDark from "../images/linkedin-dark.svg";
 import js from "../images/javascript.svg";
 import jsDark from "../images/javascript-dark.svg";
 import node from "../images/nodejs.svg";
@@ -35,106 +41,31 @@ import ewc from "../images/ewc.jpg";
 import panasonic from "../images/panasonic.jpg";
 import xd from "../images/xd.svg";
 import xdDark from "../images/xd-dark.svg";
-import git from "../images/github.svg";
-import gitDark from "../images/github-dark.svg";
-import linkedIn from "../images/linkedin.svg";
-import linkedInDark from "../images/linkedin-dark.svg";
-
-import { NavigationContext } from "../utils/context";
-import { useTheme } from "../utils/ThemeContext";
-import RotateWarning from "../components/RotateWarning";
 
 export default function HomePage() {
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [activeLink, setActiveLink] = useState(1);
   const [scrollingProgrammatically, setScrollingProgrammatically] =
     useState(false);
-  const aboutContainerRef = useRef(null);
-  const experienceContainerRef = useRef(null);
-  const projectsContainerRef = useRef(null);
-  const contactContainerRef = useRef(null);
   const { theme } = useTheme();
 
+  const aboutRef = useRef(null);
+  const workExperienceRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
   const sectionRefs = [
-    { id: 1, ref: aboutContainerRef },
-    { id: 2, ref: experienceContainerRef },
-    { id: 3, ref: projectsContainerRef },
-    { id: 4, ref: contactContainerRef },
+    { id: 1, ref: aboutRef },
+    { id: 2, ref: workExperienceRef },
+    { id: 3, ref: projectsRef },
+    { id: 4, ref: contactRef },
   ];
-
-  // useEffect(() => {
-  //   const getThreshold = () => {
-  //     const width = window.innerWidth;
-
-  //     // Map screen sizes to thresholds
-  //     if (width <= 375) return 0.25; // Smallest screens
-  //     if (width <= 768) return 0.3; // Tablet
-  //     if (width <= 1024) return 0.35; // Small desktop
-  //     if (width <= 1440) return 0.4; // Large desktop
-  //     return 0.76; // Ultra-wide screens
-  //   };
-
-  //   const observerOptions = {
-  //     root: null,
-  //     rootMargin: "0px",
-  //     threshold: getThreshold(), // Dynamically set threshold based on screen size
-  //   };
-
-  //   const observerCallback = (entries) => {
-  //     if (scrollingProgrammatically) return; // Ignore observer updates if scrolling programmatically
-
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         const activeSection = sectionRefs.find(
-  //           (section) => section.ref.current === entry.target
-  //         );
-  //         if (activeSection) {
-  //           setActiveLink(activeSection.id);
-  //         }
-  //       }
-  //     });
-  //   };
-
-  //   const observer = new IntersectionObserver(
-  //     observerCallback,
-  //     observerOptions
-  //   );
-
-  //   sectionRefs.forEach((section) => {
-  //     if (section.ref.current) {
-  //       observer.observe(section.ref.current);
-  //     }
-  //   });
-
-  //   // Reinitialize observer on resize
-  //   const handleResize = () => {
-  //     observer.disconnect(); // Clear existing observers
-  //     observerOptions.threshold = getThreshold(); // Update threshold
-  //     sectionRefs.forEach((section) => {
-  //       if (section.ref.current) {
-  //         observer.observe(section.ref.current);
-  //       }
-  //     });
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //     sectionRefs.forEach((section) => {
-  //       if (section.ref.current) {
-  //         observer.unobserve(section.ref.current);
-  //       }
-  //     });
-  //   };
-  // }, [sectionRefs, scrollingProgrammatically]);
 
   useEffect(() => {
     const getThreshold = (ref) => {
       const width = window.innerWidth;
 
       // Specific adjustment for projectsContainerRef
-      if (ref === projectsContainerRef) {
+      if (ref === projectsRef) {
         if (width <= 375) return 0.3; // Smallest screens
         if (width <= 768) return 0.35; // Tablet
         if (width <= 1024) return 0.4; // Small desktop
@@ -208,34 +139,69 @@ export default function HomePage() {
     };
   }, [sectionRefs, scrollingProgrammatically]);
 
-  const handleScrollToTop = (containerRef) => {
-    // Scroll the specified container to the top with an offset
-    if (containerRef.current) {
+  const scrollToSection = (ref, id) => {
+    if (ref.current) {
       const navbarHeight = document.querySelector(".navbar").offsetHeight;
-      const topOffset = containerRef.current.offsetTop - navbarHeight;
+      const topOffset = ref.current.offsetTop - navbarHeight;
 
-      // Indicate programmatic scrolling
       setScrollingProgrammatically(true);
+      setActiveLink(id);
 
       window.scrollTo({
         top: topOffset,
         behavior: "smooth",
       });
-
-      // Reset the state after a delay (matches the scroll duration)
-      setTimeout(() => setScrollingProgrammatically(false), 500); // Adjust timeout to match animation speed
     }
-  };
 
-  const handleClick = (id, containerRef) => {
-    setActiveLink(id);
-    handleScrollToTop(containerRef);
+    setTimeout(() => setScrollingProgrammatically(false), 550); // Adjust timeout to match animation speed
   };
 
   return (
-    <NavigationContext.Provider value={activeLink}>
+    <Layout
+      activeLink={activeLink}
+      scrollHandlers={{
+        about: () => scrollToSection(aboutRef, 1),
+        workExperience: () => scrollToSection(workExperienceRef, 2),
+        projects: () => scrollToSection(projectsRef, 3),
+        contact: () => scrollToSection(contactRef, 4),
+      }}
+    >
       <RotateWarning />
       <div className="home-container">
+        {/* <div className="navbar">
+          <div
+            onClick={openDrawer}
+            style={{
+              marginLeft: isDrawerOpen ? `-350px` : `0`,
+              transitionDelay: isDrawerOpen ? `0.5s` : `1s`,
+            }}
+            className="toggle-open"
+          >
+            <span
+              className={
+                theme === "dark" ? "toggle-bar-1" : "light-toggle-bar-1"
+              }
+              style={{
+                top: isDrawerOpen ? `50%` : `0`,
+                transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
+              }}
+            ></span>
+            <span
+              className={
+                theme === "dark" ? "toggle-bar-2" : "light-toggle-bar-2"
+              }
+            ></span>
+            <span
+              className={
+                theme === "dark" ? "toggle-bar-3" : "light-toggle-bar-3"
+              }
+              style={{
+                bottom: isDrawerOpen ? `50%` : `0`,
+                transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
+              }}
+            ></span>
+          </div>
+        </div> */}
         <div className="home-container-left">
           <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>
             HI! I'M DAVID
@@ -252,7 +218,10 @@ export default function HomePage() {
           </p>
           <div className="navigation-items">
             <div
-              onClick={() => handleClick(1, aboutContainerRef)}
+              onClick={() => {
+                setActiveLink(1);
+                scrollToSection(aboutRef);
+              }}
               className="mobile-link-container bottom-spacing"
             >
               <span
@@ -280,7 +249,10 @@ export default function HomePage() {
               )}
             </div>
             <div
-              onClick={() => handleClick(2, experienceContainerRef)}
+              onClick={() => {
+                setActiveLink(2);
+                scrollToSection(workExperienceRef);
+              }}
               className="mobile-link-container bottom-spacing"
             >
               <span
@@ -308,7 +280,10 @@ export default function HomePage() {
               )}
             </div>
             <div
-              onClick={() => handleClick(3, projectsContainerRef)}
+              onClick={() => {
+                setActiveLink(3);
+                scrollToSection(projectsRef);
+              }}
               className="mobile-link-container bottom-spacing"
             >
               <span
@@ -341,7 +316,7 @@ export default function HomePage() {
                       style={{ color: activeLink === 3 ? `#CEFF00` : `#FFF` }}
                       to="/projects"
                     >
-                      ALL PROJECTS
+                      ARCHIVES
                     </Link>
                   </div>
                 </div>
@@ -371,14 +346,17 @@ export default function HomePage() {
                       }}
                       to="/projects"
                     >
-                      ALL PROJECTS
+                      ARCHIVES
                     </Link>
                   </div>
                 </div>
               )}
             </div>
             <div
-              onClick={() => handleClick(4, contactContainerRef)}
+              onClick={() => {
+                setActiveLink(4);
+                scrollToSection(contactRef);
+              }}
               className="mobile-link-container bottom-spacing"
             >
               <span
@@ -405,14 +383,19 @@ export default function HomePage() {
                 </p>
               )}
             </div>
-            {/* Add the blog later */}
-            {/* <div className="mobile-link-container">
+            <div className="mobile-link-container bottom-spacing">
               <span
                 style={{ width: `0px` }}
                 className="mobile-link-line"
               ></span>
-              <p className="drawer-link">BLOG</p>
-            </div> */}
+              <Link
+                to="/blogs/all-blogs"
+                className="static-link"
+                data-theme={theme}
+              >
+                BLOG
+              </Link>
+            </div>
           </div>
           <div className="socials-container">
             <a
@@ -440,367 +423,35 @@ export default function HomePage() {
           </div>
         </div>
         <div className="home-container-right">
-          {/* For mobile navigation only */}
-          <Drawer
-            isOpen={openDrawer ? `0` : `-400px`}
-            delayCloseIcon={openDrawer ? `1.5s` : `0s`}
-            delayAnimation={openDrawer ? `1s` : `0.5s`}
-            iconBar1={openDrawer ? `rotate(45deg)` : `rotate(0deg)`}
-            iconBar2={openDrawer ? `rotate(-45deg)` : `rotate(0deg)`}
-            closeDrawer={() => setOpenDrawer(false)}
-            handleClick1={() => handleClick(1, aboutContainerRef)}
-            handleClick2={() => handleClick(2, experienceContainerRef)}
-            handleClick3={() => handleClick(3, projectsContainerRef)}
-            handleClick4={() => handleClick(4, contactContainerRef)}
-          />
           <ScrollBar
-            handleClick1={() => handleClick(1, aboutContainerRef)}
-            handleClick2={() => handleClick(2, experienceContainerRef)}
-            handleClick3={() => handleClick(3, projectsContainerRef)}
-            handleClick4={() => handleClick(4, contactContainerRef)}
+            handleClick1={() => scrollToSection(aboutRef, 1)}
+            handleClick2={() => scrollToSection(workExperienceRef, 2)}
+            handleClick3={() => scrollToSection(projectsRef, 3)}
+            handleClick4={() => scrollToSection(contactRef, 4)}
+            activeLink={activeLink}
           />
-          <div className="navbar" data-theme={theme}>
-            <div
-              onClick={() => setOpenDrawer(true)}
-              style={{
-                marginLeft: openDrawer ? `-200px` : `0`,
-                transitionDelay: openDrawer ? `0.5s` : `1s`,
-              }}
-              className="toggle-open"
-            >
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-1" : "light-toggle-bar-1"
-                }
-                style={{
-                  top: openDrawer ? `50%` : `0`,
-                  transitionDelay: openDrawer ? `0s` : `1.5s`,
-                }}
-              ></span>
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-2" : "light-toggle-bar-2"
-                }
-              ></span>
-              <span
-                className={
-                  theme === "dark" ? "toggle-bar-3" : "light-toggle-bar-3"
-                }
-                style={{
-                  bottom: openDrawer ? `50%` : `0`,
-                  transitionDelay: openDrawer ? `0s` : `1.5s`,
-                }}
-              ></span>
-            </div>
-          </div>
-          <div className="content-section">
-            <div className="about-container" ref={aboutContainerRef}>
-              <div className="mobile-intro">
-                <h1
-                  className="heading-extra-bold bottom-spacing"
-                  data-theme={theme}
-                >
-                  HI! I'M DAVID
-                </h1>
-                <h4
-                  className="secondary-heading-semi-bold bottom-spacing"
-                  data-theme={theme}
-                >
-                  Full Stack Software Engineer
-                </h4>
-                <p className="copy-font" data-theme={theme}>
-                  Creative software engineer that loves to build beautifully
-                  designed technology solutions so you or your business can win
-                  online.
-                </p>
-              </div>
-              <div className="heading-container bottom-spacing">
-                <div className="section-title desktop-spacing">
-                  <span
-                    className={`${
-                      theme === "dark"
-                        ? "heading-line-reversed"
-                        : "light-heading-line"
-                    } desktop-hidden`}
-                  ></span>
-                  <p className="secondary-heading-semi-bold" data-theme={theme}>
-                    ABOUT ME
-                  </p>
-                  <span
-                    className={
-                      theme === "dark"
-                        ? "heading-line"
-                        : "light-heading-line-reversed"
-                    }
-                  ></span>
-                </div>
-              </div>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                Based in New York City, and having a background in software
-                engineering, I specialize in building mobile and web
-                applications, as well as blazing fast websites by using the
-                latest technologies to prioritize site/app performance
-                ultimately resulting in faster page load speeds and better SEO
-                all delivered with beautifully and functionally designed user
-                interfaces.
-              </p>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                Proficient in the MERN stack, my favorite technologies to use
-                when building digital solutions are HTML, CSS, Javascript, React
-                (along with various React frameworks such as NEXT.js and
-                Gatsby.js), React Native, Node, and Mongo DB.
-              </p>
-              <div className="logo-container bottom-spacing">
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? html : htmlDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? css : cssDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? js : jsDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? react : reactDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? node : nodeDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? mongo : mongoDark}
-                  alt="some alt text"
-                />
-              </div>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                I truly love the design process and conceptualizing from the
-                imagination a beautiful digital experience. My "go-to" design
-                tools are Figma, Photoshop, and Adobe XD for building mockups,
-                wireframes, and customizing the visual assets necessary for an
-                aesthetically and visually pleasing user experience.
-              </p>
-              <div className="logo-container bottom-spacing">
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? figma : figmaDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? ps : psDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? xd : xdDark}
-                  alt="some alt text"
-                />
-              </div>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                Technology is always changing and I’m always learning in order
-                to adapt to the changing market. As such, other notable
-                technologies that I have had experience with in the past
-                include, PostgreSQL for building relational databases, Netlify
-                for front-end deployments. Heroku for back-end deployments, and
-                Shopify’s Liquid templating language for building immersive
-                Shopify storefronts and applications.
-              </p>
-              <div className="logo-container bottom-spacing">
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? postgres : postgresDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? netlify : netlifyDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? heroku : herokuDark}
-                  alt="some alt text"
-                />
-                <img
-                  className="logo-icon"
-                  src={theme === "dark" ? shopify : shopifyDark}
-                  alt="some alt text"
-                />
-              </div>
-              <div
-                onClick={() => handleClick(4, contactContainerRef)}
-                className={
-                  theme === "dark" ? "contact-button" : "light-contact-button"
-                }
-              >
-                <p className="copy-font" data-theme={theme}>
-                  CONTACT ME
-                </p>
-              </div>
-            </div>
-            <div className="experience-container" ref={experienceContainerRef}>
-              <div className="heading-container bottom-spacing">
-                <div className="section-title">
-                  <span
-                    style={{ transform: "rotate(180deg)" }}
-                    className={`${
-                      theme === "dark"
-                        ? "heading-line-reversed"
-                        : "light-heading-line"
-                    } desktop-hidden`}
-                  ></span>
-                  <p
-                    className="reverse-secondary-heading-semi-bold"
-                    data-theme={theme}
-                  >
-                    WORK EXPERIENCE
-                  </p>
-                  <span
-                    style={{ transform: "rotate(180deg)" }}
-                    className={
-                      theme === "dark"
-                        ? "heading-line"
-                        : "light-heading-line-reversed"
-                    }
-                  ></span>
-                </div>
-              </div>
-              <div className="heading-container bottom-spacing">
-                <div className="heading-title">
-                  <p className="tertiary-heading-semi-bold" data-theme={theme}>
-                    2021 - Present
-                  </p>
-                </div>
-              </div>
-              <p
-                className="primary-heading-bold bottom-spacing"
+          <section className="content-container bottom-spacing" ref={aboutRef}>
+            <div className="mobile-intro">
+              <h1
+                className="heading-extra-bold bottom-spacing"
                 data-theme={theme}
               >
-                Senior Frontend Engineer{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                Blueswitch{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                New York City
-              </p>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                Built custom Shopify and Shopify+ solutions for higher tier
-                clients such as Panasonic, Polo Ralph Lauren, European Wax
-                Centers, Publishers Clearing House, and The Salvation Army.
-                During my time with the agency I worked in an agile development
-                environment while building custom e-commerce solutions via the
-                Shopify platform.
-                <br />
-                <br />
-                My daily tasks included adhering to HTML, CSS and Javascript
-                best practices to create beautiful, functional and performant
-                user interfaces. I also spent my time building responsive user
-                interfaces using modern javascript frameworks such as Next.js,
-                or the Shopify templating engine Liquid that looked and
-                performed great on all devices from desktop to mobile. Lastly, I
-                performed accessibility work ensuring client web pages adhered
-                to W3 accessibility compliance.
-              </p>
-              <div className="heading-container bottom-spacing">
-                <div className="heading-title">
-                  <p className="tertiary-heading-semi-bold" data-theme={theme}>
-                    2020 - 2021
-                  </p>
-                </div>
-              </div>
-              <p
-                className="primary-heading-bold bottom-spacing"
+                HI! I'M DAVID
+              </h1>
+              <h4
+                className="secondary-heading-semi-bold bottom-spacing"
                 data-theme={theme}
               >
-                Freelance Web Developer{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                Self Employed{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                New York City
-              </p>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                Created full scale branded websites for clients. Starting with
-                design using Figma and Adobe XD and including responsive
-                front-end development using javascript frameworks such as
-                React.js, Gatsby.js, or Next.js that boasted fast page load
-                speeds served via CDN and microservices for small and medium
-                sized businesses in my local area.
-                <br />
-                <br />
-                Performed implementation of on page search engine optimization
-                (SEO) including properly structured page titles, metadata and
-                image alt tags ensuring clients were getting the best results on
-                the web.
-              </p>
-              <div className="heading-container bottom-spacing">
-                <div className="heading-title">
-                  <p className="tertiary-heading-semi-bold" data-theme={theme}>
-                    2015 - 2020
-                  </p>
-                </div>
-              </div>
-              <p
-                className="primary-heading-bold bottom-spacing"
-                data-theme={theme}
-              >
-                Web Developer{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                CallisonRTKL{" "}
-                <span
-                  style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}
-                >
-                  |
-                </span>{" "}
-                Washington, DC
-              </p>
+                Full Stack Software Engineer
+              </h4>
               <p className="copy-font" data-theme={theme}>
-                At a world renowned and global architecture firm with multiple
-                locations world wide, I was responsible for maintaining and
-                updating the company website. I was entrusted to work with
-                graphic designers and other web developers to ensure that the
-                company website was always up to date and represented clearly
-                the company mission.
-                <br />
-                <br />
-                My job at CallisonRTKL consisted of working with HTML, CSS, and
-                Javascript daily, to build an aesthetically pleasing and
-                functional user experience for our customers and users. I also
-                performed Search Engine Optimization (SEO) and web accessibility
-                for users with disabilities who wanted to use our digital
-                assets.
+                Creative software engineer that loves to build beautifully
+                designed technology solutions so you or your business can win
+                online.
               </p>
             </div>
-            <div className="projects-container" ref={projectsContainerRef}>
-              <div className="section-title bottom-spacing">
+            <div className="heading-container bottom-spacing">
+              <div className="section-title desktop-spacing">
                 <span
                   className={`${
                     theme === "dark"
@@ -809,7 +460,7 @@ export default function HomePage() {
                   } desktop-hidden`}
                 ></span>
                 <p className="secondary-heading-semi-bold" data-theme={theme}>
-                  RECENT PROJECTS
+                  ABOUT ME
                 </p>
                 <span
                   className={
@@ -819,6 +470,284 @@ export default function HomePage() {
                   }
                 ></span>
               </div>
+            </div>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              Based in Washington DC, and having a background in software
+              engineering, I specialize in building mobile and web applications,
+              as well as blazing fast websites by using the latest technologies
+              to prioritize site/app performance ultimately resulting in faster
+              page load speeds and better SEO all delivered with beautifully and
+              functionally designed user interfaces.
+            </p>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              Proficient in the MERN stack, my favorite technologies to use when
+              building digital solutions are HTML, CSS, Javascript, React (along
+              with various React frameworks such as NEXT.js and Gatsby.js),
+              React Native, Node, and Mongo DB.
+            </p>
+            <div className="logo-container bottom-spacing">
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? html : htmlDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? css : cssDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? js : jsDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? react : reactDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? node : nodeDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? mongo : mongoDark}
+                alt="some alt text"
+              />
+            </div>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              I truly love the design process and conceptualizing from the
+              imagination a beautiful digital experience. My "go-to" design
+              tools are Figma, Photoshop, and Adobe XD for building mockups,
+              wireframes, and customizing the visual assets necessary for an
+              aesthetically and visually pleasing user experience.
+            </p>
+            <div className="logo-container bottom-spacing">
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? figma : figmaDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? ps : psDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? xd : xdDark}
+                alt="some alt text"
+              />
+            </div>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              Technology is always changing and I’m always learning in order to
+              adapt to the changing market. As such, other notable technologies
+              that I have had experience with in the past include, PostgreSQL
+              for building relational databases, Netlify for front-end
+              deployments. Heroku for back-end deployments, and Shopify’s Liquid
+              templating language for building immersive Shopify storefronts and
+              applications.
+            </p>
+            <div className="logo-container bottom-spacing">
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? postgres : postgresDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? netlify : netlifyDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? heroku : herokuDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? shopify : shopifyDark}
+                alt="some alt text"
+              />
+            </div>
+            <div
+              onClick={() => scrollToSection(contactRef)}
+              className={
+                theme === "dark" ? "contact-button" : "light-contact-button"
+              }
+            >
+              <p className="copy-font" data-theme={theme}>
+                CONTACT ME
+              </p>
+            </div>
+          </section>
+          <section
+            className="content-container bottom-spacing"
+            ref={workExperienceRef}
+          >
+            <div className="heading-container bottom-spacing">
+              <div className="section-title">
+                <span
+                  style={{ transform: "rotate(180deg)" }}
+                  className={`${
+                    theme === "dark"
+                      ? "heading-line-reversed"
+                      : "light-heading-line"
+                  } desktop-hidden`}
+                ></span>
+                <p
+                  className="reverse-secondary-heading-semi-bold"
+                  data-theme={theme}
+                >
+                  WORK EXPERIENCE
+                </p>
+                <span
+                  style={{ transform: "rotate(180deg)" }}
+                  className={
+                    theme === "dark"
+                      ? "heading-line"
+                      : "light-heading-line-reversed"
+                  }
+                ></span>
+              </div>
+            </div>
+            <div className="heading-container bottom-spacing">
+              <div className="heading-title">
+                <p className="tertiary-heading-semi-bold" data-theme={theme}>
+                  2021 - Present
+                </p>
+              </div>
+            </div>
+            <p
+              className="primary-heading-bold bottom-spacing"
+              data-theme={theme}
+            >
+              Senior Frontend Engineer{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              Blueswitch{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              New York City
+            </p>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              Built custom Shopify and Shopify+ solutions for higher tier
+              clients such as Panasonic, Polo Ralph Lauren, European Wax
+              Centers, Publishers Clearing House, and The Salvation Army. During
+              my time with the agency I worked in an agile development
+              environment while building custom e-commerce solutions via the
+              Shopify platform.
+              <br />
+              <br />
+              My daily tasks included adhering to HTML, CSS and Javascript best
+              practices to create beautiful, functional and performant user
+              interfaces. I also spent my time building responsive user
+              interfaces using modern javascript frameworks such as Next.js, or
+              the Shopify templating engine Liquid that looked and performed
+              great on all devices from desktop to mobile. Lastly, I performed
+              accessibility work ensuring client web pages adhered to W3
+              accessibility compliance.
+            </p>
+            <div className="heading-container bottom-spacing">
+              <div className="heading-title">
+                <p className="tertiary-heading-semi-bold" data-theme={theme}>
+                  2020 - 2021
+                </p>
+              </div>
+            </div>
+            <p
+              className="primary-heading-bold bottom-spacing"
+              data-theme={theme}
+            >
+              Freelance Web Developer{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              Self Employed{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              New York City
+            </p>
+            <p className="copy-font bottom-spacing" data-theme={theme}>
+              Created full scale branded websites for clients. Starting with
+              design using Figma and Adobe XD and including responsive front-end
+              development using javascript frameworks such as React.js,
+              Gatsby.js, or Next.js that boasted fast page load speeds served
+              via CDN and microservices for small and medium sized businesses in
+              my local area.
+              <br />
+              <br />
+              Performed implementation of on page search engine optimization
+              (SEO) including properly structured page titles, metadata and
+              image alt tags ensuring clients were getting the best results on
+              the web.
+            </p>
+            <div className="heading-container bottom-spacing">
+              <div className="heading-title">
+                <p className="tertiary-heading-semi-bold" data-theme={theme}>
+                  2015 - 2020
+                </p>
+              </div>
+            </div>
+            <p
+              className="primary-heading-bold bottom-spacing"
+              data-theme={theme}
+            >
+              Web Developer{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              CallisonRTKL{" "}
+              <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+                |
+              </span>{" "}
+              Washington, DC
+            </p>
+            <p className="copy-font" data-theme={theme}>
+              At a world renowned and global architecture firm with multiple
+              locations world wide, I was responsible for maintaining and
+              updating the company website. I was entrusted to work with graphic
+              designers and other web developers to ensure that the company
+              website was always up to date and represented clearly the company
+              mission.
+              <br />
+              <br />
+              My job at CallisonRTKL consisted of working with HTML, CSS, and
+              Javascript daily, to build an aesthetically pleasing and
+              functional user experience for our customers and users. I also
+              performed Search Engine Optimization (SEO) and web accessibility
+              for users with disabilities who wanted to use our digital assets.
+            </p>
+          </section>
+          <section
+            className="content-container bottom-spacing"
+            ref={projectsRef}
+          >
+            <div className="section-title bottom-spacing">
+              <span
+                className={`${
+                  theme === "dark"
+                    ? "heading-line-reversed"
+                    : "light-heading-line"
+                } desktop-hidden`}
+              ></span>
+              <p className="secondary-heading-semi-bold" data-theme={theme}>
+                RECENT PROJECTS
+              </p>
+              <span
+                className={
+                  theme === "dark"
+                    ? "heading-line"
+                    : "light-heading-line-reversed"
+                }
+              ></span>
+            </div>
+            <div className="featured-project-container bottom-spacing">
               <div className="heading-container bottom-spacing">
                 <div className="heading-title">
                   <a
@@ -891,6 +820,8 @@ export default function HomePage() {
                   SEO
                 </div>
               </div>
+            </div>
+            <div className="featured-project-container">
               <div className="heading-container bottom-spacing">
                 <div className="heading-title">
                   <a
@@ -962,158 +893,90 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="heading-container bottom-spacing">
-              <div className="heading-title">
-                <a
-                  href="https://www.1wsq.com/"
-                  target="_blank"
-                  rel="noopener"
-                  className="reverse-secondary-heading-semi-bold link"
-                  data-theme={theme}
-                >
-                  1wsq
-                </a>
-              </div>
-              <img
-                className="link-arrow"
-                src={theme === "dark" ? link : lightLink}
-                alt="some alt text"
-              />
-            </div>
-            <p className="copy-font bottom-spacing" data-theme={theme}>
-              1 Willoughby Square, is Brooklyn’s first ground-up office tower in
-              a generation. 1WSQ opens directly to the 1-acre Willoughby Square
-              Park and climbs 34 stories above Brooklyn to offer unobstructed
-              views of New York’s skylines and waterways.
-              <br />
-              <br />
-              As a single page react app this website boasts a decoupled
-              architecture using a wordpress back end for their content. The
-              front end is fully custom and beautifully designed and fetches
-              data via their custom API, all served to the user via the React
-              framework.
-            </p>
-            <div
+            <Link
+              to="/projects/"
               className={`${
                 theme === "dark"
-                  ? "project-image-container"
-                  : "light-project-image-container"
-              } bottom-spacing`}
+                  ? "contact-button"
+                  : "light-contact-button"
+              } no-decoration`}
             >
-              <img
-                style={{
-                  boxShadow: theme === "dark" ? "none" : "8px 5px 15px #555151",
-                }}
-                className="project-image"
-                src={onewsq}
-                alt="some alt text"
-              />
-            </div>
-            <div className="tags-container bottom-spacing">
-              <div className="tag" data-theme={theme}>
-                HTML5
-              </div>
-              <div className="tag" data-theme={theme}>
-                CSS3
-              </div>
-              <div className="tag" data-theme={theme}>
-                REACT
-              </div>
-              <div className="tag" data-theme={theme}>
-                BUSINESS
-              </div>
-              <div className="tag" data-theme={theme}>
-                REAL ESTATE
-              </div>
-              <div className="tag" data-theme={theme}>
-                CUSTOM
-              </div>
-              <div className="tag" data-theme={theme}>
-                FULL STACK
-              </div>
-            </div>
-            <div className="link-container bottom-spacing">
-              <Link
-                style={{ margin: "0" }}
+              <p className="copy-font" data-theme={theme}>
+                VIEW ARCHIVES
+              </p>
+            </Link>
+          </section>
+          <section
+            className="content-container bottom-spacing"
+            ref={contactRef}
+          >
+            <div className="section-title bottom-spacing">
+              <span
+                style={{ transform: "rotate(180deg)" }}
                 className={`${
-                  theme === "dark" ? "contact-button" : "light-contact-button"
-                } no-decoration`}
-                to="/projects"
+                  theme === "dark"
+                    ? "heading-line-reversed"
+                    : "light-heading-line"
+                } desktop-hidden`}
+              ></span>
+              <p
+                className="reverse-secondary-heading-semi-bold"
+                data-theme={theme}
               >
-                <p className="copy-font" data-theme={theme}>
-                  ALL PROJECTS
-                </p>
-              </Link>
+                CONTACT ME
+              </p>
+              <span
+                style={{ transform: "rotate(180deg)" }}
+                className={
+                  theme === "dark"
+                    ? "heading-line"
+                    : "light-heading-line-reversed"
+                }
+              ></span>
             </div>
-            <div className="contact-container" ref={contactContainerRef}>
-              <div className="section-title bottom-spacing">
-                <span
-                  style={{ transform: "rotate(180deg)" }}
-                  className={`${
-                    theme === "dark"
-                      ? "heading-line-reversed"
-                      : "light-heading-line"
-                  } desktop-hidden`}
-                ></span>
-                <p
-                  className="reverse-secondary-heading-semi-bold"
+            <div className="contact-form">
+              <form name="contact" method="post" netlify>
+                <input
+                  name="FullName"
+                  placeholder="Full Name"
+                  maxLength="25"
+                  required
                   data-theme={theme}
-                >
-                  CONTACT ME
-                </p>
-                <span
-                  style={{ transform: "rotate(180deg)" }}
-                  className={
-                    theme === "dark"
-                      ? "heading-line"
-                      : "light-heading-line-reversed"
-                  }
-                ></span>
-              </div>
-              <div className="contact-form">
-                <form name="contact" method="post" netlify>
-                  <input
-                    name="FullName"
-                    placeholder="Full Name"
-                    maxLength="25"
-                    required
-                    data-theme={theme}
-                  />
-                  <input
-                    name="mail"
-                    placeholder="E-Mail"
-                    maxLength="50"
-                    required
-                    data-theme={theme}
-                  />
+                />
+                <input
+                  name="mail"
+                  placeholder="E-Mail"
+                  maxLength="50"
+                  required
+                  data-theme={theme}
+                />
 
-                  <input
-                    name="tel"
-                    placeholder="Telephone"
-                    maxLength="15"
-                    required
-                    data-theme={theme}
-                  />
-                  <textarea
-                    name="message"
-                    placeholder="Brief project or inquiry description"
-                    data-theme={theme}
-                  />
-                  <button
-                    type="submit"
-                    className={
-                      theme === "dark" ? "submit-button" : "light-submit-button"
-                    }
-                  >
-                    <p>SUBMIT</p>
-                  </button>
-                </form>
-              </div>
+                <input
+                  name="tel"
+                  placeholder="Telephone"
+                  maxLength="15"
+                  required
+                  data-theme={theme}
+                />
+                <textarea
+                  name="message"
+                  placeholder="Brief project or inquiry description"
+                  data-theme={theme}
+                />
+                <button
+                  type="submit"
+                  className={
+                    theme === "dark" ? "submit-button" : "light-submit-button"
+                  }
+                >
+                  <p>SUBMIT</p>
+                </button>
+              </form>
             </div>
-          </div>
+          </section>
         </div>
       </div>
-    </NavigationContext.Provider>
+    </Layout>
   );
 }
 
