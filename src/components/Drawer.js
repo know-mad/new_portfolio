@@ -33,6 +33,55 @@ export default function Drawer({
   };
 
   const renderConditionalLinks = () => {
+    if (location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/") { // Extract and format the blog title
+      return (
+        <div className="links-container">
+            <div className="mobile-link-container bottom-spacing">
+              <span
+                style={{ width: "0px" }}
+                className="mobile-link-line-reversed"
+              ></span>
+              <Link to="/" className="no-decoration">
+                <p
+                  className="drawer-link"
+                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                >
+                  HOME
+                </p>
+              </Link>
+            </div>
+            <div className="mobile-link-container bottom-spacing">
+              <span
+                style={{ width: "0px" }}
+                className="mobile-link-line-reversed"
+              ></span>
+              <Link to="/blogs/all-blogs/" className="no-decoration">
+                <p
+                  className="drawer-link"
+                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                >
+                  ALL BLOGS
+                </p>
+              </Link>
+            </div>
+            <div className="mobile-link-container bottom-spacing">
+              <span
+                style={{ width: "0px" }}
+                className="mobile-link-line-reversed"
+              ></span>
+              <Link to="/projects/" className="no-decoration">
+                <p
+                  className="drawer-link"
+                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                >
+                  ARCHIVES
+                </p>
+              </Link>
+            </div>
+          </div>
+      );
+    }
+
     switch (location.pathname) {
       case "/":
         return (
@@ -137,7 +186,7 @@ export default function Drawer({
                   className="drawer-link"
                   style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
                 >
-                  ALL PROJECTS
+                  ARCHIVES
                 </p>
               </Link>
             </div>
@@ -244,7 +293,7 @@ export default function Drawer({
                   className="drawer-link"
                   style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
                 >
-                  ALL PROJECTS
+                  ARCHIVES
                 </p>
               </Link>
             </div>

@@ -52,6 +52,12 @@
     "year": 2023,
     "projects": [
       {
+        "name": "1wsq",
+        "made_at": "Blueswitch",
+        "built_with": ["react", "html ","css", "graphQL"],
+        "link": "www.1wsq.com"
+      },
+      {
         "name": "Tata Harper",
         "made_at": "Blueswitch",
         "built_with": ["html", "css", "js", "shopify", "ajax"],

@@ -31,8 +31,8 @@ export default function Layout({ children, scrollHandlers, activeLink }) {
           topNav.style.backgroundColor =
             theme === "dark"
               ? "rgba(217,217,217,0.04)"
-              : "rgba(146,146,146,0.2)";
-          topNav.style.boxShadow = "0px 0.5px #636363";
+              : "rgba(146,146,146,0.1)";
+          topNav.style.boxShadow =  theme === "dark" ? "0px 0.5px #636363" : "8px 5px 12px #636363";
         } else {
           // Reset background color and box-shadow when the content is not under the navbar
           topNav.style.backgroundColor = "transparent";
@@ -51,7 +51,7 @@ export default function Layout({ children, scrollHandlers, activeLink }) {
         window.removeEventListener("scroll", myScrollFunction);
       };
     }
-  }, [theme]); // Re-run the effect when the theme changes
+  }, [theme, location.pathname]); // Re-run the effect when the theme changes
 
   return (
     <>

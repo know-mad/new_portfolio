@@ -313,7 +313,7 @@ p {
   /* background: cyan; */
   /* background-color: var(--bg-color); */
   backdrop-filter: blur(10px);
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 80px;
 }
@@ -755,6 +755,12 @@ p {
   color: var(--color);
   font-weight: 100;
   text-decoration: none;
+}
+
+.featured-project-container {
+  display: flex;
+  flex-direction: column;
+  /* background: crimson; */
 }
 
 @media screen and (min-width: 768px) {

@@ -10,6 +10,14 @@ export default function NavBar({
 }) {
   const location = window.location;
   const renderDynamicPageTitles = () => {
+    if (location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/") { // Extract and format the blog title
+      return (
+        <h1 className="page-heading-extra-bold" data-theme={theme}>
+          Article
+        </h1>
+      );
+    }
+  
     switch (location.pathname) {
       case "/projects/":
         return (
@@ -20,13 +28,14 @@ export default function NavBar({
       case "/blogs/all-blogs/":
         return (
           <h1 className="page-heading-extra-bold" data-theme={theme}>
-            Blog
+            Blogs
           </h1>
         );
       default:
         return null;
     }
   };
+  
 
   return (
     <>
@@ -77,6 +86,15 @@ export default function NavBar({
         <div className="alt-navbar">
           <div className="alt-navbar-left">
             {renderDynamicPageTitles()}
+            {location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/" && (
+              <Link
+              to="/blogs/all-blogs/"
+              className="link-bold no-decoration"
+              data-theme={theme}
+            >
+              <p>all blogs</p>
+            </Link>
+            )}
             {location.pathname === "/projects/" && (
               <Link
                 to="/blogs/all-blogs/"
@@ -107,3 +125,5 @@ export default function NavBar({
     </>
   );
 }
+
+

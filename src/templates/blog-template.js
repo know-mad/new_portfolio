@@ -1,47 +1,124 @@
 import React from "react";
 import { graphql } from "gatsby";
-// import "../../styles/blog.css";
+import "../styles/blogs.css";
+import Layout from "../components/Layout";
+import { useTheme } from "../utils/ThemeContext";
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
+import me from "../images/me.png";
+import fb from "../images/fb.svg";
+import twitter from "../images/twitter.svg";
+import lightFb from "../images/light-fb.svg";
+import lightTwitter from "../images/light-twitter.svg";
 
-const Bold = ({ children }) => <span className="bold">{children}</span>
-const Text = ({ children }) => <p className="align-center">{children}</p>
+const Text = ({ children, theme }) => (
+  <p className="copy-font bottom-spacing" data-theme={theme}>
+    {children}
+  </p>
+);
+const HyperLink = ({ children, uri, theme }) => (
+  <a
+    className="content-link"
+    data-theme={theme}
+    href={uri}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {children}
+  </a>
+);
 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-  },
+const Heading = ({ children, theme }) => (
+  <h2 className="primary-heading-bold" data-theme={theme}>
+    {children}
+  </h2>
+);
+
+const options = (theme) => ({
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-    [BLOCKS.EMBEDDED_ASSET]: node => {
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <Text theme={theme}>{children}</Text>
+    ),
+    [INLINES.HYPERLINK]: (node, children) => {
       return (
-        <>
-          <h2>Embedded Asset</h2>
-          <pre>
-            <code>{JSON.stringify(node, null, 2)}</code>
-          </pre>
-        </>
-      )
+        <HyperLink theme={theme} uri={node.data.uri}>
+          {children}
+        </HyperLink>
+      );
+    },
+    [BLOCKS.HEADING_2]: (node, children) => {
+      return <Heading theme={theme}>{children}</Heading>;
     },
   },
+});
+
+export default function BlogTemplate({ data }) {
+  const { title, author, date, content } = data.contentfulArticle;
+  const { theme } = useTheme();
+  return (
+    <Layout>
+      <div className="static-page-container">
+        <div className="page-content-container">
+          <div className="blog-intro bottom-spacing">
+            <img className="author-icon" src={me} alt="some alt here" />
+            <p className="copy-font" data-theme={theme}>
+              by: {author}
+            </p>
+          </div>
+          <div className="blog-title-container bottom-spacing">
+            <h1 className="blog-heading-extra-bold" data-theme={theme}>
+              {title}
+            </h1>
+          </div>
+          <div className="blog-content-container">
+            {content && renderRichText(content, options(theme))}
+          </div>
+          {/*  Add these share links later when I create social media accounts */}
+          {/* <div className="share-links-container bottom-spacing">
+            <p className="copy-font" data-theme={theme}>
+              share:
+            </p>
+            <img
+              className="share-link"
+              src={theme === "dark" ? twitter : lightTwitter}
+              alt="some alt text"
+            />
+            <img
+              className="share-link"
+              src={theme === "dark" ? fb : lightFb}
+              alt="some alt text"
+            />
+
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.davidvelez.io/article/${data.contentfulArticle.slug}`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={facebookIcon} alt="facebook icon" />
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${data.contentfulArticle.title}&url=https://blog.davidvelez.io/article/${data.contentfulArticle.slug}%2F&via=_devdave`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={twitterIcon} alt="facebook icon" />
+            </a>
+            <a
+              href="https://www.instagram.com/1davidvee/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={instagramIcon} alt="facebook icon" />
+            </a>
+          </div> */}
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
-const BlogTemplate = ({ data }) => {
-  const { title, author, date, content } = data.contentfulArticle;
-  // const rawContent = 
-
-  return (
-    <div style={{backgroundColor: 'cyan'}} className="blog-container">
-      <h1>{title}</h1>
-      <p>By {author}</p>
-      <p>{date}</p>
-      <div>
-      {content && renderRichText(content, options)}
-      </div>
-    </div>
-  );
-};
+export const Head = ({ data }) => <title>{data.contentfulArticle.title}</title>;
 
 export const query = graphql`
   query BlogBySlug($slug: String!) {
@@ -55,5 +132,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default BlogTemplate;

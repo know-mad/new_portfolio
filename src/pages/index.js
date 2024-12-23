@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import { useTheme } from "../utils/ThemeContext";
 import { useDrawer } from "../utils/DrawerContext";
 import ScrollBar from "../components/ScrollBar";
-import RotateWarning from "../components/RotateWarning"
+import RotateWarning from "../components/RotateWarning";
 
 import git from "../images/github.svg";
 import gitDark from "../images/github-dark.svg";
@@ -45,7 +45,6 @@ import xdDark from "../images/xd-dark.svg";
 
 export default function HomePage() {
   const [activeLink, setActiveLink] = useState(1);
-  const { openDrawer, isDrawerOpen } = useDrawer();
   const [scrollingProgrammatically, setScrollingProgrammatically] =
     useState(false);
   const { theme } = useTheme();
@@ -168,7 +167,7 @@ export default function HomePage() {
         contact: () => scrollToSection(contactRef, 4),
       }}
     >
-      <RotateWarning/>
+      <RotateWarning />
       <div className="home-container">
         {/* <div className="navbar">
           <div
@@ -318,7 +317,7 @@ export default function HomePage() {
                       style={{ color: activeLink === 3 ? `#CEFF00` : `#FFF` }}
                       to="/projects"
                     >
-                      ALL PROJECTS
+                      ARCHIVES
                     </Link>
                   </div>
                 </div>
@@ -348,7 +347,7 @@ export default function HomePage() {
                       }}
                       to="/projects"
                     >
-                      ALL PROJECTS
+                      ARCHIVES
                     </Link>
                   </div>
                 </div>
@@ -726,7 +725,10 @@ export default function HomePage() {
               for users with disabilities who wanted to use our digital assets.
             </p>
           </section>
-          <section className="content-container bottom-spacing" ref={projectsRef}>
+          <section
+            className="content-container bottom-spacing"
+            ref={projectsRef}
+          >
             <div className="section-title bottom-spacing">
               <span
                 className={`${
@@ -746,148 +748,169 @@ export default function HomePage() {
                 }
               ></span>
             </div>
-            <div className="heading-container bottom-spacing">
-              <div className="heading-title">
-                <a
-                  href="https://shop.panasonic.com/pages/build-your-own-multishape"
-                  target="_blank"
-                  rel="noopener"
-                  className="reverse-secondary-heading-semi-bold link"
-                  data-theme={theme}
-                >
-                  Panasonic
-                </a>
+            <div className="featured-project-container bottom-spacing">
+              <div className="heading-container bottom-spacing">
+                <div className="heading-title">
+                  <a
+                    href="https://shop.panasonic.com/pages/build-your-own-multishape"
+                    target="_blank"
+                    rel="noopener"
+                    className="reverse-secondary-heading-semi-bold link"
+                    data-theme={theme}
+                  >
+                    Panasonic
+                  </a>
+                </div>
+                <img
+                  className="link-arrow"
+                  src={theme === "dark" ? link : lightLink}
+                  alt="some alt text"
+                />
               </div>
-              <img
-                className="link-arrow"
-                src={theme === "dark" ? link : lightLink}
-                alt="some alt text"
-              />
+              <p className="copy-font bottom-spacing" data-theme={theme}>
+                As a global brand known for its innovative products and
+                commitment to quality, Panasonic offers a wide range of consumer
+                electronics, home appliances, and business solutions.
+                <br />
+                <br />
+                When Panasonic needed a custom solution to their Multishape line
+                of men's personal care products, I was entrusted to
+                conceptualize and build out their ideas for the world to use.
+                Using html, css, and javascript, I was able to build out a
+                custom user interface boasting a streamlined user experience
+                that allows customers to fully customize their Multishape
+                product prior to adding it to their cart.
+              </p>
+              <div
+                className={`${
+                  theme === "dark"
+                    ? "project-image-container"
+                    : "light-project-image-container"
+                } bottom-spacing`}
+              >
+                <img
+                  style={{
+                    boxShadow:
+                      theme === "dark" ? "none" : "8px 5px 15px #555151",
+                  }}
+                  className="project-image"
+                  src={panasonic}
+                  alt="some alt text"
+                />
+              </div>
+              <div className="tags-container bottom-spacing">
+                <div className="tag" data-theme={theme}>
+                  ELECTRONICS
+                </div>
+                <div className="tag" data-theme={theme}>
+                  E-COMMERCE
+                </div>
+                <div className="tag" data-theme={theme}>
+                  CUSTOM
+                </div>
+                <div className="tag" data-theme={theme}>
+                  SHOPIFY
+                </div>
+                <div className="tag" data-theme={theme}>
+                  UX/UI
+                </div>
+                <div className="tag" data-theme={theme}>
+                  ACCESSIBILITY
+                </div>
+                <div className="tag" data-theme={theme}>
+                  SEO
+                </div>
+              </div>
             </div>
-            <p className="copy-font bottom-spacing" data-theme={theme}>
-              As a global brand known for its innovative products and commitment
-              to quality, Panasonic offers a wide range of consumer electronics,
-              home appliances, and business solutions.
-              <br />
-              <br />
-              When Panasonic needed a custom solution to their Multishape line
-              of men's personal care products, I was entrusted to conceptualize
-              and build out their ideas for the world to use. Using html, css,
-              and javascript, I was able to build out a custom user interface
-              boasting a streamlined user experience that allows customers to
-              fully customize their Multishape product prior to adding it to
-              their cart.
-            </p>
-            <div
+            <div className="featured-project-container">
+              <div className="heading-container bottom-spacing">
+                <div className="heading-title">
+                  <a
+                    href="https://waxcenter.com/"
+                    target="_blank"
+                    rel="noopener"
+                    className="reverse-secondary-heading-semi-bold link"
+                    data-theme={theme}
+                  >
+                    European Wax Center
+                  </a>
+                </div>
+                <img
+                  className="link-arrow"
+                  src={theme === "dark" ? link : lightLink}
+                  alt="some alt text"
+                />
+              </div>
+              <p className="copy-font bottom-spacing" data-theme={theme}>
+                European Wax Center began as a family-owned business and is now
+                the largest provider of waxing services in the United States
+                with more than 1,000 locations nationwide.
+                <br />
+                <br />
+                When European Wax Center needed their e-commerce solution
+                updated and upgraded I was entrusted to build out their new and
+                improved Shopify storefront using modern HTML, CSS and
+                Javascript practices to not only deliver a beautiful user
+                interface but also all of the the features they needed to be
+                able to cater to their clients via the web. From appointment
+                setting to a custom shopping cart, this website offers a
+                splendid user experience with tons of tech under the hood.
+              </p>
+              <div
+                className={`${
+                  theme === "dark"
+                    ? "project-image-container"
+                    : "light-project-image-container"
+                } bottom-spacing`}
+              >
+                <img
+                  style={{
+                    boxShadow:
+                      theme === "dark" ? "none" : "8px 5px 15px #555151",
+                  }}
+                  className="project-image"
+                  src={ewc}
+                  alt="some alt text"
+                />
+              </div>
+              <div className="tags-container">
+                <div className="tag" data-theme={theme}>
+                  BUSINESS
+                </div>
+                <div className="tag" data-theme={theme}>
+                  E-COMMERCE
+                </div>
+                <div className="tag" data-theme={theme}>
+                  SHOPIFY
+                </div>
+                <div className="tag" data-theme={theme}>
+                  CUSTOM
+                </div>
+                <div className="tag" data-theme={theme}>
+                  UX/UI
+                </div>
+                <div className="tag" data-theme={theme}>
+                  ACCESSIBILITY
+                </div>
+              </div>
+            </div>
+            <Link
+              to="/projects/"
               className={`${
                 theme === "dark"
-                  ? "project-image-container"
-                  : "light-project-image-container"
-              } bottom-spacing`}
+                  ? "contact-button"
+                  : "light-contact-button"
+              } no-decoration`}
             >
-              <img
-                style={{
-                  boxShadow: theme === "dark" ? "none" : "8px 5px 15px #555151",
-                }}
-                className="project-image"
-                src={panasonic}
-                alt="some alt text"
-              />
-            </div>
-            <div className="tags-container bottom-spacing">
-              <div className="tag" data-theme={theme}>
-                ELECTRONICS
-              </div>
-              <div className="tag" data-theme={theme}>
-                E-COMMERCE
-              </div>
-              <div className="tag" data-theme={theme}>
-                CUSTOM
-              </div>
-              <div className="tag" data-theme={theme}>
-                SHOPIFY
-              </div>
-              <div className="tag" data-theme={theme}>
-                UX/UI
-              </div>
-              <div className="tag" data-theme={theme}>
-                ACCESSIBILITY
-              </div>
-              <div className="tag" data-theme={theme}>
-                SEO
-              </div>
-            </div>
-            <div className="heading-container bottom-spacing">
-              <div className="heading-title">
-                <a
-                  href="https://waxcenter.com/"
-                  target="_blank"
-                  rel="noopener"
-                  className="reverse-secondary-heading-semi-bold link"
-                  data-theme={theme}
-                >
-                  European Wax Center
-                </a>
-              </div>
-              <img
-                className="link-arrow"
-                src={theme === "dark" ? link : lightLink}
-                alt="some alt text"
-              />
-            </div>
-            <p className="copy-font bottom-spacing" data-theme={theme}>
-              European Wax Center began as a family-owned business and is now
-              the largest provider of waxing services in the United States with
-              more than 1,000 locations nationwide.
-              <br />
-              <br />
-              When European Wax Center needed their e-commerce solution updated
-              and upgraded I was entrusted to build out their new and improved
-              Shopify storefront using modern HTML, CSS and Javascript practices
-              to not only deliver a beautiful user interface but also all of the
-              the features they needed to be able to cater to their clients via
-              the web. From appointment setting to a custom shopping cart, this
-              website offers a splendid user experience with tons of tech under
-              the hood.
-            </p>
-            <div
-              className={`${
-                theme === "dark"
-                  ? "project-image-container"
-                  : "light-project-image-container"
-              } bottom-spacing`}
-            >
-              <img
-                style={{
-                  boxShadow: theme === "dark" ? "none" : "8px 5px 15px #555151",
-                }}
-                className="project-image"
-                src={ewc}
-                alt="some alt text"
-              />
-            </div>
-            <div className="tags-container">
-              <div className="tag" data-theme={theme}>
-                BUSINESS
-              </div>
-              <div className="tag" data-theme={theme}>
-                E-COMMERCE
-              </div>
-              <div className="tag" data-theme={theme}>
-                SHOPIFY
-              </div>
-              <div className="tag" data-theme={theme}>
-                CUSTOM
-              </div>
-              <div className="tag" data-theme={theme}>
-                UX/UI
-              </div>
-              <div className="tag" data-theme={theme}>
-                ACCESSIBILITY
-              </div>
-            </div>
+              <p className="copy-font" data-theme={theme}>
+                VIEW ARCHIVES
+              </p>
+            </Link>
           </section>
-          <section className="content-container bottom-spacing" ref={contactRef}>
+          <section
+            className="content-container bottom-spacing"
+            ref={contactRef}
+          >
             <div className="section-title bottom-spacing">
               <span
                 style={{ transform: "rotate(180deg)" }}
