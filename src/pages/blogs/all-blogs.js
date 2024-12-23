@@ -1,43 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Link, graphql } from "gatsby";
 import "../../styles/blogs.css";
 import { GatsbyImage } from "gatsby-plugin-image"; // Import GatsbyImage
 import { useTheme } from "../../utils/ThemeContext";
 import RotateWarning from "../../components/RotateWarning";
-import ThemeToggler from "../../components/ThemeToggler";
-import arrow from "../../images/arrow-icon.svg";
-import arrowLight from "../../images/arrow-icon-light.svg";
 import link from "../../images/link-arrow.svg";
 import lightLink from "../../images/light-link-arrow.svg";
 import Layout from "../../components/Layout";
 
-const AllBlogs = ({ data }) => {
-  const [isTop, setIsTop] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+
+export default function AllBlogs({ data }) {
+  const { theme } = useTheme();
   const blogsContainerRef = useRef(null);
 
   const blogs = data.allContentfulArticle.edges;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!blogsContainerRef.current) return;
-
-      const rect = blogsContainerRef.current.getBoundingClientRect();
-
-      // Check if blogs-container is at the top of the viewport
-      if (rect.top <= 0) {
-        setIsTop(true);
-        console.log("blogs-container is at the top of the viewport");
-      } else {
-        setIsTop(false);
-      }
-    };
-
-    // Attach event listener
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <Layout>
@@ -160,7 +137,7 @@ const AllBlogs = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulArticle(sort: { fields: [date], order: DESC }) {
+    allContentfulArticle(sort: {date: DESC}) {
       edges {
         node {
           headerImage {
@@ -179,4 +156,4 @@ export const query = graphql`
   }
 `;
 
-export default AllBlogs;
+export const Head = ({ data }) => <title>Tech Entrepreneur</title>;

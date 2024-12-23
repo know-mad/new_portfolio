@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import "../styles/index.css";
 import { Link } from "gatsby";
 import { useTheme } from "../utils/ThemeContext";
-import { useDrawer } from "../utils/DrawerContext";
 import ScrollBar from "../components/ScrollBar";
 import RotateWarning from "../components/RotateWarning";
 
@@ -473,7 +472,7 @@ export default function HomePage() {
               </div>
             </div>
             <p className="copy-font bottom-spacing" data-theme={theme}>
-              Based in New York City, and having a background in software
+              Based in Washington DC, and having a background in software
               engineering, I specialize in building mobile and web applications,
               as well as blazing fast websites by using the latest technologies
               to prioritize site/app performance ultimately resulting in faster

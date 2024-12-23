@@ -11,6 +11,7 @@ import fb from "../images/fb.svg";
 import twitter from "../images/twitter.svg";
 import lightFb from "../images/light-fb.svg";
 import lightTwitter from "../images/light-twitter.svg";
+import RotateWarning from "../components/RotateWarning";
 
 const Text = ({ children, theme }) => (
   <p className="copy-font bottom-spacing" data-theme={theme}>
@@ -58,6 +59,7 @@ export default function BlogTemplate({ data }) {
   const { theme } = useTheme();
   return (
     <Layout>
+      <RotateWarning/>
       <div className="static-page-container">
         <div className="page-content-container">
           <div className="blog-intro bottom-spacing">

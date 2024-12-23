@@ -1,32 +1,18 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import { useTheme } from "../utils/ThemeContext";
 
 const NotFoundPage = () => {
+  const {theme} = useTheme()
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
+    <main className='page-not-found-container'>
+      <p className="copy-font bottom-spacing" data-theme={theme}>Ooops...the page you are trying to access doesn't exist.</p>
+      <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>404 Page Not Found</h1>
+      <Link to="/" className='link-bold no-decoration' data-theme={theme}>
+        <p>Back to home</p>
+      </Link>
+      {/* <h1 style={headingStyles}>Page not found</h1>
       <p style={paragraphStyles}>
         Sorry 😔, we couldn’t find what you were looking for.
         <br />
@@ -39,7 +25,7 @@ const NotFoundPage = () => {
         ) : null}
         <br />
         <Link to="/">Go home</Link>.
-      </p>
+      </p> */}
     </main>
   )
 }

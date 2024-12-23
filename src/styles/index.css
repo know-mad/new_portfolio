@@ -763,6 +763,14 @@ p {
   /* background: crimson; */
 }
 
+.page-not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 @media screen and (min-width: 768px) {
   .page-heading-extra-bold {
     font-size: 45px;
