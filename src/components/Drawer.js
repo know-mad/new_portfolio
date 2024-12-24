@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Drawer.css";
-import { useLocation, navigate } from "gatsby";
-// import { NavigationContext } from "../utils/context";
 import { useTheme } from "../utils/ThemeContext";
 import { Link } from "gatsby";
 import git from "../images/github.svg";
 import gitDark from "../images/github-dark.svg";
 import linkedIn from "../images/linkedin.svg";
 import linkedInDark from "../images/linkedin-dark.svg";
+import { useLocation } from "@reach/router"; // Import useLocation
+
+
 
 export default function Drawer({
   isOpen,
@@ -20,17 +21,17 @@ export default function Drawer({
   activeLink,
 }) {
   const { theme } = useTheme();
-  const location = window.location;
+  const location = useLocation()
 
-  const handleNavigateWithClose = (path) => {
-    closeDrawer();
+  // const handleNavigateWithClose = (path) => {
+  //   closeDrawer();
 
-    // Wait for the animation to complete
-    const animationDuration = 1000;
-    setTimeout(() => {
-      navigate(path);
-    }, animationDuration);
-  };
+  //   // Wait for the animation to complete
+  //   const animationDuration = 1000;
+  //   setTimeout(() => {
+  //     navigate(path);
+  //   }, animationDuration);
+  // };
 
   const renderConditionalLinks = () => {
     if (location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/") { // Extract and format the blog title
@@ -60,7 +61,7 @@ export default function Drawer({
                   className="drawer-link"
                   style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
                 >
-                  ALL BLOGS
+                  BLOG
                 </p>
               </Link>
             </div>

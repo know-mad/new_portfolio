@@ -3,14 +3,14 @@ import { graphql } from "gatsby";
 import "../styles/blogs.css";
 import Layout from "../components/Layout";
 import { useTheme } from "../utils/ThemeContext";
-import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 import me from "../images/me.png";
-import fb from "../images/fb.svg";
-import twitter from "../images/twitter.svg";
-import lightFb from "../images/light-fb.svg";
-import lightTwitter from "../images/light-twitter.svg";
+// import fb from "../images/fb.svg";
+// import twitter from "../images/twitter.svg";
+// import lightFb from "../images/light-fb.svg";
+// import lightTwitter from "../images/light-twitter.svg";
 import RotateWarning from "../components/RotateWarning";
 
 const Text = ({ children, theme }) => (
@@ -55,7 +55,7 @@ const options = (theme) => ({
 });
 
 export default function BlogTemplate({ data }) {
-  const { title, author, date, content } = data.contentfulArticle;
+  const { title, author, content } = data.contentfulArticle;
   const { theme } = useTheme();
   return (
     <Layout>
@@ -120,7 +120,7 @@ export default function BlogTemplate({ data }) {
   );
 }
 
-export const Head = ({ data }) => <title>{data.contentfulArticle.title}</title>;
+export const Head = ({ data }) => <title>{data?.contentfulArticle?.title || "Blog"}</title>;
 
 export const query = graphql`
   query BlogBySlug($slug: String!) {

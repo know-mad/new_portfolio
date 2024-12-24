@@ -1,6 +1,8 @@
 import React from "react";
 import ThemeToggler from "./ThemeToggler";
 import { Link } from "gatsby";
+import { useLocation } from "@reach/router"; // Import useLocation
+
 
 export default function NavBar({
   theme,
@@ -8,7 +10,8 @@ export default function NavBar({
   isDrawerOpen,
   toggleTheme,
 }) {
-  const location = window.location;
+  const location = useLocation()
+  
   const renderDynamicPageTitles = () => {
     if (location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/") { // Extract and format the blog title
       return (
@@ -28,7 +31,7 @@ export default function NavBar({
       case "/blogs/all-blogs/":
         return (
           <h1 className="page-heading-extra-bold" data-theme={theme}>
-            Blogs
+            Blog
           </h1>
         );
       default:

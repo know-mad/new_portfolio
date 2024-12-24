@@ -1,7 +1,6 @@
 import React, { useState, useRef  } from "react";
 import "../styles/projects.css";
 import { useTheme } from "../utils/ThemeContext";
-import { useDrawer } from "../utils/DrawerContext";
 import Layout from "../components/Layout";
 
 import arrow from "../images/arrow-icon.svg";
