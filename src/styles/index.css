@@ -597,7 +597,7 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  text-transform: uppercase;
+
 }
 
 .tag {
