@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/ScrollBar.css";
 // import { NavigationContext } from "../utils/context";
 import { useTheme } from '../utils/ThemeContext';
@@ -11,8 +11,6 @@ export default function ScrollBar({
   handleClick4,
   activeLink
 }) {
-  // const activeLink = useContext(NavigationContext);
-  // const [activeLink, setActiveLink] = useState(1)
   const { theme, toggleTheme } = useTheme();
 
   return (
