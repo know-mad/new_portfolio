@@ -173,6 +173,7 @@
   /* text-decoration: none; */
 }
 
+
 @media screen and (min-width: 768px) {
   .blog-heading-extra-bold {
     font-size: 40px;
@@ -197,6 +198,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .blog-content-container {
+    padding: 0 150px;
+  }
+  
   .blog-heading-extra-bold {
     font-size: 50px;
   }
