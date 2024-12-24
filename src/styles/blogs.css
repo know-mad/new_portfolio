@@ -80,7 +80,8 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  width: 100%
+  width: 100%;
+  text-transform: lowercase;
 }
 
 .desktop-blog-tags-container .tag {
@@ -201,7 +202,7 @@
   .blog-content-container {
     padding: 0 150px;
   }
-  
+
   .blog-heading-extra-bold {
     font-size: 50px;
   }
