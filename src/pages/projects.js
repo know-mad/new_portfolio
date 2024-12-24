@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from "react";
+import React, { useState, useRef } from "react";
 import "../styles/projects.css";
 import { useTheme } from "../utils/ThemeContext";
 import Layout from "../components/Layout";
@@ -14,9 +14,8 @@ export default function AllProjects() {
   const { theme } = useTheme();
   const [expandedRow, setExpandedRow] = useState(null); // Track the currently expanded row
 
-  const rows = data;
-  const refs = useRef(rows.map(() => React.createRef())); // Create refs for each row
-
+  const rows = data[1];
+  const refs = useRef(rows.projectArchives.map(() => React.createRef())); // Create refs for each row
 
   const toggleAccordion = (rowId) => {
     const newExpandedRow = expandedRow === rowId ? null : rowId; // Determine the new expanded row
@@ -85,7 +84,7 @@ export default function AllProjects() {
             </div>
           </div>
           <div className="table-columns-container">
-            {rows.map((row, index) => {
+            {rows.projectArchives.map((row, index) => {
               const isRowExpanded = expandedRow === row.id;
 
               return (
@@ -94,16 +93,22 @@ export default function AllProjects() {
                     className="accordion-toggle-container"
                     onClick={() => toggleAccordion(row.id)}
                   >
-                    <img
-                      src={theme === "dark" ? arrow : altArrowLight}
-                      alt="toggle accordion"
+                    <span
+                      className={
+                        theme === "dark" ? "accordion-bar-1" : "light-accordion-bar-1"
+                      }
+                    ></span>
+                    <span
+                      className={
+                        theme === "dark" ? "accordion-bar-2" : "light-accordion-bar-2"
+                      }
                       style={{
                         transform: isRowExpanded
-                          ? "rotate(180deg)"
-                          : "rotate(0deg)",
+                          ? "rotate(0deg)"
+                          : "rotate(90deg)",
                         transition: "transform 0.5s ease",
                       }}
-                    />
+                    ></span>
                   </div>
                   <div className="content-year-column">
                     <p className="copy-font" data-theme={theme}>

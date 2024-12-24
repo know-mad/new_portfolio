@@ -6,6 +6,7 @@ import { useTheme } from "../utils/ThemeContext";
 import ScrollBar from "../components/ScrollBar";
 import RotateWarning from "../components/RotateWarning";
 
+// Icons and images
 import git from "../images/github.svg";
 import gitDark from "../images/github-dark.svg";
 import linkedIn from "../images/linkedin.svg";
@@ -36,11 +37,17 @@ import heroku from "../images/heroku.svg";
 import herokuDark from "../images/heroku-dark.svg";
 import link from "../images/link-arrow.svg";
 import lightLink from "../images/light-link-arrow.svg";
-import onewsq from "../images/1wsq.jpg";
-import ewc from "../images/ewc.jpg";
-import panasonic from "../images/panasonic.jpg";
 import xd from "../images/xd.svg";
 import xdDark from "../images/xd-dark.svg";
+
+import data from "../data/data.json";
+// dynamically selecting images for the recent projects section
+import recentProject1 from "../images/panasonic.jpg";
+import recentProject2 from "../images/ewc.jpg";
+const imageMap = [
+  {image: recentProject1},
+  {image: recentProject2}
+]
 
 export default function HomePage() {
   const [activeLink, setActiveLink] = useState(1);
@@ -60,6 +67,8 @@ export default function HomePage() {
     { id: 4, ref: contactRef },
   ];
 
+  const rows = data[0];
+
   useEffect(() => {
     const getThreshold = (ref) => {
       const width = window.innerWidth;
@@ -70,7 +79,7 @@ export default function HomePage() {
         if (width <= 768) return 0.35; // Tablet
         if (width <= 1024) return 0.4; // Small desktop
         if (width <= 1440) return 0.425; // Large desktop
-        return 0.6; // Ultra-wide screens
+        return 0.5; // Ultra-wide screens
       }
 
       // Default thresholds for other sections
@@ -747,158 +756,65 @@ export default function HomePage() {
                 }
               ></span>
             </div>
-            <div className="featured-project-container bottom-spacing">
-              <div className="heading-container bottom-spacing">
-                <div className="heading-title">
-                  <a
-                    href="https://shop.panasonic.com/pages/build-your-own-multishape"
-                    target="_blank"
-                    rel="noopener"
-                    className="reverse-secondary-heading-semi-bold link"
-                    data-theme={theme}
-                  >
-                    Panasonic
-                  </a>
-                </div>
-                <img
-                  className="link-arrow"
-                  src={theme === "dark" ? link : lightLink}
-                  alt="some alt text"
-                />
-              </div>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                As a global brand known for its innovative products and
-                commitment to quality, Panasonic offers a wide range of consumer
-                electronics, home appliances, and business solutions.
-                <br />
-                <br />
-                When Panasonic needed a custom solution to their Multishape line
-                of men's personal care products, I was entrusted to
-                conceptualize and build out their ideas for the world to use.
-                Using html, css, and javascript, I was able to build out a
-                custom user interface boasting a streamlined user experience
-                that allows customers to fully customize their Multishape
-                product prior to adding it to their cart.
-              </p>
+            {rows.recentProjects.map((item, index) => (
               <div
-                className={`${
-                  theme === "dark"
-                    ? "project-image-container"
-                    : "light-project-image-container"
-                } bottom-spacing`}
+                key={item.id}
+                className="featured-project-container bottom-spacing"
               >
-                <img
+                <div className="heading-container bottom-spacing">
+                  <div className="heading-title">
+                    <a
+                      href={item.projectExternalLink}
+                      target="_blank"
+                      rel="noopener"
+                      className="reverse-secondary-heading-semi-bold link"
+                      data-theme={theme}
+                    >
+                      {item.projectName}
+                    </a>
+                  </div>
+                  <img
+                    className="link-arrow"
+                    src={theme === "dark" ? link : lightLink}
+                    alt="some alt text"
+                  />
+                </div>
+                <p className="copy-font bottom-spacing" data-theme={theme}>
+                  {item.projectBio}
+                  <br />
+                  <br />
+                  {item.workAccomplished}
+                </p>
+                <div
+                  className={`${
+                    theme === "dark"
+                      ? "project-image-container"
+                      : "light-project-image-container"
+                  } bottom-spacing`}
+                >
+                  <img
                   style={{
                     boxShadow:
                       theme === "dark" ? "none" : "8px 5px 15px #555151",
                   }}
                   className="project-image"
-                  src={panasonic}
+                  src={imageMap[index].image}
                   alt="some alt text"
                 />
-              </div>
-              <div className="tags-container bottom-spacing">
-                <div className="tag" data-theme={theme}>
-                  ELECTRONICS
                 </div>
-                <div className="tag" data-theme={theme}>
-                  E-COMMERCE
-                </div>
-                <div className="tag" data-theme={theme}>
-                  CUSTOM
-                </div>
-                <div className="tag" data-theme={theme}>
-                  SHOPIFY
-                </div>
-                <div className="tag" data-theme={theme}>
-                  UX/UI
-                </div>
-                <div className="tag" data-theme={theme}>
-                  ACCESSIBILITY
-                </div>
-                <div className="tag" data-theme={theme}>
-                  SEO
+                <div className="tags-container bottom-spacing">
+                  {item.projectTags.map((tag) => (
+                    <div className="tag" data-theme={theme}>
+                      {tag.tag}
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-            <div className="featured-project-container">
-              <div className="heading-container bottom-spacing">
-                <div className="heading-title">
-                  <a
-                    href="https://waxcenter.com/"
-                    target="_blank"
-                    rel="noopener"
-                    className="reverse-secondary-heading-semi-bold link"
-                    data-theme={theme}
-                  >
-                    European Wax Center
-                  </a>
-                </div>
-                <img
-                  className="link-arrow"
-                  src={theme === "dark" ? link : lightLink}
-                  alt="some alt text"
-                />
-              </div>
-              <p className="copy-font bottom-spacing" data-theme={theme}>
-                European Wax Center began as a family-owned business and is now
-                the largest provider of waxing services in the United States
-                with more than 1,000 locations nationwide.
-                <br />
-                <br />
-                When European Wax Center needed their e-commerce solution
-                updated and upgraded I was entrusted to build out their new and
-                improved Shopify storefront using modern HTML, CSS and
-                Javascript practices to not only deliver a beautiful user
-                interface but also all of the the features they needed to be
-                able to cater to their clients via the web. From appointment
-                setting to a custom shopping cart, this website offers a
-                splendid user experience with tons of tech under the hood.
-              </p>
-              <div
-                className={`${
-                  theme === "dark"
-                    ? "project-image-container"
-                    : "light-project-image-container"
-                } bottom-spacing`}
-              >
-                <img
-                  style={{
-                    boxShadow:
-                      theme === "dark" ? "none" : "8px 5px 15px #555151",
-                  }}
-                  className="project-image"
-                  src={ewc}
-                  alt="some alt text"
-                />
-              </div>
-              <div className="tags-container">
-                <div className="tag" data-theme={theme}>
-                  BUSINESS
-                </div>
-                <div className="tag" data-theme={theme}>
-                  E-COMMERCE
-                </div>
-                <div className="tag" data-theme={theme}>
-                  SHOPIFY
-                </div>
-                <div className="tag" data-theme={theme}>
-                  CUSTOM
-                </div>
-                <div className="tag" data-theme={theme}>
-                  UX/UI
-                </div>
-                <div className="tag" data-theme={theme}>
-                  ACCESSIBILITY
-                </div>
-              </div>
-            </div>
+            ))}
             <Link
               to="/projects/"
               className={`${
-                theme === "dark"
-                  ? "contact-button"
-                  : "light-contact-button"
+                theme === "dark" ? "contact-button" : "light-contact-button"
               } no-decoration`}
             >
               <p className="copy-font" data-theme={theme}>
