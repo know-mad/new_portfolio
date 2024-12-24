@@ -4,11 +4,12 @@ import NavBar from "./NavBar";
 import { useDrawer } from "../utils/DrawerContext";
 import { useTheme } from "../utils/ThemeContext";
 import "../styles/Drawer.css";
+import { useLocation } from "@reach/router"; // Import useLocation
 
 export default function Layout({ children, scrollHandlers, activeLink }) {
   const { isDrawerOpen, closeDrawer, openDrawer } = useDrawer();
   const { theme, toggleTheme } = useTheme();
-  const location = window.location;
+  const location = useLocation()
   
 
   useEffect(() => {

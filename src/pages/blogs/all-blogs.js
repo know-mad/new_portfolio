@@ -146,7 +146,7 @@ export const query = graphql`
           slug
           title
           author
-          date(formatString: "MMM DD, 'YY")
+          date(formatString: "MMM DD, YYYY")
           tags {
             tag
           }
