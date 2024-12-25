@@ -92,16 +92,12 @@ export default function AllProjects() {
                   <div
                     className="accordion-toggle-container"
                     onClick={() => toggleAccordion(row.id)}
+                    data-theme={theme}
                   >
+                    <span className="accordion-bar-1" data-theme={theme}></span>
                     <span
-                      className={
-                        theme === "dark" ? "accordion-bar-1" : "light-accordion-bar-1"
-                      }
-                    ></span>
-                    <span
-                      className={
-                        theme === "dark" ? "accordion-bar-2" : "light-accordion-bar-2"
-                      }
+                      className="accordion-bar-2"
+                      data-theme={theme}
                       style={{
                         transform: isRowExpanded
                           ? "rotate(0deg)"

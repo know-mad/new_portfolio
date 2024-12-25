@@ -2,7 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
@@ -31,7 +31,15 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         icon: "src/images/favicon.png",
-      }
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://blog.davidvelez.io",
+        sitemap: "https://blog.davidvelez.io/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: `gatsby-source-contentful`,
@@ -44,5 +52,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-offline`,
+    // Configure gtag file after configuring analytics in google dahsboard
   ],
-}
+};
