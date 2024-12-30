@@ -30,7 +30,7 @@ export default function AllBlogs({ data }) {
               } bottom-spacing no-decoration`}
             >
               <div className="article-type-container bottom-spacing">
-                <div style={{ margin: 0 }} className="tag" data-theme={theme}>
+                <div className="blog-descriptor" data-theme={theme}>
                   Article
                 </div>
               </div>

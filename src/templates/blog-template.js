@@ -122,7 +122,7 @@ export default function BlogTemplate({ data }) {
               </a>
             </div>
           </div>
-          <div className="blog-title-container bottom-spacing">
+          <div className="blog-article-title-container bottom-spacing">
             <h1 className="blog-heading-extra-bold" data-theme={theme}>
               {title}
             </h1>
