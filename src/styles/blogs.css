@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(217,217,217,0.04);
+  background: rgba(217, 217, 217, 0.04);
   width: 100%;
   padding: 15px;
   border-radius: 5px;
@@ -31,7 +31,7 @@
 }
 
 .preview-image-container {
-  height:fit-content;
+  height: fit-content;
   border: 1px solid var(--primary-accent-color);
   padding: 4px;
   border-radius: 3px;
@@ -39,7 +39,7 @@
 }
 
 .light-preview-image-container {
-  height:fit-content;
+  height: fit-content;
   padding: 4px;
   border-radius: 3px;
   margin-right: 20px;
@@ -72,7 +72,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  width: 100%
+  width: 100%;
 }
 
 .desktop-blog-tags-container {
@@ -109,14 +109,14 @@
 .back-icon {
   transform: rotate(90deg);
   margin-right: 10px;
-  transition: margin-right ease 0.5s
+  transition: margin-right ease 0.5s;
 }
 
 .back-button {
   font-family: var(--header-font-family);
   color: #00a3ff;
   font-weight: 700;
-  font-size: 20px
+  font-size: 20px;
 }
 
 .blog-intro {
@@ -130,11 +130,6 @@
   width: 30px;
   aspect-ratio: 1;
   margin-right: 10px;
-}
-
-.blog-title-container {
-  display: flex;
-  flex-direction: row;
 }
 
 .share-links-container {
@@ -156,11 +151,11 @@
 }
 
 .blog-heading-extra-bold[data-theme="dark"] {
-  --color: var(--primary-text-color)
+  --color: var(--primary-text-color);
 }
 
 .blog-heading-extra-bold[data-theme="light"] {
-  --color: var(--light-primary-text-color)
+  --color: var(--light-primary-text-color);
 }
 
 .blog-heading-extra-bold {
@@ -171,11 +166,11 @@
 }
 
 .content-link[data-theme="dark"] {
-  --color: var(--primary-accent-color)
+  --color: var(--primary-accent-color);
 }
 
 .content-link[data-theme="light"] {
-  --color: var(--light-primary-accent-color)
+  --color: var(--light-primary-accent-color);
 }
 
 .content-link {
@@ -196,13 +191,11 @@
   align-items: center;
 }
 
-
 @media screen and (min-width: 768px) {
   .blog-heading-extra-bold {
     font-size: 40px;
   }
 }
-
 
 @media screen and (min-width: 1024px) {
   .preview-image {
@@ -214,14 +207,16 @@
   .desktop-inner {
     display: flex;
   }
-  
+
   .mobile-inner {
     display: none;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .blog-content-container {
+  .blog-content-container,
+  .blog-title-container,
+  .blog-intro {
     padding: 0 150px;
   }
 
