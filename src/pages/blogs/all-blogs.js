@@ -8,13 +8,11 @@ import link from "../../images/link-arrow.svg";
 import lightLink from "../../images/light-link-arrow.svg";
 import Layout from "../../components/Layout";
 
-
 export default function AllBlogs({ data }) {
   const { theme } = useTheme();
   const blogsContainerRef = useRef(null);
 
   const blogs = data.allContentfulArticle.edges;
-
 
   return (
     <Layout>
@@ -22,14 +20,20 @@ export default function AllBlogs({ data }) {
       <div className="static-page-container">
         <div ref={blogsContainerRef} className="page-content-container">
           {blogs.map(({ node }) => (
-            <div
+            <Link
               key={node.slug}
+              to={`/blogs/${node.slug}`}
               className={`${
                 theme === "dark"
                   ? "blog-item-container"
                   : "light-blog-item-container"
-              } bottom-spacing`}
+              } bottom-spacing no-decoration`}
             >
+              <div className="article-type-container bottom-spacing">
+                <div style={{ margin: 0 }} className="tag" data-theme={theme}>
+                  Article
+                </div>
+              </div>
               <div className="mobile-info-container bottom-spacing">
                 <span
                   className={
@@ -39,18 +43,6 @@ export default function AllBlogs({ data }) {
                   }
                   style={{ marginLeft: 0, marginRight: 10 }}
                 ></span>
-                <Link
-                  to={`/blogs/${node.slug}`}
-                  className="reverse-secondary-heading-semi-bold no-decoration"
-                  data-theme={theme}
-                >
-                  Read Article
-                </Link>
-                <img
-                  style={{ marginLeft: 10 }}
-                  src={theme === "dark" ? link : lightLink}
-                  alt="link icon"
-                />
               </div>
               <div className="blog-title-container bottom-spacing">
                 <div
@@ -127,17 +119,17 @@ export default function AllBlogs({ data }) {
                   )}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
     </Layout>
   );
-};
+}
 
 export const query = graphql`
   query {
-    allContentfulArticle(sort: {date: DESC}) {
+    allContentfulArticle(sort: { date: DESC }) {
       edges {
         node {
           headerImage {

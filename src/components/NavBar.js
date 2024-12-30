@@ -42,7 +42,7 @@ export default function NavBar({
 
   return (
     <>
-      <div className="navbar">
+      <nav className="navbar">
         <div className="navbar-left">
           <div
             onClick={openDrawer}
@@ -84,9 +84,9 @@ export default function NavBar({
             <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
           )}
         </div>
-      </div>
+      </nav>
       {location.pathname !== "/" && (
-        <div className="alt-navbar">
+        <nav className="alt-navbar">
           <div className="alt-navbar-left">
             {renderDynamicPageTitles()}
             {location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/" && (
@@ -123,7 +123,7 @@ export default function NavBar({
             </Link>
             <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
           </div>
-        </div>
+        </nav>
       )}
     </>
   );

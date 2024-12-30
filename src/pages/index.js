@@ -177,50 +177,16 @@ export default function HomePage() {
     >
       <RotateWarning />
       <div className="home-container">
-        {/* <div className="navbar">
-          <div
-            onClick={openDrawer}
-            style={{
-              marginLeft: isDrawerOpen ? `-350px` : `0`,
-              transitionDelay: isDrawerOpen ? `0.5s` : `1s`,
-            }}
-            className="toggle-open"
-          >
-            <span
-              className={
-                theme === "dark" ? "toggle-bar-1" : "light-toggle-bar-1"
-              }
-              style={{
-                top: isDrawerOpen ? `50%` : `0`,
-                transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
-              }}
-            ></span>
-            <span
-              className={
-                theme === "dark" ? "toggle-bar-2" : "light-toggle-bar-2"
-              }
-            ></span>
-            <span
-              className={
-                theme === "dark" ? "toggle-bar-3" : "light-toggle-bar-3"
-              }
-              style={{
-                bottom: isDrawerOpen ? `50%` : `0`,
-                transitionDelay: isDrawerOpen ? `0s` : `1.5s`,
-              }}
-            ></span>
-          </div>
-        </div> */}
         <div className="home-container-left">
           <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>
             HI! I'M DAVID
           </h1>
-          <h4
+          <p
             className="secondary-heading-semi-bold bottom-spacing"
             data-theme={theme}
           >
             Full Stack Software Engineer
-          </h4>
+          </p>
           <p className="copy-font" data-theme={theme}>
             Creative software engineer that loves to build beautifully designed
             technology solutions so you or your business can win online.
@@ -468,9 +434,9 @@ export default function HomePage() {
                       : "light-heading-line"
                   } desktop-hidden`}
                 ></span>
-                <p className="secondary-heading-semi-bold" data-theme={theme}>
+                <h2 className="secondary-heading-semi-bold" data-theme={theme}>
                   ABOUT ME
-                </p>
+                </h2>
                 <span
                   className={
                     theme === "dark"
@@ -606,12 +572,12 @@ export default function HomePage() {
                       : "light-heading-line"
                   } desktop-hidden`}
                 ></span>
-                <p
+                <h2
                   className="reverse-secondary-heading-semi-bold"
                   data-theme={theme}
                 >
                   WORK EXPERIENCE
-                </p>
+                </h2>
                 <span
                   style={{ transform: "rotate(180deg)" }}
                   className={
@@ -745,9 +711,9 @@ export default function HomePage() {
                     : "light-heading-line"
                 } desktop-hidden`}
               ></span>
-              <p className="secondary-heading-semi-bold" data-theme={theme}>
+              <h2 className="secondary-heading-semi-bold" data-theme={theme}>
                 RECENT PROJECTS
-              </p>
+              </h2>
               <span
                 className={
                   theme === "dark"
@@ -835,12 +801,12 @@ export default function HomePage() {
                     : "light-heading-line"
                 } desktop-hidden`}
               ></span>
-              <p
+              <h2
                 className="reverse-secondary-heading-semi-bold"
                 data-theme={theme}
               >
                 CONTACT ME
-              </p>
+              </h2>
               <span
                 style={{ transform: "rotate(180deg)" }}
                 className={
