@@ -153,8 +153,7 @@
     cursor: pointer;
   }
 
-  /* .theme-toggle {
-    height: 50px;
+  .theme-toggle {
     cursor: pointer;
-  } */
+  }
 }
