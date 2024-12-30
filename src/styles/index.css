@@ -844,7 +844,7 @@ p {
   }
 
   .mobile-hidden {
-    display: contents;
+    display: flex;
   }
 
   .mobile-link-container {

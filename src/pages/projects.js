@@ -66,7 +66,7 @@ export default function AllProjects() {
             </div>
             <div
               className="project-column made-at-column"
-              data-screensize="tablet-and-up"
+              data-screensize="laptop-and-up"
             >
               <p className="copy-font" data-theme={theme}>
                 Made at
@@ -169,7 +169,7 @@ export default function AllProjects() {
                           </div>
                           <div
                             className="project-inner-column made-at-column"
-                            data-screensize="tablet-and-up"
+                            data-screensize="laptop-and-up"
                           >
                             <p className="copy-font" data-theme={theme}>
                               {project.made_at}
