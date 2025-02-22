@@ -39,6 +39,16 @@ import link from "../images/link-arrow.svg";
 import lightLink from "../images/light-link-arrow.svg";
 import xd from "../images/xd.svg";
 import xdDark from "../images/xd-dark.svg";
+import amazon from "../images/amazon.svg";
+import amazonDark from "../images/amazon-dark.svg";
+import nextjs from "../images/nextjs.svg";
+import nextjsDark from "../images/nextjs-dark.svg";
+import socketio from "../images/socket.svg";
+import socketioDark from "../images/socket-dark.svg"; 
+import vercel from "../images/vercel.svg";
+import vercelDark from "../images/vercel-dark.svg";
+import openai from "../images/openai.svg";
+import openaiDark from "../images/openai-dark.svg";
 
 import data from "../data/data.json";
 // dynamically selecting images for the recent projects section
@@ -454,11 +464,15 @@ export default function HomePage() {
               page load speeds and better SEO all delivered with beautifully and
               functionally designed user interfaces.
             </p>
+            <h3 className="secondary-heading-semi-bold bottom-spacing" data-theme={theme}>
+              Technologies
+            </h3>
             <p className="copy-font bottom-spacing" data-theme={theme}>
-              Proficient in the MERN stack, my favorite technologies to use when
+              Proficient in the MERN (MongoDB, Express, React, Node) stack, my favorite technologies to use when
               building digital solutions are HTML, CSS, Javascript, React (along
               with various React frameworks such as NEXT.js and Gatsby.js),
-              React Native, Node, and Mongo DB.
+              React Native, Node, Mongo DB and Socket.io for applications that
+              require real-time communication between the client and server.
             </p>
             <div className="logo-container bottom-spacing">
               <img
@@ -491,7 +505,20 @@ export default function HomePage() {
                 src={theme === "dark" ? mongo : mongoDark}
                 alt="some alt text"
               />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? nextjs : nextjsDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? socketio : socketioDark}
+                alt="some alt text"
+              />
             </div>
+            <h3 className="secondary-heading-semi-bold bottom-spacing" data-theme={theme}>
+              Design
+            </h3>
             <p className="copy-font bottom-spacing" data-theme={theme}>
               I truly love the design process and conceptualizing from the
               imagination a beautiful digital experience. My "go-to" design
@@ -516,14 +543,18 @@ export default function HomePage() {
                 alt="some alt text"
               />
             </div>
+            <h3 className="secondary-heading-semi-bold bottom-spacing" data-theme={theme}>
+              Infrastructure / Platforms
+            </h3>
             <p className="copy-font bottom-spacing" data-theme={theme}>
               Technology is always changing and I’m always learning in order to
               adapt to the changing market. As such, other notable technologies
-              that I have had experience with in the past include, PostgreSQL
+              that I have experience and knowledge in include, PostgreSQL
               for building relational databases, Netlify for front-end
-              deployments. Heroku for back-end deployments, and Shopify’s Liquid
-              templating language for building immersive Shopify storefronts and
-              applications.
+              deployments. Heroku and Vercel for back-end deployments, Shopify Liquid
+              templating language for building custom Shopify storefronts, AWS
+              for cloud services and OpenAI for building AI
+              solutions.
             </p>
             <div className="logo-container bottom-spacing">
               <img
@@ -544,6 +575,21 @@ export default function HomePage() {
               <img
                 className="logo-icon"
                 src={theme === "dark" ? shopify : shopifyDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? amazon : amazonDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? vercel : vercelDark}
+                alt="some alt text"
+              />
+              <img
+                className="logo-icon"
+                src={theme === "dark" ? openai : openaiDark}
                 alt="some alt text"
               />
             </div>

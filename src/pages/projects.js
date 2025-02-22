@@ -1,52 +1,17 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import "../styles/projects.css";
 import { useTheme } from "../utils/ThemeContext";
 import Layout from "../components/Layout";
 
-import arrow from "../images/arrow-icon.svg";
-import altArrowLight from "../images/alt-arrow-icon-light.svg";
 import link from "../images/link-arrow.svg";
 import lightLink from "../images/light-link-arrow.svg";
 import data from "../data/data.json";
 import RotateWarning from "../components/RotateWarning";
 
 export default function AllProjects() {
-  const { theme } = useTheme();
-  const [expandedRow, setExpandedRow] = useState(null); // Track the currently expanded row
-
+  const { theme } = useTheme();// Track the currently expanded row
   const rows = data[1];
-  const refs = useRef(rows.projectArchives.map(() => React.createRef())); // Create refs for each row
 
-  const toggleAccordion = (rowId) => {
-    const newExpandedRow = expandedRow === rowId ? null : rowId; // Determine the new expanded row
-    const previousRowRef =
-      expandedRow !== null ? refs.current[expandedRow - 1] : null; // Ref for the currently expanded row
-    const currentRowRef = refs.current[rowId - 1]; // Ref for the newly clicked row
-
-    // Collapse the previously expanded row
-    if (previousRowRef && previousRowRef.current) {
-      previousRowRef.current.style.height = `${previousRowRef.current.scrollHeight}px`;
-      requestAnimationFrame(() => {
-        previousRowRef.current.style.height = "0";
-      });
-    }
-
-    // Expand the newly clicked row (if it's not the same as the currently expanded row)
-    if (newExpandedRow && currentRowRef && currentRowRef.current) {
-      currentRowRef.current.style.height = `${currentRowRef.current.scrollHeight}px`;
-      currentRowRef.current.addEventListener(
-        "transitionend",
-        () => {
-          if (newExpandedRow === rowId) {
-            currentRowRef.current.style.height = "auto";
-          }
-        },
-        { once: true }
-      );
-    }
-
-    setExpandedRow(newExpandedRow); // Update the state to track the newly expanded row
-  };
 
   return (
     <Layout>
@@ -85,27 +50,11 @@ export default function AllProjects() {
           </div>
           <div className="table-columns-container">
             {rows.projectArchives.map((row, index) => {
-              const isRowExpanded = expandedRow === row.id;
+
 
               return (
                 <div key={row.id} className="table-row">
-                  <div
-                    className="accordion-toggle-container"
-                    onClick={() => toggleAccordion(row.id)}
-                    data-theme={theme}
-                  >
-                    <span className="accordion-bar-1" data-theme={theme}></span>
-                    <span
-                      className="accordion-bar-2"
-                      data-theme={theme}
-                      style={{
-                        transform: isRowExpanded
-                          ? "rotate(0deg)"
-                          : "rotate(90deg)",
-                        transition: "transform 0.5s ease",
-                      }}
-                    ></span>
-                  </div>
+
                   <div className="content-year-column">
                     <p className="copy-font" data-theme={theme}>
                       {row.year}
@@ -118,22 +67,14 @@ export default function AllProjects() {
                         data-theme={theme}
                       ></span>
                     </div>
-                    <div
-                      className="content-project-column-bottom"
-                      ref={refs.current[index]}
-                      style={{
-                        height: "0",
-                        overflow: "hidden",
-                        transition: "height 0.5s ease",
-                      }}
-                    >
+                    <div className="content-project-column-bottom">
                       {row.projects.map((project, projectIndex) => (
                         <div
                           key={projectIndex}
                           className="project-container"
                           data-theme={theme}
                         >
-                          <div className="project-inner-column">
+                          <div className="project-inner-column" style={{ paddingLeft: "10px" }}>
                             <a
                               className="desktop-hidden no-decoration"
                               style={{ marginRight: "10px" }}
@@ -145,6 +86,7 @@ export default function AllProjects() {
                               data-theme={theme}
                             >
                               <p
+                                
                                 className="primary-heading-bold"
                                 data-theme={theme}
                               >
@@ -152,6 +94,7 @@ export default function AllProjects() {
                               </p>
                             </a>
                             <p
+                              
                               className="primary-heading-bold mobile-hidden"
                               data-theme={theme}
                             >

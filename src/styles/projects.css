@@ -158,6 +158,7 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 20px 0;
+  margin-left: 40px;
 }
 
 .accordion-toggle-container[data-theme="dark"] {
