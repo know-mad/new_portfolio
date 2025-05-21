@@ -658,6 +658,7 @@ p {
   border: 1px solid transparent; /* Set border to transparent */
   border-image: var(--border-color);
   border-image-slice: 1; /* Ensure gradient covers entire border */
+  resize: none;
 }
 
 ::placeholder {
