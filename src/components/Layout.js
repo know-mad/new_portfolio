@@ -6,6 +6,9 @@ import { useTheme } from "../utils/ThemeContext";
 import "../styles/Drawer.css";
 import { useLocation } from "@reach/router"; // Import useLocation
 
+import rotateDevice from '../images/rotate-device.svg'
+import lightRotateDevice from '../images/light-rotate-device.svg'
+
 export default function Layout({ children, scrollHandlers, activeLink }) {
   const { isDrawerOpen, closeDrawer, openDrawer } = useDrawer();
   const { theme, toggleTheme } = useTheme();
@@ -67,7 +70,6 @@ export default function Layout({ children, scrollHandlers, activeLink }) {
         activeLink={activeLink}
       />
       <div className="layout-container">
-        {/* Play with this to see if it is better to have it as part of the layout for all routes */}
         <NavBar
           isDrawerOpen={isDrawerOpen}
           theme={theme}
@@ -76,6 +78,13 @@ export default function Layout({ children, scrollHandlers, activeLink }) {
         />
         <main>{children}</main>
       </div>
+      {/* Display a warning when a mobile device is in landscape orientation */}
+      <div className={theme === 'dark' ? 'rotate-warning-container' : 'light-rotate-warning-container'}>
+      <div className='rotate-warning'>
+        <p className="copy-font" data-theme={theme}>Please rotate your device to portrait orientation for best experience.</p>
+        <img className="rotate-icon" src={theme === 'dark' ? rotateDevice : lightRotateDevice} alt="some alt text" />
+      </div>
+    </div>
     </>
   );
 }

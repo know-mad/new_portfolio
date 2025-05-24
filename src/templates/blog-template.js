@@ -62,7 +62,7 @@ export default function BlogTemplate({ data }) {
   const { theme } = useTheme();
   return (
     <Layout>
-      <RotateWarning />
+      {/* <RotateWarning /> */}
       <div className="static-page-container">
         <div className="page-content-container">
           <div className="blog-intro bottom-spacing">

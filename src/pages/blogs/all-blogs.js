@@ -3,9 +3,6 @@ import { Link, graphql } from "gatsby";
 import "../../styles/blogs.css";
 import { GatsbyImage } from "gatsby-plugin-image"; // Import GatsbyImage
 import { useTheme } from "../../utils/ThemeContext";
-import RotateWarning from "../../components/RotateWarning";
-import link from "../../images/link-arrow.svg";
-import lightLink from "../../images/light-link-arrow.svg";
 import Layout from "../../components/Layout";
 
 export default function AllBlogs({ data }) {
@@ -16,7 +13,6 @@ export default function AllBlogs({ data }) {
 
   return (
     <Layout>
-      <RotateWarning />
       <div className="static-page-container">
         <div ref={blogsContainerRef} className="page-content-container">
           {blogs.map(({ node }) => (

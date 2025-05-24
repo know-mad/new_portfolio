@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import link from "../images/link-arrow.svg";
 import lightLink from "../images/light-link-arrow.svg";
 import data from "../data/data.json";
-import RotateWarning from "../components/RotateWarning";
+
 
 export default function AllProjects() {
   const { theme } = useTheme();// Track the currently expanded row
@@ -15,7 +15,6 @@ export default function AllProjects() {
 
   return (
     <Layout>
-      <RotateWarning />
       <div className="static-page-container">
         <div className="page-content-container">
           <div className="table-columns gradient-border" data-theme={theme}>

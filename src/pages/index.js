@@ -4,7 +4,7 @@ import "../styles/index.css";
 import { Link } from "gatsby";
 import { useTheme } from "../utils/ThemeContext";
 import ScrollBar from "../components/ScrollBar";
-import RotateWarning from "../components/RotateWarning";
+
 
 // Icons and images
 import git from "../images/github.svg";
@@ -185,7 +185,6 @@ export default function HomePage() {
         contact: () => scrollToSection(contactRef, 4),
       }}
     >
-      <RotateWarning />
       <div className="home-container">
         <div className="home-container-left">
           <h1 className="heading-extra-bold bottom-spacing" data-theme={theme}>
