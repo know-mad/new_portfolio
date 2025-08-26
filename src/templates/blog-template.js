@@ -62,7 +62,7 @@ export default function BlogTemplate({ data }) {
   return (
     <Layout>
       <div className="static-page-container">
-        <div className="page-content-container">
+        <div style={{ paddingBottom: 150 }} className="page-content-container">
           <div className="blog-intro bottom-spacing">
             <div className="author-container">
               <img className="author-icon" src={me} alt="some alt here" />
