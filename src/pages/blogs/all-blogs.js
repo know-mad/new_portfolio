@@ -25,6 +25,7 @@ export default function AllBlogs({ data }) {
                   : "light-blog-item-container"
               } bottom-spacing no-decoration`}
             >
+              <div className="blog-item-container-inner" data-theme={theme}>
               <div className="article-type-container bottom-spacing">
                 <div className="blog-descriptor" data-theme={theme}>
                   Article
@@ -114,6 +115,7 @@ export default function AllBlogs({ data }) {
                     </div>
                   )}
                 </div>
+              </div>
               </div>
             </Link>
           ))}
