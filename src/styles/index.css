@@ -790,12 +790,7 @@ p {
   margin-right: 20px;
 }
 
-/* ol li {
-  color: #FFF;
-  font-family: var(--copy-font-family)
-} */
-
-.rich-text-ordered-list {
+ul, ol, li {
   color: #FFF;
   font-family: var(--copy-font-family)
 }
