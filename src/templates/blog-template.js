@@ -38,6 +38,12 @@ const Heading = ({ children, theme }) => (
   </h2>
 );
 
+const OrderedList = ({ children, theme }) => (
+  <ol className="rich-text-ordered-list" data-theme={theme}>
+    { children }
+  </ol>
+)
+
 const options = (theme) => ({
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => (
@@ -53,6 +59,9 @@ const options = (theme) => ({
     [BLOCKS.HEADING_2]: (node, children) => {
       return <Heading theme={theme}>{children}</Heading>;
     },
+    [BLOCKS.OL_LIST]: (node, children) => {
+      return <OrderedList theme={theme}>{children}</OrderedList>
+    }
   },
 });
 
