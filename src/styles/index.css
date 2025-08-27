@@ -158,16 +158,16 @@ p {
 }
 
 ol[data-theme="dark"] {
-  --color: var(--primary-accent-color)!important
+  --color: var(--primary-accent-color)
 }
 
 ol[data-theme="light"] {
-  --color: var(--light-primary-accent-color)!important
+  --color: var(--light-primary-accent-color)
 }
 
 ol {
-  color: var(--color);
-  font-family: var(--copy-font-family) !important;
+  color: var(--color)!important;
+  font-family: var(--copy-font-family)!important;
 }
 
 .link-bold {
