@@ -790,6 +790,11 @@ p {
   margin-right: 20px;
 }
 
+ol li {
+  color: #FFF;
+  font-family: var(--copy-font-family)
+}
+
 @media screen and (min-width: 768px) {
   .page-heading-extra-bold {
     font-size: 45px;
