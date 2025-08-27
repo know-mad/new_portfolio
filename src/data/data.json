@@ -40,6 +40,18 @@
     "projectArchives": [
       {
         "id": "1",
+        "year": 2025,
+        "projects": [
+          {
+            "name": "Clips Dating",
+            "made_at": " ",
+            "built_with": ["react native", "node.js", "mongo db", "express", "iOS,", "android"],
+            "link": "www.clipsdating.com"
+          }
+        ]
+      },
+      {
+        "id": "2",
         "year": 2024,
         "projects": [
           {
@@ -87,7 +99,7 @@
         ]
       },
       {
-        "id": "2",
+        "id": "3",
         "year": 2023,
         "projects": [
           {
@@ -141,7 +153,7 @@
         ]
       },
       {
-        "id": "3",
+        "id": "4",
         "year": 2022,
         "projects": [
           {

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import { useTheme } from "../utils/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 
 const NotFoundPage = () => {
   const {theme} = useTheme()

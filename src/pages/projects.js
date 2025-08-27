@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/projects.css";
-import { useTheme } from "../utils/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 import Layout from "../components/Layout";
 
 import link from "../images/link-arrow.svg";
@@ -14,7 +14,7 @@ export default function AllProjects() {
 
 
   return (
-    <Layout>
+
       <div className="static-page-container">
         <div className="page-content-container">
           <div className="table-columns gradient-border" data-theme={theme}>
@@ -163,7 +163,6 @@ export default function AllProjects() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }
 

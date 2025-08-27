@@ -1,18 +1,47 @@
 import React, { useEffect } from "react";
 import Drawer from "./Drawer";
 import NavBar from "./NavBar";
-import { useDrawer } from "../utils/DrawerContext";
-import { useTheme } from "../utils/ThemeContext";
+import { useDrawer } from "../context/DrawerContext";
+import { useTheme } from "../context/ThemeContext";
 import "../styles/Drawer.css";
 import { useLocation } from "@reach/router"; // Import useLocation
 
 import rotateDevice from "../images/rotate-device.svg";
 import lightRotateDevice from "../images/light-rotate-device.svg";
 
-export default function Layout({ children, scrollHandlers, activeLink }) {
-  const { isDrawerOpen, closeDrawer, openDrawer } = useDrawer();
+export default function Layout({ children }) {
+  const { isDrawerOpen, closeDrawer, openDrawer, activeLink } = useDrawer();
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+
+  // Lock body scroll when the drawer is open
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    const originalTouchAction = document.body.style.touchAction;
+
+    const preventTouchMove = (e) => {
+      if (isDrawerOpen) {
+        e.preventDefault();
+      }
+    };
+
+    if (isDrawerOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+      // Prevent iOS scroll bounce
+      window.addEventListener("touchmove", preventTouchMove, { passive: false });
+    } else {
+      document.body.style.overflow = originalOverflow || "";
+      document.body.style.touchAction = originalTouchAction || "";
+      window.removeEventListener("touchmove", preventTouchMove);
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow || "";
+      document.body.style.touchAction = originalTouchAction || "";
+      window.removeEventListener("touchmove", preventTouchMove);
+    };
+  }, [isDrawerOpen]);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -66,7 +95,7 @@ export default function Layout({ children, scrollHandlers, activeLink }) {
         iconBar1={isDrawerOpen ? `rotate(45deg)` : `rotate(0deg)`}
         iconBar2={isDrawerOpen ? `rotate(-45deg)` : `rotate(0deg)`}
         closeDrawer={closeDrawer}
-        scrollHandlers={scrollHandlers}
+        // scrollHandlers={scrollHandlers}
         activeLink={activeLink}
       />
       <div className="layout-container">

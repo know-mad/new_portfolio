@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import "../styles/blogs.css";
 import Layout from "../components/Layout";
-import { useTheme } from "../utils/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 
@@ -60,7 +60,6 @@ export default function BlogTemplate({ data }) {
   const { title, author, content } = data.contentfulArticle;
   const { theme } = useTheme();
   return (
-    <Layout>
       <div className="static-page-container">
         <div style={{ paddingBottom: 150 }} className="page-content-container">
           <div className="blog-intro bottom-spacing">
@@ -179,7 +178,6 @@ export default function BlogTemplate({ data }) {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }
 

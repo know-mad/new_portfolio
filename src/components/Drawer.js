@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Drawer.css";
-import { useTheme } from "../utils/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
+import { useDrawer } from "../context/DrawerContext";
 import { Link } from "gatsby";
 import git from "../images/github.svg";
 import gitDark from "../images/github-dark.svg";
 import linkedIn from "../images/linkedin.svg";
 import linkedInDark from "../images/linkedin-dark.svg";
 import { useLocation } from "@reach/router"; // Import useLocation
-
-
 
 export default function Drawer({
   isOpen,
@@ -21,290 +20,9 @@ export default function Drawer({
   activeLink,
 }) {
   const { theme } = useTheme();
-  const location = useLocation()
+  const location = useLocation();
+  const { scrollToSection, isScrolling } = useDrawer()
 
-  // const handleNavigateWithClose = (path) => {
-  //   closeDrawer();
-
-  //   // Wait for the animation to complete
-  //   const animationDuration = 1000;
-  //   setTimeout(() => {
-  //     navigate(path);
-  //   }, animationDuration);
-  // };
-
-  const renderConditionalLinks = () => {
-    if (location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/") { // Extract and format the blog title
-      return (
-        <div className="links-container">
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  HOME
-                </p>
-              </Link>
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/blogs/all-blogs/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  BLOG
-                </p>
-              </Link>
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/projects/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  ARCHIVES
-                </p>
-              </Link>
-            </div>
-          </div>
-      );
-    }
-
-    switch (location.pathname) {
-      case "/":
-        return (
-          <div className="links-container">
-            <div
-              onClick={() => {
-                scrollHandlers.about();
-              }}
-              className="mobile-link-container bottom-spacing"
-            >
-              <span
-                style={{ width: activeLink === 1 ? `75px` : `0px` }}
-                className={
-                  theme === "dark"
-                    ? "mobile-link-line-reversed"
-                    : "light-mobile-link-line-reversed"
-                }
-              ></span>
-              {theme === "dark" ? (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 1 ? `#CEFF00` : `#FFF` }}
-                >
-                  ABOUT ME
-                </p>
-              ) : (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 1 ? `#9F00EA` : `#555151` }}
-                >
-                  ABOUT ME
-                </p>
-              )}
-            </div>
-            <div
-              onClick={() => {
-                scrollHandlers.workExperience();
-              }}
-              className="mobile-link-container bottom-spacing"
-            >
-              <span
-                style={{ width: activeLink === 2 ? `75px` : `0px` }}
-                className={
-                  theme === "dark"
-                    ? "mobile-link-line"
-                    : "light-mobile-link-line"
-                }
-              ></span>
-              {theme === "dark" ? (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 2 ? `#00A3FF` : `#FFF` }}
-                >
-                  WORK EXPERIENCE
-                </p>
-              ) : (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 2 ? `#EA8D00` : `#555151` }}
-                >
-                  WORK EXPERIENCE
-                </p>
-              )}
-            </div>
-            <div
-              onClick={() => {
-                scrollHandlers.projects();
-              }}
-              className="mobile-link-container bottom-spacing"
-            >
-              <span
-                style={{ width: activeLink === 3 ? `75px` : `0px` }}
-                className={
-                  theme === "dark"
-                    ? "mobile-link-line-reversed"
-                    : "light-mobile-link-line-reversed"
-                }
-              ></span>
-              {theme === "dark" ? (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 3 ? `#CEFF00` : `#FFF` }}
-                >
-                  RECENT PROJECTS
-                </p>
-              ) : (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 3 ? `#9F00EA` : `#555151` }}
-                >
-                  RECENT PROJECTS
-                </p>
-              )}
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: `0px` }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/projects/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
-                >
-                  ARCHIVES
-                </p>
-              </Link>
-            </div>
-            <div
-              onClick={() => {
-                scrollHandlers.contact();
-              }}
-              className="mobile-link-container bottom-spacing"
-            >
-              <span
-                style={{ width: activeLink === 4 ? `75px` : `0px` }}
-                className={
-                  theme === "dark"
-                    ? "mobile-link-line"
-                    : "light-mobile-link-line"
-                }
-              ></span>
-              {theme === "dark" ? (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 4 ? `#00A3FF` : `#FFF` }}
-                >
-                  CONTACT ME
-                </p>
-              ) : (
-                <p
-                  className="drawer-link"
-                  style={{ color: activeLink === 4 ? `#EA8D00` : `#555151` }}
-                >
-                  CONTACT ME
-                </p>
-              )}
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: `0px` }}
-                className="mobile-link-line"
-              ></span>
-              <Link to="/blogs/all-blogs/" className="no-decoration">
-              <p className="static-link" data-theme={theme}>
-                BLOG
-              </p>
-              </Link>
-            </div>
-          </div>
-        );
-      case "/projects/":
-        return (
-          <div className="links-container">
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/blogs/all-blogs" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  BLOG
-                </p>
-              </Link>
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  HOME
-                </p>
-              </Link>
-            </div>
-          </div>
-        );
-      case "/blogs/all-blogs/":
-        return (
-          <div className="links-container">
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  HOME
-                </p>
-              </Link>
-            </div>
-            <div className="mobile-link-container bottom-spacing">
-              <span
-                style={{ width: "0px" }}
-                className="mobile-link-line-reversed"
-              ></span>
-              <Link to="/projects/" className="no-decoration">
-                <p
-                  className="drawer-link"
-                  style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-                >
-                  ARCHIVES
-                </p>
-              </Link>
-            </div>
-          </div>
-        );
-      // Add more cases for other routes as needed
-      default:
-        return null;
-    }
-  };
 
   return (
     <div
@@ -326,9 +44,286 @@ export default function Drawer({
         </div>
       </div>
       <div className="drawer-bottom">
-        {renderConditionalLinks()}
+        {/* Animated Links Containers */}
+        <div
+          style={{
+            marginLeft: location.pathname === "/" ? 0 : -400,
+            transition: "margin-left 0.5s ease",
+          }}
+          className="home-links-container"
+        >
+          <div
+            onClick={() => {
+              scrollToSection('about', 1)
+            }}
+            className="mobile-link-container bottom-spacing"
+          >
+            <span
+              style={{ width: activeLink === 1 && !isScrolling ? `75px` : `0px` }}
+              className={
+                theme === "dark"
+                  ? "mobile-link-line-reversed"
+                  : "light-mobile-link-line-reversed"
+              }
+            ></span>
+            {theme === "dark" ? (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 1  ? `#CEFF00` : `#FFF` }}
+              >
+                ABOUT ME
+              </p>
+            ) : (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 1 ? `#9F00EA` : `#555151` }}
+              >
+                ABOUT ME
+              </p>
+            )}
+          </div>
+          <div
+            onClick={() => {
+              scrollToSection('work', 2)
+            }}
+            className="mobile-link-container bottom-spacing"
+          >
+            <span
+              style={{ width: activeLink === 2 && !isScrolling ? `75px` : `0px` }}
+              className={
+                theme === "dark" ? "mobile-link-line" : "light-mobile-link-line"
+              }
+            ></span>
+            {theme === "dark" ? (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 2 ? `#00A3FF` : `#FFF` }}
+              >
+                WORK EXPERIENCE
+              </p>
+            ) : (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 2 ? `#EA8D00` : `#555151` }}
+              >
+                WORK EXPERIENCE
+              </p>
+            )}
+          </div>
+          <div
+            onClick={() => {
+              scrollToSection('projects', 3)
+            }}
+            className="mobile-link-container bottom-spacing"
+          >
+            <span
+              style={{ width: activeLink === 3 && !isScrolling ? `75px` : `0px` }}
+              className={
+                theme === "dark"
+                  ? "mobile-link-line-reversed"
+                  : "light-mobile-link-line-reversed"
+              }
+            ></span>
+            {theme === "dark" ? (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 3 ? `#CEFF00` : `#FFF` }}
+              >
+                RECENT PROJECTS
+              </p>
+            ) : (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 3 ? `#9F00EA` : `#555151` }}
+              >
+                RECENT PROJECTS
+              </p>
+            )}
+          </div>
+          <div
+            onClick={() => {
+              scrollToSection('contact', 4)
+            }}
+            className="mobile-link-container bottom-spacing"
+          >
+            <span
+              style={{ width: activeLink === 4 && !isScrolling ? `75px` : `0px` }}
+              className={
+                theme === "dark" ? "mobile-link-line" : "light-mobile-link-line"
+              }
+            ></span>
+            {theme === "dark" ? (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 4 ? `#00A3FF` : `#FFF` }}
+              >
+                CONTACT ME
+              </p>
+            ) : (
+              <p
+                className="drawer-link"
+                style={{ color: activeLink === 4 ? `#EA8D00` : `#555151` }}
+              >
+                CONTACT ME
+              </p>
+            )}
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: `0px` }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/projects/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
+              >
+                ARCHIVES
+              </p>
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span style={{ width: `0px` }} className="mobile-link-line"></span>
+            <Link to="/blogs/all-blogs/" className="no-decoration">
+              <p className="static-link" data-theme={theme}>
+                BLOG
+              </p>
+            </Link>
+          </div>
+        </div>
 
-        <div className="socials-container">
+        {/* Projects */}
+
+        <div
+          style={{
+            marginLeft: location.pathname === "/projects/" ? 0 : -400,
+            transition: "margin-left 0.5s ease",
+          }}
+          className="projects-links-container"
+        >
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/blogs/all-blogs" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                BLOG
+              </p>
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                HOME
+              </p>
+            </Link>
+          </div>
+        </div>
+
+        {/* Blogs */}
+
+        <div
+          style={{
+            marginLeft: location.pathname === "/blogs/all-blogs/" ? 0 : -400,
+            transition: "margin-left 0.5s ease",
+          }}
+          className="blogs-links-container"
+        >
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                HOME
+              </p>
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/projects/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                ARCHIVES
+              </p>
+            </Link>
+          </div>
+        </div>
+
+        {/* Article */}
+        <div
+        style={{
+          marginLeft: location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/" ? 0 : -400,
+          transition: "margin-left 0.5s ease",
+        }}
+         className="article-links-container">
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                HOME
+              </p>
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/blogs/all-blogs/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                BLOG
+              </p>
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <Link to="/projects/" className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                ARCHIVES
+              </p>
+            </Link>
+          </div>
+        </div>
+
+        {/* End Links Containers */}
+
+        <div className="mobile-socials-container">
           <a href="https://github.com/know-mad" target="_blank" rel="noopener">
             <img
               className="social-link"

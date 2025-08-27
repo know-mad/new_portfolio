@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link, graphql } from "gatsby";
 import "../../styles/blogs.css";
 import { GatsbyImage } from "gatsby-plugin-image"; // Import GatsbyImage
-import { useTheme } from "../../utils/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import Layout from "../../components/Layout";
 
 export default function AllBlogs({ data }) {
@@ -12,7 +12,7 @@ export default function AllBlogs({ data }) {
   const blogs = data.allContentfulArticle.edges;
 
   return (
-    <Layout>
+
       <div className="static-page-container">
         <div ref={blogsContainerRef} className="page-content-container">
           {blogs.map(({ node }) => (
@@ -26,7 +26,7 @@ export default function AllBlogs({ data }) {
               } bottom-spacing no-decoration`}
             >
               <div className="blog-item-container-inner" data-theme={theme}>
-                <div className="article-type-container bottom-spacing">
+                <div className="article-type-container">
                   <div className="blog-descriptor" data-theme={theme}>
                     Article
                   </div>
@@ -63,7 +63,7 @@ export default function AllBlogs({ data }) {
                   </div>
                   <div className="mobile-inner">
                     <p
-                      className="primary-heading-bold bottom-spacing"
+                      className="primary-heading-bold"
                       data-theme={theme}
                     >
                       {node.title}
@@ -121,7 +121,6 @@ export default function AllBlogs({ data }) {
           ))}
         </div>
       </div>
-    </Layout>
   );
 }
 

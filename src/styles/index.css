@@ -721,16 +721,15 @@ p {
   /* background: gold; */
 }
 
-.socials-container {
+/* .socials-container {
   display: flex;
   flex-direction: row;
   padding-top: 25px;
-  /* background: gold; */
 }
 
 .social-link {
   margin-right: 20px;
-}
+} */
 
 .mobile-hidden {
   display: none;
@@ -769,6 +768,26 @@ p {
   height: 100vh;
   text-align: center;
   padding: 15px;
+}
+
+#about, #work, #projects, #contact {
+  scroll-margin-top: 80px;
+}
+
+.mobile-socials-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+}
+
+.desktop-socials-container {
+  margin-top: 40px;
+}
+
+.social-link {
+  margin-right: 20px;
 }
 
 @media screen and (min-width: 768px) {
