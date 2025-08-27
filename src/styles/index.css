@@ -157,6 +157,19 @@ p {
   --color: var(--light-secondary-accent-color)
 }
 
+ol[data-theme="dark"] {
+  --color: var(--primary-accent-color)!important
+}
+
+ol[data-theme="light"] {
+  --color: var(--light-primary-accent-color)!important
+}
+
+ol {
+  color: var(--color);
+  font-family: var(--copy-font-family) !important;
+}
+
 .link-bold {
   font-size: 15px;
   font-family: var(--header-font-family);
@@ -790,10 +803,10 @@ p {
   margin-right: 20px;
 }
 
-ul, ol, li {
+/* ul, ol, li {
   color: #FFF;
   font-family: var(--copy-font-family)
-}
+} */
 
 @media screen and (min-width: 768px) {
   .page-heading-extra-bold {
