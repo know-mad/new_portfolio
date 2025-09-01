@@ -6,7 +6,7 @@
   backdrop-filter: blur(10px);
   background: rgba(217,217,217,0.04);
   position: fixed;
-  z-index: 20;
+  z-index: 101;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   box-shadow: 0.5px 0 #636363;
@@ -21,7 +21,7 @@
   backdrop-filter: blur(10px);
   background: rgba(146,146,146,0.1);
   position: fixed;
-  z-index: 10;
+  z-index: 101;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   box-shadow: 3px 0 13px#636363;

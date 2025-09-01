@@ -271,7 +271,7 @@ export default function HomePage() {
                   <Link
                     className="drawer-link no-decoration"
                     style={{ color: activeLink === 3 && !isScrolling ? `#CEFF00` : `#FFF` }}
-                    to="/projects"
+                    to="/projects/all-projects/"
                   >
                     ARCHIVES
                   </Link>
@@ -301,7 +301,7 @@ export default function HomePage() {
                     style={{
                       color: activeLink === 3 && !isScrolling ? `#EA8D00` : `#555151`,
                     }}
-                    to="/projects"
+                    to="/projects/all-projects/"
                   >
                     ARCHIVES
                   </Link>
@@ -783,7 +783,7 @@ export default function HomePage() {
             </div>
           ))}
           <Link
-            to="/projects/"
+            to="/projects/all-projects/"
             className={`${
               theme === "dark" ? "contact-button" : "light-contact-button"
             } no-decoration`}

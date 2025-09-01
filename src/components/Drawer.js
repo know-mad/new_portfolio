@@ -21,8 +21,7 @@ export default function Drawer({
 }) {
   const { theme } = useTheme();
   const location = useLocation();
-  const { scrollToSection, isScrolling } = useDrawer()
-
+  const { scrollToSection, isScrolling } = useDrawer();
 
   return (
     <div
@@ -54,12 +53,14 @@ export default function Drawer({
         >
           <div
             onClick={() => {
-              scrollToSection('about', 1)
+              scrollToSection("about", 1);
             }}
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 1 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 1 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line-reversed"
@@ -69,7 +70,7 @@ export default function Drawer({
             {theme === "dark" ? (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 1  ? `#CEFF00` : `#FFF` }}
+                style={{ color: activeLink === 1 ? `#CEFF00` : `#FFF` }}
               >
                 ABOUT ME
               </p>
@@ -84,12 +85,14 @@ export default function Drawer({
           </div>
           <div
             onClick={() => {
-              scrollToSection('work', 2)
+              scrollToSection("work", 2);
             }}
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 2 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 2 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark" ? "mobile-link-line" : "light-mobile-link-line"
               }
@@ -112,12 +115,14 @@ export default function Drawer({
           </div>
           <div
             onClick={() => {
-              scrollToSection('projects', 3)
+              scrollToSection("projects", 3);
             }}
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 3 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 3 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line-reversed"
@@ -142,12 +147,14 @@ export default function Drawer({
           </div>
           <div
             onClick={() => {
-              scrollToSection('contact', 4)
+              scrollToSection("contact", 4);
             }}
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 4 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 4 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark" ? "mobile-link-line" : "light-mobile-link-line"
               }
@@ -173,7 +180,7 @@ export default function Drawer({
               style={{ width: `0px` }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/" className="no-decoration">
+            <Link to="/projects/all-projects/" className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
@@ -196,7 +203,8 @@ export default function Drawer({
 
         <div
           style={{
-            marginLeft: location.pathname === "/projects/" ? 0 : -400,
+            marginLeft:
+              location.pathname === "/projects/all-projects/" ? 0 : -400,
             transition: "margin-left 0.5s ease",
           }}
           className="projects-links-container"
@@ -259,7 +267,7 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/" className="no-decoration">
+            <Link to="/projects/all-projects/" className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
@@ -272,11 +280,18 @@ export default function Drawer({
 
         {/* Article */}
         <div
-        style={{
-          marginLeft: location.pathname.startsWith("/blogs/") && location.pathname !== "/blogs/all-blogs/" ? 0 : -400,
-          transition: "margin-left 0.5s ease",
-        }}
-         className="article-links-container">
+          style={{
+            marginLeft:
+              (location.pathname.startsWith("/blogs/") &&
+                location.pathname !== "/blogs/all-blogs/") ||
+              (location.pathname.startsWith("/projects/") &&
+                location.pathname !== "/projects/all-projects/")
+                ? 0
+                : -400,
+            transition: "margin-left 0.5s ease",
+          }}
+          className="article-links-container"
+        >
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
@@ -310,7 +325,7 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/" className="no-decoration">
+            <Link to="/projects/all-projects/" className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}

@@ -67,12 +67,6 @@
             "link": "www.salvationarmy.com"
           },
           {
-            "name": "Avenue B",
-            "made_at": "Blueswitch",
-            "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
-            "link": "www.shopavenueb.com"
-          },
-          {
             "name": "Technics",
             "made_at": "Blueswitch",
             "built_with": ["shopify", "html", "css", "js", "liquid", "ajax"],
