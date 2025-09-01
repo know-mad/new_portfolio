@@ -627,6 +627,7 @@ ol {
   border-radius: 20px;
   margin-right: 10px;
   margin-bottom: 10px;
+  max-height: fit-content;
 }
 
 
@@ -814,6 +815,28 @@ ol {
   flex-direction: column;
   margin-top: 75px;
   position: relative;
+}
+
+.back-navigator-link {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  width: auto;
+}
+
+.mobile-back-button[data-theme="dark"] {
+  --color: var(--primary-accent-color);
+}
+
+.mobile-back-button[data-theme="light"] {
+  --color: var(--light-secondary-accent-color);
+}
+
+.mobile-back-button {
+  font-family: var(--header-font-family);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--color);
 }
 
 

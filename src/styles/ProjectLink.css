@@ -42,6 +42,7 @@
   display: none;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   height: 100%;
   width: 400px;
   max-width: 400px;

@@ -71,18 +71,6 @@ export default function ProjectTemplate({ data }) {
   return (
     <div className="static-page-container">
       <div style={{ paddingBottom: 150 }} className="page-content-container">
-        <div className="mobile-back-navigator">
-          <Link to="/projects/all-projects" className="back-navigator-link">
-            <img
-              className="back-arrow"
-              src={theme === "dark" ? darkBackArrow : lightBackArrow}
-              alt="some alt text"
-            />
-            <p className="mobile-back-button" data-theme={theme}>
-              Back
-            </p>
-          </Link>
-        </div>
         <div
           className={
             theme === "dark"
