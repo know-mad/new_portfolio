@@ -22,8 +22,8 @@ export default function Drawer({
   const { scrollToSection, isScrolling, closeDrawer } = useDrawer();
 
   const handleNavigate = (route) => {
-    navigate(route);
     closeDrawer();
+    setTimeout(() => {navigate(route)}, 1000)
   };
 
   return (
@@ -49,9 +49,7 @@ export default function Drawer({
         {/* Animated Links Containers */}
         <div
           style={{
-            transitionDelay: "1.5s",
             marginLeft: location.pathname === "/" ? 0 : -400,
-            transition: "margin-left 0.5s ease",
           }}
           className="home-links-container"
         >
@@ -213,10 +211,8 @@ export default function Drawer({
 
         <div
           style={{
-            transitionDelay: "1.5s",
             marginLeft:
               location.pathname === "/projects/all-projects/" ? 0 : -400,
-            transition: "margin-left 0.5s ease",
           }}
           className="projects-links-container"
         >
@@ -257,9 +253,7 @@ export default function Drawer({
 
         <div
           style={{
-            transitionDelay: "1.5s",
             marginLeft: location.pathname === "/blogs/all-blogs/" ? 0 : -400,
-            transition: "margin-left 0.5s ease",
           }}
           className="blogs-links-container"
         >
@@ -299,7 +293,6 @@ export default function Drawer({
         {/* Article */}
         <div
           style={{
-            transitionDelay: "1.5s",
             marginLeft:
               (location.pathname.startsWith("/blogs/") &&
                 location.pathname !== "/blogs/all-blogs/") ||
@@ -307,7 +300,6 @@ export default function Drawer({
                 location.pathname !== "/projects/all-projects/")
                 ? 0
                 : -400,
-            transition: "margin-left 0.5s ease",
           }}
           className="article-links-container"
         >
