@@ -829,7 +829,7 @@ ol {
 }
 
 .mobile-back-button[data-theme="light"] {
-  --color: var(--light-secondary-accent-color);
+  --color: var(--light-primary-accent-color);
 }
 
 .mobile-back-button {

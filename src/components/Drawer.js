@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../styles/Drawer.css";
 import { useTheme } from "../context/ThemeContext";
 import { useDrawer } from "../context/DrawerContext";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import git from "../images/github.svg";
 import gitDark from "../images/github-dark.svg";
 import linkedIn from "../images/linkedin.svg";
@@ -11,17 +11,20 @@ import { useLocation } from "@reach/router"; // Import useLocation
 
 export default function Drawer({
   isOpen,
-  closeDrawer,
   delayCloseIcon,
   delayAnimation,
   iconBar1,
   iconBar2,
-  scrollHandlers,
   activeLink,
 }) {
   const { theme } = useTheme();
   const location = useLocation();
-  const { scrollToSection, isScrolling } = useDrawer();
+  const { scrollToSection, isScrolling, closeDrawer } = useDrawer();
+
+  const handleNavigate = (route) => {
+    navigate(route);
+    closeDrawer();
+  };
 
   return (
     <div
@@ -46,6 +49,7 @@ export default function Drawer({
         {/* Animated Links Containers */}
         <div
           style={{
+            transitionDelay: "1.5s",
             marginLeft: location.pathname === "/" ? 0 : -400,
             transition: "margin-left 0.5s ease",
           }}
@@ -180,22 +184,28 @@ export default function Drawer({
               style={{ width: `0px` }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/all-projects/" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/projects/all-projects/")}
+              className="no-decoration"
+            >
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
               >
                 ARCHIVES
               </p>
-            </Link>
+            </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span style={{ width: `0px` }} className="mobile-link-line"></span>
-            <Link to="/blogs/all-blogs/" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/blogs/all-blogs/")}
+              className="no-decoration"
+            >
               <p className="static-link" data-theme={theme}>
                 BLOG
               </p>
-            </Link>
+            </div>
           </div>
         </div>
 
@@ -203,6 +213,7 @@ export default function Drawer({
 
         <div
           style={{
+            transitionDelay: "1.5s",
             marginLeft:
               location.pathname === "/projects/all-projects/" ? 0 : -400,
             transition: "margin-left 0.5s ease",
@@ -214,28 +225,31 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/blogs/all-blogs" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/blogs/all-blogs")}
+              className="no-decoration"
+            >
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 BLOG
               </p>
-            </Link>
+            </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/" className="no-decoration">
+            <div onClick={() => handleNavigate("/")} className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 HOME
               </p>
-            </Link>
+            </div>
           </div>
         </div>
 
@@ -243,6 +257,7 @@ export default function Drawer({
 
         <div
           style={{
+            transitionDelay: "1.5s",
             marginLeft: location.pathname === "/blogs/all-blogs/" ? 0 : -400,
             transition: "margin-left 0.5s ease",
           }}
@@ -253,34 +268,38 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/" className="no-decoration">
+            <div onClick={() => handleNavigate("/")} className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 HOME
               </p>
-            </Link>
+            </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/all-projects/" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/projects/all-projects/")}
+              className="no-decoration"
+            >
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 ARCHIVES
               </p>
-            </Link>
+            </div>
           </div>
         </div>
 
         {/* Article */}
         <div
           style={{
+            transitionDelay: "1.5s",
             marginLeft:
               (location.pathname.startsWith("/blogs/") &&
                 location.pathname !== "/blogs/all-blogs/") ||
@@ -297,42 +316,48 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/" className="no-decoration">
+            <div onClick={() => handleNavigate("/")} className="no-decoration">
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 HOME
               </p>
-            </Link>
+            </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/blogs/all-blogs/" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/blogs/all-blogs/")}
+              className="no-decoration"
+            >
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 BLOG
               </p>
-            </Link>
+            </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
-            <Link to="/projects/all-projects/" className="no-decoration">
+            <div
+              onClick={() => handleNavigate("/projects/all-projects/")}
+              className="no-decoration"
+            >
               <p
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 ARCHIVES
               </p>
-            </Link>
+            </div>
           </div>
         </div>
 

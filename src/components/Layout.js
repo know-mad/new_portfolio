@@ -94,7 +94,7 @@ export default function Layout({ children }) {
         delayAnimation={isDrawerOpen ? `1s` : `0.5s`}
         iconBar1={isDrawerOpen ? `rotate(45deg)` : `rotate(0deg)`}
         iconBar2={isDrawerOpen ? `rotate(-45deg)` : `rotate(0deg)`}
-        closeDrawer={closeDrawer}
+        // closeDrawer={closeDrawer}
         // scrollHandlers={scrollHandlers}
         activeLink={activeLink}
       />

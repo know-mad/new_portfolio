@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
 
 import darkBackArrow from "../images/arrow-icon.svg";
-import lightBackArrow from "../images/arrow-icon-light.svg";
+import lightBackArrow from "../images/alt-arrow-icon-light.svg";
 
 export default function NavBar({
   theme,
