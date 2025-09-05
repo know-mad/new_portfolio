@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://blog.davidvelez.io",
-        sitemap: "https://blog.davidvelez.io/sitemap.xml",
+        host: "https://davidvelez.io",
+        sitemap: "https://davidvelez.io/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
@@ -61,6 +61,5 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-offline`,
-    // Configure gtag file after configuring analytics in google dahsboard
   ],
 };
