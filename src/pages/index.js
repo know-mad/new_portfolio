@@ -62,7 +62,7 @@ export default function HomePage() {
     scrollingProgrammatically,
     scrollToSection,
     setActiveLink,
-    isScrolling
+    isScrolling,
   } = useDrawer();
 
   const aboutRef = useRef(null);
@@ -78,7 +78,6 @@ export default function HomePage() {
   ];
 
   const rows = data[0];
-
 
   useEffect(() => {
     const getThreshold = (ref) => {
@@ -159,7 +158,6 @@ export default function HomePage() {
     };
   }, [sectionRefs, scrollingProgrammatically]);
 
-
   return (
     <div className="home-container">
       <div className="home-container-left">
@@ -173,8 +171,8 @@ export default function HomePage() {
           Full Stack Software Engineer
         </p>
         <p className="copy-font" data-theme={theme}>
-          I'm a creative software engineer that loves to build beautifully designed
-          technology solutions so you or your business can win online.
+          I'm a creative software engineer that loves to build beautifully
+          designed technology solutions so you or your business can win online.
         </p>
         <div className="navigation-items">
           <div
@@ -184,7 +182,9 @@ export default function HomePage() {
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 1 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 1 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line-reversed"
@@ -194,14 +194,19 @@ export default function HomePage() {
             {theme === "dark" ? (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 1 && !isScrolling ? `#CEFF00` : `#FFF` }}
+                style={{
+                  color: activeLink === 1 && !isScrolling ? `#CEFF00` : `#FFF`,
+                }}
               >
                 ABOUT ME
               </p>
             ) : (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 1 && !isScrolling ? `#EA8D00` : `#555151` }}
+                style={{
+                  color:
+                    activeLink === 1 && !isScrolling ? `#EA8D00` : `#555151`,
+                }}
               >
                 ABOUT ME
               </p>
@@ -214,7 +219,9 @@ export default function HomePage() {
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 2 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 2 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line"
@@ -224,14 +231,19 @@ export default function HomePage() {
             {theme === "dark" ? (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 2 && !isScrolling ? `#00A3FF` : `#FFF` }}
+                style={{
+                  color: activeLink === 2 && !isScrolling ? `#00A3FF` : `#FFF`,
+                }}
               >
                 WORK EXPERIENCE
               </p>
             ) : (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 2 && !isScrolling ? `#9F00EA` : `#555151` }}
+                style={{
+                  color:
+                    activeLink === 2 && !isScrolling ? `#9F00EA` : `#555151`,
+                }}
               >
                 WORK EXPERIENCE
               </p>
@@ -244,7 +256,9 @@ export default function HomePage() {
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 3 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 3 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line-reversed"
@@ -256,7 +270,10 @@ export default function HomePage() {
                 <div className="container-row-left">
                   <p
                     className="drawer-link"
-                    style={{ color: activeLink === 3 && !isScrolling ? `#CEFF00` : `#FFF` }}
+                    style={{
+                      color:
+                        activeLink === 3 && !isScrolling ? `#CEFF00` : `#FFF`,
+                    }}
                   >
                     RECENT PROJECTS
                   </p>
@@ -270,7 +287,10 @@ export default function HomePage() {
                 >
                   <Link
                     className="drawer-link no-decoration"
-                    style={{ color: activeLink === 3 && !isScrolling ? `#CEFF00` : `#FFF` }}
+                    style={{
+                      color:
+                        activeLink === 3 && !isScrolling ? `#CEFF00` : `#FFF`,
+                    }}
                     to="/projects/all-projects/"
                   >
                     ARCHIVES
@@ -283,7 +303,10 @@ export default function HomePage() {
                   <p
                     className="drawer-link"
                     style={{
-                      color: activeLink === 3 && !isScrolling ? `#EA8D00` : `#555151`,
+                      color:
+                        activeLink === 3 && !isScrolling
+                          ? `#EA8D00`
+                          : `#555151`,
                     }}
                   >
                     RECENT PROJECTS
@@ -299,7 +322,10 @@ export default function HomePage() {
                   <Link
                     className="drawer-link no-decoration"
                     style={{
-                      color: activeLink === 3 && !isScrolling ? `#EA8D00` : `#555151`,
+                      color:
+                        activeLink === 3 && !isScrolling
+                          ? `#EA8D00`
+                          : `#555151`,
                     }}
                     to="/projects/all-projects/"
                   >
@@ -316,7 +342,9 @@ export default function HomePage() {
             className="mobile-link-container bottom-spacing"
           >
             <span
-              style={{ width: activeLink === 4 && !isScrolling ? `75px` : `0px` }}
+              style={{
+                width: activeLink === 4 && !isScrolling ? `75px` : `0px`,
+              }}
               className={
                 theme === "dark"
                   ? "mobile-link-line"
@@ -326,14 +354,19 @@ export default function HomePage() {
             {theme === "dark" ? (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 4 && !isScrolling ? `#00A3FF` : `#FFF` }}
+                style={{
+                  color: activeLink === 4 && !isScrolling ? `#00A3FF` : `#FFF`,
+                }}
               >
                 CONTACT ME
               </p>
             ) : (
               <p
                 className="drawer-link"
-                style={{ color: activeLink === 4 && !isScrolling ? `#9F00EA` : `#555151` }}
+                style={{
+                  color:
+                    activeLink === 4 && !isScrolling ? `#9F00EA` : `#555151`,
+                }}
               >
                 CONTACT ME
               </p>
@@ -379,7 +412,11 @@ export default function HomePage() {
           handleClick4={() => scrollToSection("contact", 4)}
           activeLink={activeLink}
         />
-        <section id="about" className="content-container bottom-spacing" ref={aboutRef}>
+        <section
+          id="about"
+          className="content-container bottom-spacing"
+          ref={aboutRef}
+        >
           <div className="mobile-intro">
             <h1
               className="heading-extra-bold bottom-spacing"
@@ -421,12 +458,12 @@ export default function HomePage() {
             </div>
           </div>
           <p className="copy-font bottom-spacing" data-theme={theme}>
-            With a background in software
-            engineering, I specialize in building mobile and web applications,
-            as well as blazing fast websites by using the latest technologies to
-            prioritize site/app performance ultimately resulting in faster page
-            load speeds and better SEO all delivered with beautifully and
-            functionally designed user interfaces.
+            With a background in software engineering, I specialize in building
+            mobile and web applications, as well as blazing fast websites by
+            using the latest technologies to prioritize site/app performance
+            ultimately resulting in faster page load speeds and better SEO all
+            delivered with beautifully and functionally designed user
+            interfaces.
           </p>
           <h3
             className="secondary-heading-semi-bold bottom-spacing"
@@ -707,7 +744,11 @@ export default function HomePage() {
             disabilities who wanted to use our digital assets.
           </p>
         </section>
-        <section id="projects" className="content-container bottom-spacing" ref={projectsRef}>
+        <section
+          id="projects"
+          className="content-container bottom-spacing"
+          ref={projectsRef}
+        >
           <div className="section-title bottom-spacing">
             <span
               className={`${
@@ -793,7 +834,11 @@ export default function HomePage() {
             </p>
           </Link>
         </section>
-        <section id="contact" className="content-container bottom-spacing" ref={contactRef}>
+        <section
+          id="contact"
+          className="content-container bottom-spacing"
+          ref={contactRef}
+        >
           <div className="section-title bottom-spacing">
             <span
               style={{ transform: "rotate(180deg)" }}
@@ -863,4 +908,12 @@ export default function HomePage() {
   );
 }
 
-export const Head = () => <title>Best NYC Web Developers</title>;
+export const Head = () => (
+  <>
+    <title>Best NYC App Developers</title>
+    <meta
+      name="description"
+      content="I create mobile apps for android and iOS devices to help your business get ahead in the technology race."
+    />
+  </>
+);

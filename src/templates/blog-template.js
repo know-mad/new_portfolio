@@ -187,13 +187,23 @@ export default function BlogTemplate({ data }) {
 }
 
 export const Head = ({ data }) => (
-  <title>{data?.contentfulArticle?.title || "Blog"}</title>
+  <>
+    <title>{data?.contentfulArticle?.title || "Blog"}</title>
+    <meta
+      name="description"
+      content={
+        data?.contentfuleArticle?.metaDescription ||
+        "I am a mobile and web developer that builds apps for the web, android, and iOS devices."
+      }
+    />
+  </>
 );
 
 export const query = graphql`
   query BlogBySlug($slug: String!) {
     contentfulArticle(slug: { eq: $slug }) {
       title
+      metaDescription
       author
       slug
       date(formatString: "MMMM DD, YYYY")
