@@ -154,6 +154,19 @@ export default function ProjectTemplate({ data }) {
   );
 }
 
+export const Head = ({ data }) => (
+  <>
+    <title>{data?.contentfulProject?.title || "Project Build"}</title>
+    <meta
+      name="description"
+      content={
+        data?.contentfulArticle?.metaDescription ||
+        "David Velez is a mobile and web developer that builds mobile apps for the web, android, and iOS devices."
+      }
+    />
+  </>
+);
+
 export const query = graphql`
   query ProjectBySlug($slug: String!) {
     contentfulProject(slug: { eq: $slug }) {
