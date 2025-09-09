@@ -193,7 +193,7 @@ export const Head = ({ data }) => (
       name="description"
       content={
         data?.contentfulArticle?.metaDescription ||
-        "I am a mobile and web developer that builds apps for the web, android, and iOS devices."
+        "David Velez is a mobile and web developer that builds apps for the web, android, and iOS devices."
       }
     />
   </>

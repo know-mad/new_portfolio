@@ -13,7 +13,7 @@ const HeadComponents = [
 ];
 
 const BodyAttributes = {
-  "data-theme": "light",
+  "data-theme": "dark",
 };
 
 export const wrapRootElement = ({ element }) => {
