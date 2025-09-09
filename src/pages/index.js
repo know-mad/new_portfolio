@@ -995,7 +995,7 @@ export default function HomePage({ data }) {
                   theme === "dark" ? "submit-button" : "light-submit-button"
                 }
               >
-                <p>SUBMIT</p>
+                <p className="copy-font" data-theme={theme}>SUBMIT</p>
               </button>
             </form>
           </div>

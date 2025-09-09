@@ -688,7 +688,14 @@ ol {
   border: none;
   font-size: 16px;
   color: var(--light-secondary-text-color);
-  background: linear-gradient(to left, var(--primary-accent-color), var(--secondary-accent-color));
+  border: 1px solid transparent; /* Set border to transparent */
+  border-image: linear-gradient(
+    to left,
+    var(--primary-accent-color),
+    var(--secondary-accent-color)
+  ); /* Apply linear gradient */
+  border-image-slice: 1; /* Ensure gradient covers entire border */
+  background: var(--bg)
 }
 
 .light-submit-button {
@@ -697,9 +704,16 @@ ol {
   border: none;
   font-size: 16px;
   color: #f1f1f1;;
-  background: linear-gradient(to right, var(--light-primary-accent-color), var(--light-secondary-accent-color));
   box-shadow: 6px 7px 9px rgba(85, 81, 81, 0.7);
   transition: box-shadow 0.5s ease, color 0.5s ease;
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+    to left,
+    var(--light-secondary-accent-color),
+    var(--light-primary-accent-color)
+  ); 
+  border-image-slice: 1; /* Ensure gradient covers entire border */
 }
 
 .light-submit-button:hover {
