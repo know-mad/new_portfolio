@@ -34,7 +34,7 @@ export default function AllBlogs({ data }) {
                   className={
                     theme === "dark"
                       ? "heading-line"
-                      : "light-heading-line-reversed"
+                      : "light-heading-line"
                   }
                   style={{ marginLeft: 0, marginRight: 10 }}
                 ></span>

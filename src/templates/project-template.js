@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { useTheme } from "../context/ThemeContext";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
@@ -134,7 +134,7 @@ export default function ProjectTemplate({ data }) {
             </p>
           </div>
         )}
-        {projectLink && projectLink !== "https://davidvelez.io/" && (
+        {projectLink && (
           <div className="project-description-container">
             <h3
               className="secondary-heading-semi-bold bottom-spacing"
@@ -156,13 +156,11 @@ export default function ProjectTemplate({ data }) {
 
 export const Head = ({ data }) => (
   <>
-    <title>{data?.contentfulProject?.title || "Project Build"}</title>
+    <title>{`${data?.contentfulProject?.title} | Project Built by David Velez` || "David Velez Technology Project"}</title>
     <meta
       name="description"
-      content={
-        data?.contentfulArticle?.metaDescription ||
-        "David Velez is a mobile and web developer that builds mobile apps for the web, android, and iOS devices."
-      }
+      content="David Velez is a mobile and web developer that builds apps for the web, android, and iOS devices."
+      
     />
   </>
 );

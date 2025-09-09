@@ -3,7 +3,7 @@
 }
 
 .blog-descriptor[data-theme="light"] {
-  --bg: var(--light-primary-accent-color)
+  --bg: var(--light-secondary-accent-color)
 }
 
 .blog-item-container-inner[data-theme="dark"] {
@@ -31,7 +31,7 @@
 .light-blog-item-container {
   border-radius: 5px;
   padding: 1px;
-  background: linear-gradient(to left, var(--light-primary-accent-color), var(--light-secondary-accent-color));
+  background: linear-gradient(to right, var(--light-primary-accent-color), var(--light-secondary-accent-color));
 }
 
 .blog-item-container-inner {

@@ -190,7 +190,7 @@ export default function Drawer({
                 className="drawer-link"
                 style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
               >
-                ARCHIVES
+                PROJECT ARCHIVES
               </p>
             </div>
           </div>
@@ -284,7 +284,7 @@ export default function Drawer({
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
-                ARCHIVES
+                PROJECT ARCHIVES
               </p>
             </div>
           </div>
@@ -347,7 +347,7 @@ export default function Drawer({
                 className="drawer-link"
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
-                ARCHIVES
+                PROJECT ARCHIVES
               </p>
             </div>
           </div>

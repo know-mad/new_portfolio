@@ -1,9 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import "../styles/index.css";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { useTheme } from "../context/ThemeContext";
 import { useDrawer } from "../context/DrawerContext";
 import ScrollBar from "../components/ScrollBar";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 // Icons and images
 import git from "../images/github.svg";
@@ -49,13 +52,56 @@ import vercelDark from "../images/vercel-dark.svg";
 import openai from "../images/openai.svg";
 import openaiDark from "../images/openai-dark.svg";
 
-import data from "../data/data.json";
-// dynamically selecting images for the recent projects section
-import recentProject1 from "../images/panasonic.jpg";
-import recentProject2 from "../images/ewc.jpg";
-const imageMap = [{ image: recentProject1 }, { image: recentProject2 }];
+const Text = ({ children, theme }) => (
+  <p className="copy-font bottom-spacing" data-theme={theme}>
+    {children}
+  </p>
+);
 
-export default function HomePage() {
+const HyperLink = ({ children, uri, theme }) => (
+  <a
+    className="content-link"
+    data-theme={theme}
+    href={uri}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {children}
+  </a>
+);
+
+const Heading = ({ children, theme }) => (
+  <h2 className="primary-heading-bold" data-theme={theme}>
+    {children}
+  </h2>
+);
+
+const OrderedList = ({ children, theme }) => (
+  <ol data-theme={theme}>{children}</ol>
+);
+
+const options = (theme) => ({
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <Text theme={theme}>{children}</Text>
+    ),
+    [INLINES.HYPERLINK]: (node, children) => {
+      return (
+        <HyperLink theme={theme} uri={node.data.uri}>
+          {children}
+        </HyperLink>
+      );
+    },
+    [BLOCKS.HEADING_2]: (node, children) => {
+      return <Heading theme={theme}>{children}</Heading>;
+    },
+    [BLOCKS.OL_LIST]: (node, children) => {
+      return <OrderedList theme={theme}>{children}</OrderedList>;
+    },
+  },
+});
+
+export default function HomePage({ data }) {
   const { theme } = useTheme();
   const {
     activeLink,
@@ -76,8 +122,6 @@ export default function HomePage() {
     { id: 3, ref: projectsRef },
     { id: 4, ref: contactRef },
   ];
-
-  const rows = data[0];
 
   useEffect(() => {
     const getThreshold = (ref) => {
@@ -458,12 +502,12 @@ export default function HomePage() {
             </div>
           </div>
           <p className="copy-font bottom-spacing" data-theme={theme}>
-            With a background in software engineering, I specialize in building
-            mobile and web applications, as well as blazing fast websites by
-            using the latest technologies to prioritize site/app performance
-            ultimately resulting in faster page load speeds and better SEO all
-            delivered with beautifully and functionally designed user
-            interfaces.
+            With over 10 years as a developer and a background in software
+            engineering, I specialize in building mobile and web applications,
+            as well as blazing fast websites by using the latest technologies to
+            prioritize site/app performance ultimately resulting in faster page
+            load speeds and better SEO all delivered with beautifully and
+            functionally designed user interfaces.
           </p>
           <h3
             className="secondary-heading-semi-bold bottom-spacing"
@@ -768,21 +812,18 @@ export default function HomePage() {
               }
             ></span>
           </div>
-          {rows.recentProjects.map((item, index) => (
-            <div
-              key={item.id}
-              className="featured-project-container bottom-spacing"
-            >
+          {data?.featuredOne && (
+            <div className="featured-project-container bottom-spacing">
               <div className="heading-container bottom-spacing">
                 <div className="heading-title">
                   <a
-                    href={item.projectExternalLink}
+                    href={data?.featuredOne?.projectLink}
                     target="_blank"
                     rel="noopener"
                     className="reverse-secondary-heading-semi-bold link"
                     data-theme={theme}
                   >
-                    {item.projectName}
+                    {data?.featuredOne?.title}
                   </a>
                 </div>
                 <img
@@ -792,10 +833,10 @@ export default function HomePage() {
                 />
               </div>
               <p className="copy-font bottom-spacing" data-theme={theme}>
-                {item.projectBio}
-                <br />
-                <br />
-                {item.workAccomplished}
+                {renderRichText(
+                  data?.featuredOne?.featuredProjectDescription,
+                  options(theme)
+                )}
               </p>
               <div
                 className={`${
@@ -804,25 +845,81 @@ export default function HomePage() {
                     : "light-project-image-container"
                 } bottom-spacing`}
               >
-                <img
+                <GatsbyImage
+                  image={data?.featuredOne?.projectImage?.gatsbyImageData}
+                  alt={data?.featuredOne?.title || "Project Image"} // Add alt text
+                  className="project-image"
                   style={{
                     boxShadow:
-                      theme === "dark" ? "none" : "8px 5px 15px #555151",
+                      theme === "dark"
+                        ? "none"
+                        : "4px 7px 7px rgba(85, 81, 81, 0.6)",
                   }}
-                  className="project-image"
-                  src={imageMap[index].image}
-                  alt="some alt text"
                 />
               </div>
               <div className="tags-container bottom-spacing">
-                {item.projectTags.map((tag) => (
-                  <div className="tag" data-theme={theme}>
-                    {tag.tag}
+                {data?.featuredOne?.builtWith?.map((tagObj) => (
+                  <div key={tagObj.tag} className="tag" data-theme={theme}>
+                    {tagObj.tag}
                   </div>
                 ))}
               </div>
             </div>
-          ))}
+          )}
+          {data?.featuredTwo && (
+            <div className="featured-project-container bottom-spacing">
+              <div className="heading-container bottom-spacing">
+                <div className="heading-title">
+                  <a
+                    href={data?.featuredTwo?.projectLink}
+                    target="_blank"
+                    rel="noopener"
+                    className="reverse-secondary-heading-semi-bold link"
+                    data-theme={theme}
+                  >
+                    {data?.featuredTwo?.title}
+                  </a>
+                </div>
+                <img
+                  className="link-arrow"
+                  src={theme === "dark" ? link : lightLink}
+                  alt="some alt text"
+                />
+              </div>
+              <p className="copy-font bottom-spacing" data-theme={theme}>
+                {renderRichText(
+                  data?.featuredTwo?.featuredProjectDescription,
+                  options(theme)
+                )}
+              </p>
+              <div
+                className={`${
+                  theme === "dark"
+                    ? "project-image-container"
+                    : "light-project-image-container"
+                } bottom-spacing`}
+              >
+                <GatsbyImage
+                  image={data?.featuredTwo?.projectImage?.gatsbyImageData}
+                  alt={data?.featuredTwo?.title || "Project Image"} // Add alt text
+                  className="project-image"
+                  style={{
+                    boxShadow:
+                      theme === "dark"
+                        ? "none"
+                        : "4px 7px 7px rgba(85, 81, 81, 0.6)",
+                  }}
+                />
+              </div>
+              <div className="tags-container bottom-spacing">
+                {data?.featuredTwo?.builtWith?.map((tagObj) => (
+                  <div key={tagObj.tag} className="tag" data-theme={theme}>
+                    {tagObj.tag}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           <Link
             to="/projects/all-projects/"
             className={`${
@@ -917,3 +1014,38 @@ export const Head = () => (
     />
   </>
 );
+
+export const query = graphql`
+  query FeaturedProjectsByTitle {
+    featuredOne: contentfulProject(title: { eq: "Clips Dating" }) {
+      title
+      slug
+      createdOn
+      builtWith {
+        tag
+      }
+      featuredProjectDescription {
+        raw
+      }
+      projectImage {
+        gatsbyImageData
+      }
+      projectLink
+    }
+    featuredTwo: contentfulProject(title: { eq: "Panasonic" }) {
+      title
+      slug
+      createdOn
+      builtWith {
+        tag
+      }
+      featuredProjectDescription {
+        raw
+      }
+      projectImage {
+        gatsbyImageData
+      }
+      projectLink
+    }
+  }
+`;
