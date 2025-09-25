@@ -673,6 +673,7 @@ ol {
   border-image: var(--border-color);
   border-image-slice: 1; /* Ensure gradient covers entire border */
   resize: none;
+  font-family: var(--copy-font-family);
 }
 
 ::placeholder {

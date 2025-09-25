@@ -48,10 +48,19 @@ export default function Layout({ children }) {
       const topNav = document.querySelector(".alt-navbar");
       const trigger = document.querySelector(".page-content-container");
 
+      // Guard: if required elements don't exist on this page, skip
+      if (!topNav || !trigger) {
+        return;
+      }
+
       // Initial state setup
       topNav.style.backgroundColor = "transparent";
 
       const myScrollFunction = () => {
+        // Elements may be removed on route changes; guard each call
+        if (!topNav || !trigger) {
+          return;
+        }
         const res =
           trigger.offsetTop -
           document.documentElement.scrollTop -

@@ -116,6 +116,27 @@ export default function HomePage({ data }) {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
+  const handleFormatTelephone = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+    const area = digitsOnly.slice(0, 3);
+    const first = digitsOnly.slice(3, 6);
+    const last = digitsOnly.slice(6, 10);
+    let formatted = "";
+    if (area) {
+      formatted = `(${area}`;
+    }
+    if (area && area.length === 3) {
+      formatted += ")";
+    }
+    if (first) {
+      formatted += area.length === 3 ? ` ${first}` : first;
+    }
+    if (last) {
+      formatted += `-${last}`;
+    }
+    e.target.value = formatted;
+  };
+
   const sectionRefs = [
     { id: 1, ref: aboutRef },
     { id: 2, ref: workExperienceRef },
@@ -991,9 +1012,10 @@ export default function HomePage({ data }) {
                 type="tel"
                 name="tel"
                 placeholder="Telephone"
-                maxLength="15"
+                maxLength="14"
                 required
                 data-theme={theme}
+                onChange={handleFormatTelephone}
               />
               <textarea
                 name="message"
