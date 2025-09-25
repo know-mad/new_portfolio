@@ -961,8 +961,17 @@ export default function HomePage({ data }) {
             ></span>
           </div>
           <div className="contact-form">
-            <form name="contact" method="POST" data-netlify="true">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              action="/success"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <input name="bot-field" style={{ display: "none" }} />
               <input
+                type="text"
                 name="FullName"
                 placeholder="Full Name"
                 maxLength="25"
@@ -970,7 +979,8 @@ export default function HomePage({ data }) {
                 data-theme={theme}
               />
               <input
-                name="mail"
+                type="email"
+                name="email"
                 placeholder="E-Mail"
                 maxLength="50"
                 required
@@ -978,6 +988,7 @@ export default function HomePage({ data }) {
               />
 
               <input
+                type="tel"
                 name="tel"
                 placeholder="Telephone"
                 maxLength="15"
