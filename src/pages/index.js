@@ -961,7 +961,7 @@ export default function HomePage({ data }) {
             ></span>
           </div>
           <div className="contact-form">
-            <form name="contact" method="post" netlify>
+            <form name="contact" method="POST" data-netlify="true">
               <input
                 name="FullName"
                 placeholder="Full Name"
@@ -1007,10 +1007,10 @@ export default function HomePage({ data }) {
 
 export const Head = () => (
   <>
-    <title>Best NYC App Developers</title>
+    <title>Best New York City App Developers</title>
     <meta
       name="description"
-      content="I create mobile apps for android and iOS devices to help your business get ahead in the technology race."
+      content="I create web and mobile apps for android and iOS devices to help your business get ahead in the technology race."
     />
   </>
 );
