@@ -22,7 +22,7 @@
 
 .selectors-container {
   position: fixed;
-  z-index: 98;
+  z-index: 90;
   top: 50;
   left: 0;
   height: 100vh;
