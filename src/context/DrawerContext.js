@@ -14,6 +14,7 @@ export function DrawerProvider({ children }) {
 
   const scrollToSection = (sectionId, id) => {
     setIsScrolling(true)
+    setScrollingProgrammatically(true)
     const element = document.getElementById(sectionId);
     if (element) {      
       element.scrollIntoView({
@@ -25,11 +26,13 @@ export function DrawerProvider({ children }) {
         if (id) {
           setActiveLink(id);
         }
-      }, 1000); // Small delay to let scroll settle
+      }, 600); // Small delay to let scroll settle
     }
 
-    setTimeout(() => setScrollingProgrammatically(false), 1000); // Adjust timeout to match animation speed
-    setIsScrolling(false)
+    setTimeout(() => {
+      setScrollingProgrammatically(false)
+      setIsScrolling(false)
+    }, 650) // Adjust timeout to match animation speed
   };
 
   return (

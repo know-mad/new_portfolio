@@ -237,7 +237,8 @@ export default function HomePage({ data }) {
         </p>
         <p className="copy-font" data-theme={theme}>
           I'm a creative software engineer that loves to build beautifully
-          designed technology solutions so you or your business can win online.
+          designed custom software and AI solutions so you or your business can
+          win online.
         </p>
         <div className="navigation-items">
           <div
@@ -497,8 +498,8 @@ export default function HomePage({ data }) {
             </h4>
             <p className="copy-font" data-theme={theme}>
               I'm a creative software engineer that loves to build beautifully
-              designed technology solutions so you or your business can win
-              online.
+              designed custom software and AI solutions so you or your business
+              can win online.
             </p>
           </div>
           <div className="heading-container bottom-spacing">
@@ -523,12 +524,10 @@ export default function HomePage({ data }) {
             </div>
           </div>
           <p className="copy-font bottom-spacing" data-theme={theme}>
-            With over 10 years as a developer and a background in software
+            With over 10 years in the tech industry and a background in software
             engineering, I specialize in building mobile and web applications,
-            as well as blazing fast websites by using the latest technologies to
-            prioritize site/app performance ultimately resulting in faster page
-            load speeds and better SEO all delivered with beautifully and
-            functionally designed user interfaces.
+            blazing fast websites, and AI solutions by using the latest cuting
+            edge technologies.
           </p>
           <h3
             className="secondary-heading-semi-bold bottom-spacing"
@@ -594,10 +593,10 @@ export default function HomePage({ data }) {
           </h3>
           <p className="copy-font bottom-spacing" data-theme={theme}>
             I truly love the design process and conceptualizing from the
-            imagination a beautiful digital experience. My "go-to" design tools
-            are Figma, Photoshop, and Adobe XD for building mockups, wireframes,
-            and customizing the visual assets necessary for an aesthetically and
-            visually pleasing user experience.
+            imagination a beautiful and functional digital experience. My
+            "go-to" design tools are Figma, Photoshop, and Adobe XD for building
+            mockups, wireframes, and customizing the visual assets necessary for
+            an aesthetically and visually pleasing user experience.
           </p>
           <div className="logo-container bottom-spacing">
             <img
@@ -1028,7 +1027,9 @@ export default function HomePage({ data }) {
                   theme === "dark" ? "submit-button" : "light-submit-button"
                 }
               >
-                <p className="copy-font" data-theme={theme}>SUBMIT</p>
+                <p className="copy-font" data-theme={theme}>
+                  SUBMIT
+                </p>
               </button>
             </form>
           </div>
@@ -1040,10 +1041,10 @@ export default function HomePage({ data }) {
 
 export const Head = () => (
   <>
-    <title>Best New York City App Developers</title>
+    <title>Washington DC AI Consultants</title>
     <meta
       name="description"
-      content="I create web and mobile apps for android and iOS devices to help your business get ahead in the technology race."
+      content="I create AI solutions as well as web and mobile apps for android and iOS devices to help your business get ahead in the technology race."
     />
   </>
 );

@@ -13,6 +13,7 @@ export default function AllBlogs({ data }) {
   return (
     <div className="static-page-container">
       <div ref={blogsContainerRef} className="page-content-container">
+        {/* Add filtering logic here */}
         {blogs.map(({ node }) => (
           <Link
             key={node.slug}

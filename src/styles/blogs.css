@@ -227,6 +227,14 @@
   margin-bottom: 15px
 }
 
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0;
+  background-color: crimson;
+  margin: 30px 0;
+}
+
 @media screen and (min-width: 768px) {
   .blog-heading-extra-bold {
     font-size: 40px;

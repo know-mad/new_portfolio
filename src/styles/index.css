@@ -854,6 +854,21 @@ ol {
   color: var(--color);
 }
 
+.breaker[data-theme="dark"] {
+  --color: var(--secondary-accent-color);
+}
+
+.breaker[data-theme="light"] {
+  --color: var(--light-primary-accent-color);
+}
+
+.breaker {
+  color: var(--color)
+}
+
+elevenlabs-convai {
+  z-index: 99 !important;
+}
 
 @media screen and (min-width: 768px) {
   .page-heading-extra-bold {
@@ -897,7 +912,7 @@ ol {
   .home-container {
     flex-direction: row;
     justify-content: flex-end;
-    margin-top: 55px;
+    padding-top: 55px;
   }
 
   .home-container-left {
@@ -911,15 +926,12 @@ ol {
     padding: 0px 80px 0 80px;
   }
 
-  .home-container-right {
-    width: 50%;
-  }
-
   .navbar {
     display: none;
   }
 
   .home-container-right {
+    width: 50%;
     padding: 0px 80px 0 50px;
   }
 

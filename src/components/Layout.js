@@ -29,7 +29,9 @@ export default function Layout({ children }) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
       // Prevent iOS scroll bounce
-      window.addEventListener("touchmove", preventTouchMove, { passive: false });
+      window.addEventListener("touchmove", preventTouchMove, {
+        passive: false,
+      });
     } else {
       document.body.style.overflow = originalOverflow || "";
       document.body.style.touchAction = originalTouchAction || "";
@@ -97,6 +99,7 @@ export default function Layout({ children }) {
 
   return (
     <>
+      <elevenlabs-convai agent-id="agent_3101k63w19ehf8ra1jjkf5856bs7"></elevenlabs-convai>
       <Drawer
         isOpen={isDrawerOpen ? `0` : `-400px`}
         delayCloseIcon={isDrawerOpen ? `1.5s` : `0s`}
