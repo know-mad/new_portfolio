@@ -3,7 +3,7 @@ import React from "react";
 import { ThemeProvider } from "./src/context/ThemeContext";
 import { DrawerProvider } from "./src/context/DrawerContext";
 import Layout from "./src/components/Layout";
-import "@/styles/index.css";
+import "./src/styles/index.css";
 
 const HtmlAttributes = {
   lang: "en",
