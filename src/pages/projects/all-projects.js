@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/projects.css";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import { useTheme } from "../../context/ThemeContext";
 import ProjectLink from "../../components/ProjectLink";
 
@@ -49,6 +49,8 @@ export default function AllProjects({ data }) {
               key={year}
               onClick={() => setActiveYear(index)}
               className="selector"
+              tabIndex={0}
+              role="button"
             >
               <p
                 className="copy-font"
