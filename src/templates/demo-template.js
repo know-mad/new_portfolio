@@ -80,6 +80,7 @@ export default function AiTemplate({ data }) {
           <video
             ref={videoRef}
             controls={false}
+            autoPlay={false}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onTimeUpdate={handleTimeUpdate}
