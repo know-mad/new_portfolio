@@ -118,7 +118,7 @@ export default function Layout({ children }) {
         />
         <main>
           {children}
-          <elevenlabs-convai agent-id="agent_3101k63w19ehf8ra1jjkf5856bs7"></elevenlabs-convai>
+          {/* <elevenlabs-convai agent-id="agent_3101k63w19ehf8ra1jjkf5856bs7"></elevenlabs-convai> */}
         </main>
       </div>
       {/* Display a warning when a mobile device is in landscape orientation */}
