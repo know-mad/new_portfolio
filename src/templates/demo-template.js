@@ -7,7 +7,7 @@ import playDarkIcon from "../images/play-dark.svg";
 import pauseLightIcon from "../images/pause-light.svg";
 import playLightIcon from "../images/play-light.svg";
 import rewindDark from "../images/rewind.svg";
-import rewindLight from "../images/rewind-light.svg"
+import rewindLight from "../images/rewind-light.svg";
 
 export default function AiTemplate({ data }) {
   const { title, demoVideo, description } = data.contentfulDemo;
@@ -89,7 +89,10 @@ export default function AiTemplate({ data }) {
             onLoadedMetadata={handleLoadedMetadata}
             className="demo-video"
           >
-            <source src={demoVideo.url} type="video/webm" />
+            <source src={demoVideo.url} type="video/mp4" />
+            <p className="copy-font" data-theme={theme}>
+              Your browser does not support the video tag.
+            </p>
           </video>
           <div className="timer-container">
             <p className="copy-font" data-theme={theme}>
@@ -111,10 +114,9 @@ export default function AiTemplate({ data }) {
               className="control-icon"
               src={theme === "dark" ? rewindDark : rewindLight}
               alt="rewind-icon"
-              
             />
           </button>
-          
+
           <button
             style={{
               border:
@@ -137,7 +139,7 @@ export default function AiTemplate({ data }) {
               />
             )}
           </button>
-          
+
           <button
             style={{
               border:
@@ -162,7 +164,10 @@ export default function AiTemplate({ data }) {
 
 export const Head = ({ data }) => (
   <>
-    <title>{`${data?.contentfulDemo?.title} | David Velez Ai Solutions` || "David Velez | Ai Solutions"}</title>
+    <title>
+      {`${data?.contentfulDemo?.title} | David Velez Ai Solutions` ||
+        "David Velez | Ai Solutions"}
+    </title>
     <meta
       name="description"
       content={
