@@ -1,0 +1,157 @@
+.navbar[data-theme='dark'] {
+  --bg-color: var(--dark-background);
+}
+
+.navbar[data-theme='light'] {
+  --bg-color: var(--light-background);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background-color: var(--bg-color);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  height: 100%;
+  width: 20%;
+}
+
+.navbar-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background: orange; */
+  flex: 1;
+  height: 100%;
+}
+
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  height: 100%;
+  width: 20%;
+  /* background: cyan */
+}
+
+.alt-navbar {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 125px;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  padding: 0 80px;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.alt-navbar-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+
+
+.alt-navbar-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.alt-navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.alt-navbar-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  height: 35px;
+}
+
+.link-bold {
+  font-size: 15px;
+  font-family: var(--header-font-family);
+  font-weight: 700;
+  color: var(--color);
+}
+
+.active-route-indicator[data-theme="dark"] {
+  --bg: var(--primary-accent-color)
+}
+
+.active-route-indicator[data-theme="light"] {
+  --bg: var(--light-primary-accent-color)
+}
+
+.active-route-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 5px;
+  width: 5px;
+  border-radius: 5px;
+  background-color: var(--bg);
+  z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding: 0 80px;
+  }
+
+  .navbar-left, .navbar-right {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alt-navbar {
+    display: flex;
+  }
+    .navbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .alt-navbar {
+    padding: 0 150px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .alt-navbar {
+    padding: 0 250px;
+  }
+}

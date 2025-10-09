@@ -1,16 +1,22 @@
-import React from 'react'
+import React from "react";
 import moon from "../images/moon.svg";
 import sun from "../images/sun.svg";
 
-
-export default function ThemeToggler({theme, toggleTheme}) {
+export default function ThemeToggler({ theme, toggleTheme }) {
   return (
     <div onClick={toggleTheme} className="theme-toggle" data-theme={theme}>
-    { theme === "dark" ? (
-    <img src={moon} alt="some alt text" />
-    ) : (
-      <img src={sun} alt="some alt text" />
-    )}
-  </div>
-  )
+      <div
+        style={{ marginRight: theme === "dark" ? 0 : -100 }}
+        className="dark-image-container"
+      >
+        <img src={moon} alt="some alt text" />
+      </div>
+      <div
+        style={{ marginRight: theme === "light" ? 0 : -100 }}
+        className="light-image-container"
+      >
+        <img src={sun} alt="some alt text" />
+      </div>
+    </div>
+  );
 }

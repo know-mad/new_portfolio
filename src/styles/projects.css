@@ -82,18 +82,12 @@
 
 .project-page-image-container {
   height: fit-content;
-  border: 1px solid var(--primary-accent-color);
   padding: 4px;
   border-radius: 3px;
   margin: 20px 0;
+  aspect-ratio: 16/9
 }
 
-.light-project-page-image-container {
-  height: fit-content;
-  padding: 4px;
-  border-radius: 3px;
-  margin: 20px 0;
-}
 
 .project-title-container {
   display: flex;

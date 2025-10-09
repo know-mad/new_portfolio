@@ -27,12 +27,25 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  if (articleResults.errors || projectResults.errors) {
+  const demoResults = await graphql(`
+    query {
+      allContentfulDemo {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `);
+
+  if (articleResults.errors || projectResults.errors || demoResults.errors) {
     throw new Error("Error fetching data for dynamic pages");
   }
 
   const blogTemplate = path.resolve("src/templates/blog-template.js");
   const projectTemplate = path.resolve("src/templates/project-template.js");
+  const demoTemplate = path.resolve("src/templates/demo-template.js");
 
   articleResults.data.allContentfulArticle.edges.forEach(({ node }) => {
     createPage({
@@ -48,6 +61,16 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/projects/${node.slug}`,
       component: projectTemplate,
+      context: {
+        slug: node.slug,
+      },
+    });
+  });
+
+  demoResults.data.allContentfulDemo.edges.forEach(({ node }) => {
+    createPage({
+      path: `/ai/${node.slug}`,
+      component: demoTemplate,
       context: {
         slug: node.slug,
       },

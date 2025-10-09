@@ -233,8 +233,9 @@ export default function HomePage({ data }) {
           className="secondary-heading-semi-bold bottom-spacing"
           data-theme={theme}
         >
-          Full Stack Software Engineer
+          Full Stack Software Engineer &#x2022; Ai Solutions
         </p>
+
         <p className="copy-font" data-theme={theme}>
           I'm a creative software engineer that loves to build beautifully
           designed custom software and AI solutions so you or your business can
@@ -440,6 +441,12 @@ export default function HomePage({ data }) {
           </div>
           <div className="mobile-link-container bottom-spacing">
             <span style={{ width: `0px` }} className="mobile-link-line"></span>
+            <Link to="/ai" className="static-link" data-theme={theme}>
+              Ai
+            </Link>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span style={{ width: `0px` }} className="mobile-link-line"></span>
             <Link
               to="/blogs/all-blogs"
               className="static-link"
@@ -494,7 +501,7 @@ export default function HomePage({ data }) {
               className="secondary-heading-semi-bold bottom-spacing"
               data-theme={theme}
             >
-              Full Stack Software Engineer
+              Full Stack Software Engineer &#x2022; Ai Solutions
             </h4>
             <p className="copy-font" data-theme={theme}>
               I'm a creative software engineer that loves to build beautifully
@@ -712,7 +719,31 @@ export default function HomePage({ data }) {
           <div className="heading-container bottom-spacing">
             <div className="heading-title">
               <p className="tertiary-heading-semi-bold" data-theme={theme}>
-                2021 - Present
+                2025 - Present
+              </p>
+            </div>
+          </div>
+          <p className="primary-heading-bold bottom-spacing" data-theme={theme}>
+            Freelance Software Engineer and AI Consultant{" "}
+            <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+              |
+            </span>{" "}
+            Self Employed{" "}
+            <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
+              |
+            </span>{" "}
+            Remote
+          </p>
+          <p className="copy-font bottom-spacing" data-theme={theme}>
+            Specializing in building custom software and AI solutions for
+            businesses and individuals. I offer a wide range of services
+            including website development, mobile app development and Artificial
+            Intelligence consulting services.
+          </p>
+          <div className="heading-container bottom-spacing">
+            <div className="heading-title">
+              <p className="tertiary-heading-semi-bold" data-theme={theme}>
+                2021 - 2025
               </p>
             </div>
           </div>
@@ -858,23 +889,11 @@ export default function HomePage({ data }) {
                   options(theme)
                 )}
               </p>
-              <div
-                className={`${
-                  theme === "dark"
-                    ? "project-image-container"
-                    : "light-project-image-container"
-                } bottom-spacing`}
-              >
+              <div className="bottom-spacing">
                 <GatsbyImage
                   image={data?.featuredOne?.projectImage?.gatsbyImageData}
                   alt={data?.featuredOne?.title || "Project Image"} // Add alt text
                   className="project-image"
-                  style={{
-                    boxShadow:
-                      theme === "dark"
-                        ? "none"
-                        : "4px 7px 7px rgba(85, 81, 81, 0.6)",
-                  }}
                 />
               </div>
               <div className="tags-container bottom-spacing">
@@ -912,23 +931,11 @@ export default function HomePage({ data }) {
                   options(theme)
                 )}
               </p>
-              <div
-                className={`${
-                  theme === "dark"
-                    ? "project-image-container"
-                    : "light-project-image-container"
-                } bottom-spacing`}
-              >
+              <div className="bottom-spacing">
                 <GatsbyImage
                   image={data?.featuredTwo?.projectImage?.gatsbyImageData}
                   alt={data?.featuredTwo?.title || "Project Image"} // Add alt text
                   className="project-image"
-                  style={{
-                    boxShadow:
-                      theme === "dark"
-                        ? "none"
-                        : "4px 7px 7px rgba(85, 81, 81, 0.6)",
-                  }}
                 />
               </div>
               <div className="tags-container bottom-spacing">

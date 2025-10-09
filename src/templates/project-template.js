@@ -72,20 +72,12 @@ export default function ProjectTemplate({ data }) {
     <div className="static-page-container">
       <div style={{ paddingBottom: 150 }} className="page-content-container">
         <div
-          className={
-            theme === "dark"
-              ? "project-page-image-container"
-              : "light-project-page-image-container"
-          }
+          className="project-page-image-container"
         >
           <GatsbyImage
             image={projectImage.gatsbyImageData}
             alt={title || "Blog Image"} // Add alt text
             className="project-image"
-            style={{
-              boxShadow:
-                theme === "dark" ? "none" : "4px 7px 7px rgba(85, 81, 81, 0.6)",
-            }}
           />
         </div>
         <div className="project-title-container">

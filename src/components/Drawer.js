@@ -197,6 +197,23 @@ export default function Drawer({
             </div>
           </div>
           <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: `0px` }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div
+              onClick={() => handleNavigate("/ai/")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? `#FFF` : `#555151` }}
+              >
+                Ai
+              </p>
+            </div>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
             <span style={{ width: `0px` }} className="mobile-link-line"></span>
             <div
               onClick={() => handleNavigate("/blogs/all-blogs/")}
@@ -220,6 +237,20 @@ export default function Drawer({
         >
           <div className="mobile-link-container bottom-spacing">
             <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div onClick={() => handleNavigate("/")} className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                HOME
+              </p>
+            </div>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
               style={{ width: "75px" }}
               className={
                 theme === "dark"
@@ -233,6 +264,23 @@ export default function Drawer({
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 PROJECT ARCHIVES
+              </p>
+            </div>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div
+              onClick={() => handleNavigate("/ai/")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                Ai
               </p>
             </div>
           </div>
@@ -253,20 +301,6 @@ export default function Drawer({
               </p>
             </div>
           </div>
-          <div className="mobile-link-container bottom-spacing">
-            <span
-              style={{ width: "0px" }}
-              className="mobile-link-line-reversed"
-            ></span>
-            <div onClick={() => handleNavigate("/")} className="no-decoration">
-              <p
-                className="drawer-link"
-                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
-              >
-                HOME
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Blogs */}
@@ -282,6 +316,20 @@ export default function Drawer({
               style={{ width: "0px" }}
               className="mobile-link-line-reversed"
             ></span>
+            <div onClick={() => handleNavigate("/")} className="no-decoration">
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                HOME
+              </p>
+            </div>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
             <div
               onClick={() => handleNavigate("/projects/all-projects/")}
               className="no-decoration"
@@ -291,6 +339,23 @@ export default function Drawer({
                 style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
               >
                 PROJECT ARCHIVES
+              </p>
+            </div>
+          </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div
+              onClick={() => handleNavigate("/ai/")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                Ai
               </p>
             </div>
           </div>
@@ -312,6 +377,20 @@ export default function Drawer({
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Ai */}
+
+        <div
+          style={{
+            marginLeft:
+              location.pathname === "/ai/" ||
+              location.pathname === "/ai/ai-solutions/"
+                ? 0
+                : -400,
+          }}
+          className="ai-links-container"
+        >
           <div className="mobile-link-container bottom-spacing">
             <span
               style={{ width: "0px" }}
@@ -326,10 +405,116 @@ export default function Drawer({
               </p>
             </div>
           </div>
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div
+              onClick={() => handleNavigate("/projects/all-projects/")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                PROJECT ARCHIVES
+              </p>
+            </div>
+          </div>
+          {location.pathname === "/ai/" && (
+            <>
+              <div className="mobile-link-container bottom-spacing">
+                <span
+                  style={{ width: "75px" }}
+                  className={
+                    theme === "dark"
+                      ? "mobile-link-line-reversed"
+                      : "light-mobile-link-line-reversed"
+                  }
+                ></span>
+                <div className="no-decoration">
+                  <p
+                    className="drawer-link"
+                    style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                  >
+                    Ai
+                  </p>
+                </div>
+              </div>
+              <div className="mobile-link-container bottom-spacing">
+                <span
+                  style={{ width: "0px" }}
+                  className="mobile-link-line-reversed"
+                ></span>
+                <div className="no-decoration" onClick={() => handleNavigate("/ai/ai-solutions/")}>
+                  <p
+                    className="drawer-link"
+                    style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                  >
+                    Ai SOLUTIONS
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          {location.pathname === "/ai/ai-solutions/" && (
+            <>
+              <div className="mobile-link-container bottom-spacing">
+                <span
+                  style={{ width: "0px" }}
+                  className="mobile-link-line-reversed"
+                ></span>
+                <div className="no-decoration" onClick={() => handleNavigate("/ai/")}>
+                  <p
+                    className="drawer-link"
+                    style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                  >
+                    Ai
+                  </p>
+                </div>
+              </div>
+              <div className="mobile-link-container bottom-spacing">
+              <span
+                  style={{ width: "75px" }}
+                  className={
+                    theme === "dark"
+                      ? "mobile-link-line-reversed"
+                      : "light-mobile-link-line-reversed"
+                  }
+                ></span>
+                <div className="no-decoration">
+                  <p
+                    className="drawer-link"
+                    style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+                  >
+                    Ai SOLUTIONS
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          <div className="mobile-link-container bottom-spacing">
+            <span
+              style={{ width: "0px" }}
+              className="mobile-link-line-reversed"
+            ></span>
+            <div
+              onClick={() => handleNavigate("/blogs/all-blogs")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                BLOG
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Article */}
-        <div
+        {/* <div
           style={{
             marginLeft:
               (location.pathname.startsWith("/blogs/") &&
@@ -388,8 +573,19 @@ export default function Drawer({
                 PROJECT ARCHIVES
               </p>
             </div>
+            <div
+              onClick={() => handleNavigate("/ai/")}
+              className="no-decoration"
+            >
+              <p
+                className="drawer-link"
+                style={{ color: theme === "dark" ? "#FFF" : "#555151" }}
+              >
+                Ai
+              </p>
+            </div>
           </div>
-        </div>
+        </div> */}
 
         {/* End Links Containers */}
 

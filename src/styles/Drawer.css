@@ -43,8 +43,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20px;
-  width: 25px;
+  /* height: 20px;
+  width: 25px; */
+  height: 15px;
+  width: 20px;
 }
 
 .close-bar-1 {
@@ -95,7 +97,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 400px;
 }
 
 .mobile-link-container {
@@ -147,7 +149,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px 0 0 20px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .projects-links-container {
@@ -157,7 +159,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px 0 0 20px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .blogs-links-container {
@@ -167,10 +169,20 @@
   display: flex;
   flex-direction: column;
   padding: 25px 0 0 20px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .article-links-container {
+  position: absolute;
+  top: 0;
+  width: 100%;  
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0 0 20px;
+  z-index: 1;
+}
+
+.ai-links-container {
   position: absolute;
   top: 0;
   width: 100%;  

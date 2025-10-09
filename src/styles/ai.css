@@ -1,0 +1,231 @@
+/* AI Solutions Grid */
+.ai-solutions-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin-top: 40px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 20px;
+  border-radius: 8px;
+  /* background: crimson; */
+  background: rgba(146, 146, 146, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive Grid Breakpoints */
+@media screen and (min-width: 768px) {
+  .ai-solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .ai-solutions-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .grid-item:hover {
+    transform: translateY(-3px);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ai-solutions-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .ai-solutions-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+  }
+}
+
+.content-image {
+  border-radius: 8px;
+  aspect-ratio: 16/9;
+}
+
+.content-container-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.content-container-row-reverse {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.content-container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container-column-reverse {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container-column ul {
+  margin-top: 0px;
+}
+
+.content-container-column li[data-theme="dark"] {
+  --color: var(--primary-text-color);
+}
+
+.content-container-column li[data-theme="light"] {
+  --color: var(--light-primary-text-color);
+}
+
+.content-container-column li {
+  color: var(--color);
+  font-family: var(--header-font-family);
+  font-weight: 700;
+}
+
+@media screen and (min-width: 1024px) {
+  .content-container-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .content-container-row-reverse {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .content-image {
+    width: 45%;
+    /* height: auto; */
+    border-radius: 8px;
+  }
+
+  .content-container-column {
+    width: 45%;
+  }
+
+  .content-container-column-reverse {
+    width: 45%;
+  }
+
+  .ai-page {
+    width: 45% !important;
+    /* background: orange */
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .content-image {
+    width: 35%;
+    /* height: auto; */
+    border-radius: 8px;
+  }
+
+  .ai-page {
+    width: 35% !important;
+    /* background: orange */
+  }
+
+  .content-container-row {
+    margin-bottom: 100px;
+  }
+
+  .content-container-row-reverse {
+    margin-bottom: 100px;
+  }
+}
+
+.demo-container {
+  /* background: crimson; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.demo-video {
+  width: 100%;
+  cursor: auto !important;
+}
+
+.timer-container {
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.video-toggle {
+  /* position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  background: none;
+  /* z-index: 1; */
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  margin: 0 15px 0 15px;
+}
+
+.video-control-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  height: 30px;
+  width: 50px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.play-icon {
+  width: 15px;
+  aspect-ratio: 1;
+  margin-left: 2px;
+}
+
+.pause-icon {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* background: crimson; */
+}
+
+@media screen and (min-width: 1024px) {
+  .demo-video {
+    cursor: pointer;
+    width: 65%;
+  }
+}
