@@ -533,7 +533,7 @@ export default function HomePage({ data }) {
           <p className="copy-font bottom-spacing" data-theme={theme}>
             With over 10 years in the tech industry and a background in software
             engineering, I specialize in building mobile and web applications,
-            blazing fast websites, and AI solutions by using the latest cuting
+            blazing fast websites, and Ai solutions by using the latest cuting
             edge technologies.
           </p>
           <h3
@@ -724,7 +724,7 @@ export default function HomePage({ data }) {
             </div>
           </div>
           <p className="primary-heading-bold bottom-spacing" data-theme={theme}>
-            Freelance Software Engineer and AI Consultant{" "}
+            Freelance Software Engineer and Ai Consultant{" "}
             <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
               |
             </span>{" "}
@@ -735,10 +735,10 @@ export default function HomePage({ data }) {
             Remote
           </p>
           <p className="copy-font bottom-spacing" data-theme={theme}>
-            Specializing in building custom software and AI solutions for
+            Specializing in building custom software and Ai solutions for
             businesses and individuals. I offer a wide range of services
-            including website development, mobile app development and Artificial
-            Intelligence consulting services.
+            including website development, mobile app development and artificial
+            intelligence consulting and strategizing services.
           </p>
           <div className="heading-container bottom-spacing">
             <div className="heading-title">
