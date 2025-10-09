@@ -82,6 +82,7 @@ export default function AiTemplate({ data }) {
             controls={false}
             autoPlay={false}
             playsInline
+            muted
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onTimeUpdate={handleTimeUpdate}
