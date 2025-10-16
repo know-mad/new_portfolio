@@ -724,7 +724,7 @@ export default function HomePage({ data }) {
             </div>
           </div>
           <p className="primary-heading-bold bottom-spacing" data-theme={theme}>
-            Freelance Software Engineer and Ai Consultant{" "}
+            Freelance Software Engineer &#x2022; Ai Consultant{" "}
             <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
               |
             </span>{" "}
@@ -732,7 +732,7 @@ export default function HomePage({ data }) {
             <span style={{ color: theme === "dark" ? "#00A3FF" : "#EA8D00" }}>
               |
             </span>{" "}
-            Remote
+            Washington DC
           </p>
           <p className="copy-font bottom-spacing" data-theme={theme}>
             Specializing in building custom software and Ai solutions for

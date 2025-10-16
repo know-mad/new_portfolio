@@ -126,4 +126,12 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => <title>NYC Mobile Apps Developer</title>;
+export const Head = () => (
+  <>
+    <title>Best Mobile App Developer in Washington DC</title>
+    <meta
+      name="description"
+      content="I create AI solutions as well as web and mobile apps for android and iOS devices to help your business get ahead in the technology race."
+    />
+  </>
+)
