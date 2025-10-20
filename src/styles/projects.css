@@ -84,7 +84,8 @@
   height: fit-content;
   border-radius: 3px;
   margin: 20px 0;
-  aspect-ratio: 16/9
+  aspect-ratio: 16/9;
+  width: 100%
 }
 
 
