@@ -250,7 +250,7 @@ ol {
   display: flex;
   flex-direction: column;
   background: var(--primary-bg-color);
-  padding: 100px 75px 80px 15px;
+  padding: 100px 30px 80px 30px;
 }
 
 .section-title {
@@ -664,6 +664,8 @@ ol {
 
 .mobile-socials-container {
   position: absolute;
+  display: flex;
+  flex-direction: row;
   bottom: 0;
   left: 0;
   right: 0;
@@ -671,17 +673,25 @@ ol {
 }
 
 .desktop-socials-container {
-  margin-top: 40px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px
 }
 
 .social-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
   margin-right: 20px;
 }
 
 .static-page-container {
   display: flex;
   flex-direction: column;
-  padding: 15px
+  padding: 25px
 }
 
 .page-content-container {
@@ -735,7 +745,7 @@ elevenlabs-convai {
   }
 
   .home-container-right {
-    padding: 100px 100px 0 80px;
+    padding: 100px;
   }
 
   .heading-extra-bold {
@@ -751,7 +761,7 @@ elevenlabs-convai {
   }
 
   .static-page-container {
-    padding: 15px 80px
+    padding: 15px 100px
   }
 }
 
@@ -829,6 +839,21 @@ elevenlabs-convai {
 }
 
 @media screen and (min-width: 1440px) {
+  .home-container-left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    padding: 0px 100px 0 100px;
+  }
+
+  .home-container-right {
+    width: 50%;
+    padding: 0px 100px 0 100px;
+  }
   .page-heading-extra-bold {
     font-size: 50px;
   }
@@ -840,29 +865,29 @@ elevenlabs-convai {
 
 @media screen and (min-width: 1920px) {
   .home-container-left {
-    padding: 0px 150px 0 150px;
+    padding: 0px 250px 0 250px;
   }
 
   .home-container-right {
-    padding: 0px 150px 0 150px;
+    padding: 0px 250px 0 100px;
   }
 
   .static-page-container {
-    padding: 15px 150px
+    padding: 15px 250px
   }
 }
 
 @media screen and (min-width: 2560px) {
   .home-container-left {
-    padding: 0px 250px 0 250px;
+    padding: 0px 250px 0 350px;
   }
 
   .home-container-right  {
-    padding: 0px 250px 0 250px;
+    padding: 0px 350px 0 100px;
   }
 
   .static-page-container {
-    padding: 15px 250px
+    padding: 15px 350px
   }
 }
 

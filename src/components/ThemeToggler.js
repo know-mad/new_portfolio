@@ -1,5 +1,5 @@
 import React from "react";
-import moon from "../images/moon.svg";
+import moon from "../images/moon-alt.svg";
 import sun from "../images/sun.svg";
 
 export default function ThemeToggler({ theme, toggleTheme }) {
@@ -9,13 +9,13 @@ export default function ThemeToggler({ theme, toggleTheme }) {
         style={{ marginRight: theme === "dark" ? 0 : -100 }}
         className="dark-image-container"
       >
-        <img src={moon} alt="some alt text" />
+        <img className="toggle-icon" src={moon} alt="some alt text" />
       </div>
       <div
         style={{ marginRight: theme === "light" ? 0 : -100 }}
         className="light-image-container"
       >
-        <img src={sun} alt="some alt text" />
+        <img className="toggle-icon" src={sun} alt="some alt text" />
       </div>
     </div>
   );

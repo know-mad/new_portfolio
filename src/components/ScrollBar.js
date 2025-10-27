@@ -17,8 +17,8 @@ export default function ScrollBar({
 
   return (
     <div className="scrollbar-container">
-      <ThemeToggler theme={theme} toggleTheme={toggleTheme}/>
-      <span className="timeline" data-theme={theme}></span>
+      {/* <ThemeToggler theme={theme} toggleTheme={toggleTheme}/> */}
+      {/* <span className="timeline" data-theme={theme}></span>
       <div
         onClick={handleClick1}
         style={{ padding: activeLink === 1 && !isScrolling ? `5px` : `0` }}
@@ -53,7 +53,7 @@ export default function ScrollBar({
         data-theme={theme}
       >
         <div className="full-stop-inner" data-theme={theme}></div>
-      </div>
+      </div> */}
     </div>
   );
 }

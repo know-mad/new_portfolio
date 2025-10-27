@@ -7,6 +7,7 @@ import ScrollBar from "../components/ScrollBar";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import ThemeToggler from "../components/ThemeToggler";
 
 // Icons and images
 import git from "../images/github.svg";
@@ -102,7 +103,8 @@ const options = (theme) => ({
 });
 
 export default function HomePage({ data }) {
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
+
   const {
     activeLink,
     scrollingProgrammatically,
@@ -475,6 +477,7 @@ export default function HomePage({ data }) {
               alt="some alt text"
             />
           </a>
+          <ThemeToggler theme={theme} toggleTheme={toggleTheme}/>
         </div>
       </div>
       <div style={{ paddingBottom: 100 }} className="home-container-right">

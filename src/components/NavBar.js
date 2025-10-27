@@ -153,10 +153,7 @@ export default function NavBar({
         </div>
         <div className="navbar-center">{renderDynamicPageTitles()}</div>
         <div className="navbar-right">
-          {/* Functionality passed to Layout component to use universally across the site */}
-          {location.pathname !== "/" && (
             <ThemeToggler theme={theme} toggleTheme={toggleTheme} />
-          )}
         </div>
       </nav>
       {location.pathname !== "/" && (

@@ -1,7 +1,7 @@
 /* all color variables come from styles.css file */
 
 .theme-toggle[data-theme='dark'] {
-  --bg-color: var(--secondary-accent-color)
+  --bg-color: var(--primary-accent-color)
 }
 
 .theme-toggle[data-theme='light'] {
@@ -75,7 +75,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 28px;
   aspect-ratio: 1;
   border: 1px solid var(--bg-color);
   border-radius: 50%;
@@ -154,6 +154,11 @@
   position: absolute;
   z-index: 0;
   transition: margin-right 0.3s ease
+}
+
+.toggle-icon {
+  width: 10px;
+  aspect-ratio: 1
 }
 
 @media screen and (min-width: 768px) {
