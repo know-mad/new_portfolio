@@ -250,7 +250,7 @@ ol {
   display: flex;
   flex-direction: column;
   background: var(--primary-bg-color);
-  padding: 80px 30px 80px 30px;
+  padding: 80px 25px 80px 25px;
 }
 
 .section-title {

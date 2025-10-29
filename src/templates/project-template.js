@@ -5,9 +5,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
-import darkBackArrow from "../images/arrow-icon.svg";
-import lightBackArrow from "../images/arrow-icon-light.svg";
-
 const Text = ({ children, theme }) => (
   <p className="copy-font bottom-spacing" data-theme={theme}>
     {children}
@@ -70,10 +67,8 @@ export default function ProjectTemplate({ data }) {
 
   return (
     <div className="static-page-container">
-      <div style={{ paddingBottom: 150 }} className="page-content-container">
-        <div
-          className="project-page-image-container"
-        >
+      <div style={{ paddingBottom: 150 }} className="projects-page-content-container">
+        <div className="project-page-image-container">
           <GatsbyImage
             image={projectImage.gatsbyImageData}
             alt={title || "Blog Image"} // Add alt text
@@ -148,11 +143,13 @@ export default function ProjectTemplate({ data }) {
 
 export const Head = ({ data }) => (
   <>
-    <title>{`${data?.contentfulProject?.title} | Project Built by David Velez` || "David Velez Technology Project"}</title>
+    <title>
+      {`${data?.contentfulProject?.title} | Project Built by David Velez` ||
+        "David Velez Technology Project"}
+    </title>
     <meta
       name="description"
       content="David Velez is a mobile and web developer that builds apps for the web, android, and iOS devices."
-      
     />
   </>
 );

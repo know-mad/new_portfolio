@@ -9,9 +9,8 @@ export default function AiSolutionsPage({ data }) {
 
   return (
     <div className="static-page-container">
-      <div style={{ paddingBottom: 200 }} className="page-content-container">
+      <div style={{ paddingBottom: 200 }} className="projects-page-content-container">
         <div className="ai-solutions-grid">
-          {/* I'm going to have to hardcode these in because Contentful will not allw video uploads for some reason */}
           {demoLinks.map(({ node }) => (
             <Link
               key={node.slug}

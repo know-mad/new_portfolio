@@ -23,9 +23,9 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  padding-left: 30px;
+  padding-left: 25px;
   height: 100%;
-  width: 20%;
+  min-width: 15%;
 }
 
 .navbar-center {
@@ -33,7 +33,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* background: orange; */
   flex: 1;
   height: 100%;
 }
@@ -43,10 +42,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 30px;
+  padding-right: 25px;
   height: 100%;
-  width: 20%;
-  /* background: cyan */
+  min-width: 15%;
 }
 
 .alt-navbar {
@@ -134,6 +132,7 @@
 
   .navbar-left, .navbar-right {
     padding: 0;
+    min-width: 10%;
   }
 }
 

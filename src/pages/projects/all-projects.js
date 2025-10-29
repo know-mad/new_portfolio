@@ -35,7 +35,7 @@ export default function AllProjects({ data }) {
 
   return (
     <div style={{ paddingLeft: 0 }} className="static-page-container">
-      <div className="page-content-container">
+      <div className="projects-page-content-container">
         <div className="selectors-container" data-theme={theme}>
           <div className="year-column-container" data-theme={theme}>
             <div className="year-column" data-theme={theme}>
@@ -128,7 +128,7 @@ export const query = graphql`
 
 export const Head = () => (
   <>
-    <title>Best Mobile App Developer in Washington DC</title>
+    <title>Best Mobile Apps in Washington DC | David Velez</title>
     <meta
       name="description"
       content="I create AI solutions as well as web and mobile apps for android and iOS devices to help your business get ahead in the technology race."

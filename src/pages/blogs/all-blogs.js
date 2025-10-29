@@ -12,7 +12,7 @@ export default function AllBlogs({ data }) {
 
   return (
     <div className="static-page-container">
-      <div ref={blogsContainerRef} className="page-content-container">
+      <div ref={blogsContainerRef} className="projects-page-content-container">
         {/* Add filtering logic here */}
         {blogs.map(({ node }) => (
           <Link
@@ -135,4 +135,12 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data }) => <title>Tech Entrepreneur</title>;
+export const Head = () => (
+  <>
+    <title>Washington DC Ai Programmers | David Velez</title>
+    <meta
+      name="description"
+      content="I create AI solutions as well as web and mobile apps for android and iOS devices to help your business get ahead in the technology race."
+    />
+  </>
+);
