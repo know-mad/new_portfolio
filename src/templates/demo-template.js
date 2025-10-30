@@ -68,7 +68,7 @@ export default function AiTemplate({ data }) {
     <div className="static-page-container">
       <div
         style={{ paddingBottom: 150, alignItems: "center" }}
-        className="page-content-container"
+        className="page-content-container top-margin"
       >
         <p className="primary-heading-bold" data-theme={theme}>
           {title}
