@@ -235,6 +235,10 @@
   margin: 30px 0;
 }
 
+.top-margin {
+  margin-top: 70px !important;
+}
+
 @media screen and (min-width: 768px) {
   .blog-heading-extra-bold {
     font-size: 40px;
@@ -287,6 +291,10 @@
   .preview-image {
     width: 250px;
     max-width: 250px;
+  }
+
+  .top-margin {
+    margin-top: 125px !important;
   }
 }
 

@@ -35,7 +35,7 @@ export default function AllProjects({ data }) {
 
   return (
     <div style={{ paddingLeft: 0 }} className="static-page-container">
-      <div className="projects-page-content-container">
+      <div className="page-content-container top-margin">
         <div className="selectors-container" data-theme={theme}>
           <div className="year-column-container" data-theme={theme}>
             <div className="year-column" data-theme={theme}>

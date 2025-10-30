@@ -12,7 +12,7 @@ export default function AllBlogs({ data }) {
 
   return (
     <div className="static-page-container">
-      <div ref={blogsContainerRef} className="projects-page-content-container">
+      <div ref={blogsContainerRef} className="page-content-container top-margin">
         {/* Add filtering logic here */}
         {blogs.map(({ node }) => (
           <Link

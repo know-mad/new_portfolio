@@ -67,7 +67,7 @@ export default function ProjectTemplate({ data }) {
 
   return (
     <div className="static-page-container">
-      <div style={{ paddingBottom: 150 }} className="projects-page-content-container">
+      <div style={{ paddingBottom: 150 }} className="page-content-container top-margin">
         <div className="project-page-image-container">
           <GatsbyImage
             image={projectImage.gatsbyImageData}
