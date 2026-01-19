@@ -464,6 +464,7 @@ export default function HomePage({ data }) {
               className="social-link"
               src={theme === "dark" ? git : gitDark}
               alt="some alt text"
+              style={{ width: "30px", height: "30px" }}
             />
           </a>
           <a
@@ -475,6 +476,7 @@ export default function HomePage({ data }) {
               className="social-link"
               src={theme === "dark" ? linkedIn : linkedInDark}
               alt="some alt text"
+              style={{ width: "28px", height: "28px" }}
             />
           </a>
           <ThemeToggler theme={theme} toggleTheme={toggleTheme}/>

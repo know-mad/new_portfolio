@@ -595,12 +595,14 @@ export default function Drawer({
               className="social-link"
               src={theme === "dark" ? git : gitDark}
               alt="some alt text"
+              style={{ width: "30px", height: "30px" }}
             />
           </a>
           <a
             href="https://www.linkedin.com/in/david-velez-5b29a833b"
             target="_blank"
             rel="noopener"
+            style={{ width: "28px", height: "28px" }}
           >
             <img
               className="social-link"
