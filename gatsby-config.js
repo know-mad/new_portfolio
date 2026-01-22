@@ -7,7 +7,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `portfolio_v2`,
-    siteUrl: `https://www.davidvelez.io`,
+    siteUrl: `https://www.davidvelez.ai`,
   },
   plugins: [
     {
