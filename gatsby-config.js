@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://davidvelez.io",
-        sitemap: "https://davidvelez.io/sitemap.xml",
+        host: "https://davidvelez.ai",
+        sitemap: "https://davidvelez.ai/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
@@ -61,5 +61,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-sitemap`
   ],
 };
